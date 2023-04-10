@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import url(./frameworks/bootstrap.css);
+@import url(./frameworks/bootstrap-icons.css);
+
+@import url(./normalize.css);
+@import url(./reset.css);
+
+@import url(./elementos/no-script.css);
+@import url(./cores.css);
+@import url(./variaveis.css);
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: 'Inter', sans-serif;
+}
