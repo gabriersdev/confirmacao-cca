@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  
   <!-- 
     <meta name="keywords" content="#">
     <meta name="author" content="Gabriel Ribeiro">
@@ -32,11 +32,11 @@
   
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/frameworks/highlights-A11Y-dark.css">
-
+  
   <link rel="shortcut icon" href="./assets/img/#" type="image/x-icon">
-
+  
   <title>Document</title>
-
+  
   <script src="./assets/js/frameworks/jquery.js" defer></script>
   <script src="./assets/js/frameworks/bootstrap.js" defer></script>
   <script src="./assets/js/frameworks/pooper.js" defer></script>
@@ -48,7 +48,7 @@
   <script type="module" src="./assets/js/script.js" defer></script>
 </head>
 <body>
-
+  
   <noscript>
     <div class="box-no-script">         
       <div class="texto-pagina-centralizado-alt">
@@ -64,28 +64,163 @@
     </div>
   </noscript>
   
-
   <div class="container">
-    <div class="form-floating mb-3">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
+    <div class="card">
+      <div class="card-header">
+        <h5>Resumo</h5>
+      </div>
+      <div class="card-body">
+        ### Processo iniciado em 00/00/0000, com 3 proponentes: Nome Proponente 1, Nome Proponente 2 e Nome Proponente 2. ### 
+      </div>
+    </div><br>
+    
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            <span>Proponente 1 - <b>Nome do cliente</b></span>
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+          <div class="accordion-body">
+            <div class="card-body">
+              <h5 class="mt-2 mb-4">Nome do cliente</h5>
+              
+              <div class="form-floating mt-2 mb-1">
+                <input type="text" class="form-control" placeholder="Nome">
+                <label for="floatingInput">Nome</label>
+              </div>
+              
+              <div class="row mt-2 mb-1">
+                <div class="col">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="123.456.789-09">
+                    <label for="floatingInput">CPF</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" placeholder="01/01/2000">
+                    <label for="floatingInput">Data de Nascimento</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row mt-2 mb-1">
+                <div class="col-sm-7">
+                  <div class="form-floating">
+                    <input type="email" class="form-control" placeholder="name@example.com">
+                    <label for="floatingInput">E-mail</label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-floating">
+                    <input type="tel" class="form-control" placeholder="name@example.com">
+                    <label for="floatingInput">Telefone</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-2">
+                <br><b>Endereço</b>
+                <div class="input-group mt-2 mb-2">
+                  <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                  </div>
+                  <input type="text" list="tipos-comprovantes-endereco" class="form-control" aria-label="Text input with checkbox" placeholder="Comprovante de Endereço">
+                  <datalist name="" id="tipos-comprovantes-endereco">
+                    <option value="Conta de serviço"></option>
+                    <option value="Boleto de cobrança"></option>
+                    <option value="IRPF"></option>
+                    <option value="Contrato de Aluguel"></option>
+                    <option value="Outro"></option>
+                  </datalist>
+                  <button class="input-group-text btn btn-outline-secondary"><i class="bi bi-trash"></i></button>
+                  <div class="input-group-text">
+                    <input class="form-check-input mt-0" id="comprovante-renda-valido" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    <label for="comprovante-renda-valido">&nbsp;&nbsp;Últimos 60 dias</label>
+                  </div>
+                </div>
+                <span class="text-muted">[Feedback do comp. de endereço]</span>
+              </div>
+              
+              <div class="mb-2">
+                <br><b>Renda</b>
+                <div class="input-group mt-2 mb-2">
+                  <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                  </div>
+                  <input type="text" list="tipos-comprovantes-renda" class="form-control" aria-label="Text input with checkbox" placeholder="Comprovante de Renda">
+                  <datalist name="" id="tipos-comprovantes-renda">
+                    <option value="Contracheque/Hollerith"></option>
+                    <option value="IRPF"></option>
+                    <option value="Contrato de Aluguel"></option>
+                    <option value="Extratos Bancários"></option>
+                    <option value="Outro"></option>
+                  </datalist>
+                  <button class="input-group-text btn btn-outline-secondary"><i class="bi bi-trash"></i></button>
+                  <div class="input-group-text">
+                    <input class="form-check-input mt-0" id="comprovante-endereco-valido" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    <label for="comprovante-endereco-valido">&nbsp;&nbsp;Últimos 60 dias</label>
+                  </div>
+                </div>
+                <button class="btn btn-outline-secondary">Incluir renda</button>
+                <span class="text-muted d-block mt-2">[Feedback da renda]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            Accordion Item #2
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            Accordion Item #3
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+          <div class="accordion-body">
+            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary mt-3">Incluir proponente</button>
+  </div>
+  
+  <div class="container">   
+    <div class="mt-1 mb-2">
+      <br><b>Relatório</b>
+      <div class="input-group mt-2 mb-2">
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Observações sobre o processo" id="floatingTextarea2" style="height: 100px"></textarea>
+          <label for="floatingTextarea2">Observações sobre o processo</label>
+        </div>
+      </div>
     </div>
 
-    <span></span><br>
-    <div class="input-group mb-3">
-      <div class="input-group-text">
-        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+    <div class="mt-1 mb-2">
+      <br><b>Pendências</b>
+      <div class="input-group mt-2 mb-2">
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Pendências" id="floatingTextarea2" style="height: 100px"></textarea>
+          <label for="floatingTextarea2">Documentos e informações pendentes</label>
+        </div>
       </div>
-      <input type="text" class="form-control" aria-label="Text input with checkbox">
-    </div>
-  
-    <div class="input-group">
-      <div class="input-group-text">
-        <input class="form-check-input mt-0" type="radio" value="" aria-label="Radio button for following text input">
-      </div>
-      <input type="text" class="form-control" aria-label="Text input with radio button">
+      <span class="text-muted">Preenchido automaticamente. Você pode editar.</span>
     </div>
   </div>
-
+  
 </body>
 </html>
