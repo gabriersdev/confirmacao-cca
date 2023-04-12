@@ -64,10 +64,11 @@
     </div>
   </noscript>
   
-  <div class="container">
+  <div class="container mt-5">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header d-flex justify-content-between align-items-center">
         <h5>Resumo</h5>
+        <button class="btn btn-outline-primary"><i class="bi bi-clipboard"></i></button>
       </div>
       <div class="card-body">
         ### Processo iniciado em 00/00/0000, com 3 proponentes: Nome Proponente 1, Nome Proponente 2 e Nome Proponente 2. ### 
@@ -84,7 +85,10 @@
         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
           <div class="accordion-body">
             <div class="card-body">
-              <h5 class="mt-2 mb-4">Nome do cliente</h5>
+              <div class="card-body-header d-flex justify-content-between align-items-center mt-2 mb-4">
+                <h5 class="">Nome do cliente</h5>
+                <button class="btn btn-outline-secondary">Remover proponente</button>
+              </div>
               
               <div class="form-floating mt-2 mb-1">
                 <input type="text" class="form-control" placeholder="Nome">
@@ -129,16 +133,16 @@
                   </div>
                   <input type="text" list="tipos-comprovantes-endereco" class="form-control" aria-label="Text input with checkbox" placeholder="Comprovante de Endereço">
                   <datalist name="" id="tipos-comprovantes-endereco">
-                    <option value="Conta de serviço"></option>
+                    <option value="Fatura de serviço"></option>
                     <option value="Boleto de cobrança"></option>
                     <option value="IRPF"></option>
                     <option value="Contrato de Aluguel"></option>
                     <option value="Outro"></option>
                   </datalist>
-                  <button class="input-group-text btn btn-outline-secondary"><i class="bi bi-trash"></i></button>
+                  <!-- <button class="input-group-text btn btn-outline-secondary"><i class="bi bi-trash"></i></button> -->
                   <div class="input-group-text">
                     <input class="form-check-input mt-0" id="comprovante-renda-valido" type="checkbox" value="" aria-label="Checkbox for following text input">
-                    <label for="comprovante-renda-valido">&nbsp;&nbsp;Últimos 60 dias</label>
+                    <label for="comprovante-renda-valido">&nbsp;&nbsp;Comprovante válido&nbsp;<i class="bi bi-info-circle text-secondary"></i></label>
                   </div>
                 </div>
                 <span class="text-muted">[Feedback do comp. de endereço]</span>
@@ -161,11 +165,20 @@
                   <button class="input-group-text btn btn-outline-secondary"><i class="bi bi-trash"></i></button>
                   <div class="input-group-text">
                     <input class="form-check-input mt-0" id="comprovante-endereco-valido" type="checkbox" value="" aria-label="Checkbox for following text input">
-                    <label for="comprovante-endereco-valido">&nbsp;&nbsp;Últimos 60 dias</label>
+                    <label for="comprovante-endereco-valido">&nbsp;&nbsp;Comprovante válido&nbsp;<i class="bi bi-info-circle text-secondary"></i></label>
                   </div>
                 </div>
                 <button class="btn btn-outline-secondary">Incluir renda</button>
                 <span class="text-muted d-block mt-2">[Feedback da renda]</span>
+              </div>
+
+              <br><div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" value="" id="possui-fgts-e-usara">
+                <label class="form-check-label" for="possui-fgts-e-usara">Possui 36 meses de FGTS e irá fazer uso</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" value="" id="comprovante-de-estado-civil-enviado">
+                <label class="form-check-label" for="comprovante-de-estado-civil-enviado">Enviou Comprovante de Estado Civil&nbsp;<i class="bi bi-info-circle text-secondary"></i></label>
               </div>
             </div>
           </div>
@@ -199,9 +212,9 @@
     <button class="btn btn-primary mt-3">Incluir proponente</button>
   </div>
   
-  <div class="container">   
+  <div class="container mb-5">   
     <div class="mt-1 mb-2">
-      <br><b>Relatório</b>
+      <br><div class="d-flex align-items-center justify-content-between"><b>Relatório</b><button class="btn btn-outline-primary"><i class="bi bi-file-earmark-arrow-down"></i></button></div>
       <div class="input-group mt-2 mb-2">
         <div class="form-floating">
           <textarea class="form-control" placeholder="Observações sobre o processo" id="floatingTextarea2" style="height: 100px"></textarea>
@@ -211,7 +224,7 @@
     </div>
 
     <div class="mt-1 mb-2">
-      <br><b>Pendências</b>
+      <br><div class="d-flex align-items-center justify-content-between"><b>Pendências</b><button class="btn btn-outline-primary"><i class="bi bi-file-earmark-arrow-down"></i></button></div>
       <div class="input-group mt-2 mb-2">
         <div class="form-floating">
           <textarea class="form-control" placeholder="Pendências" id="floatingTextarea2" style="height: 100px"></textarea>
