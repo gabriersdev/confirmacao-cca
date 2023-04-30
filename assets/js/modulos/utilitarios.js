@@ -61,10 +61,46 @@ function sanitizarString(string){
   }
 }
 
+async function SwalAlert(tipo, icon, title, text, mensagem){
+  tipo = tipo.toLowerCase().trim();
+  if(tipo == 'confirmacao'){
+    const dialog = await Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      focusCancel: true
+    })
+
+    return new Promise((resolve, reject) => {
+      resolve({isConfirmed: dialog.isConfirmed})
+    })
+  }
+
+  else if(tipo == 'aviso'){
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text
+    })
+  }
+
+  else if(tipo == 'error'){
+    Swal.fire({
+      icon: icon,
+      title: title,
+      text: text,
+      footer: mensagem
+    }) 
+  }
+}
+
 export{
   isEmpty,
   capitalize,
   atualizarDatas,
   controleFechamentoModal,
-  sanitizarString
+  sanitizarString,
+  SwalAlert
 }
