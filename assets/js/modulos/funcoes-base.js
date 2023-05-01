@@ -13,6 +13,18 @@ const verificarInputsRecarregamento = () => {
   }
 }
 
+const escutaEventoInput = () => {
+  document.querySelectorAll('[data-element="input"]').forEach(elemento => {
+    removeEventListener('input', elemento);
+    if(elemento.dataset.input == "nome"){
+      edicaoInputNome();
+    }
+    if(elemento.tagName.toLowerCase() !== 'textarea'){
+      elemento.addEventListener('input', (evento) => { renderPendencias()});
+    }
+  })
+}
+
 function funcoesBase(){
   renderTooltips();
   renderPopover();
@@ -21,9 +33,10 @@ function funcoesBase(){
   clickIncluirRenda();
   clickRemoverRenda();
   edicaoInputNome();
-  renderPendencias();
+  escutaEventoInput();
 }
 
 export {
+  escutaEventoInput,
   funcoesBase
 }

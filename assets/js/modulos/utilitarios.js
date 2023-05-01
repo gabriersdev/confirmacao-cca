@@ -96,11 +96,21 @@ async function SwalAlert(tipo, icon, title, text, mensagem){
   }
 }
 
+function resizeTextArea(elemento){
+  while( $(elemento).outerHeight() < elemento.scrollHeight +
+  parseFloat($(elemento).css("borderTopWidth")) +
+  parseFloat($(elemento).css("borderBottomWidth")) && $(elemento).height() < 500
+  ) {
+    $(elemento).height($(elemento).height()+1);
+  };
+}
+
 export{
   isEmpty,
   capitalize,
   atualizarDatas,
   controleFechamentoModal,
   sanitizarString,
-  SwalAlert
+  SwalAlert,
+  resizeTextArea
 }
