@@ -1,5 +1,5 @@
 import { clickIncluirRenda, clickRemoverRenda, clickIncluirProponente, clickRemoverProponente } from './funcoes-click.js'
-import { edicaoInputNome } from './funcoes-de-conteudo.js';
+import { edicaoInputNome, atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias } from './funcoes-render.js';
 
 const verificarInputsRecarregamento = () => {
@@ -36,7 +36,16 @@ function funcoesBase(){
   escutaEventoInput();
 }
 
+function atualizar(){
+  renderTooltips();
+  renderPopover();
+  renderPendencias();
+  escutaEventoInput();
+  atualizarNumerosProponentes();
+}
+
 export {
   escutaEventoInput,
-  funcoesBase
+  funcoesBase,
+  atualizar
 }

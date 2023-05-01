@@ -1,13 +1,14 @@
 import { conteudos } from './conteudos.js';
 import { SwalAlert, isEmpty } from './utilitarios.js';
 import { renderPendencias, renderPopover, renderTooltips } from './funcoes-render.js';
-import { escutaEventoInput } from './funcoes-base.js';
+import { atualizar, escutaEventoInput } from './funcoes-base.js';
 import { atualizarNumerosProponentes, edicaoInputNome } from './funcoes-de-conteudo.js';
 
 const clickIncluirRenda = () => {
   const botao = document.querySelectorAll('[data-action="incluir_renda"]');
   botao.forEach(botao => {
-    removeEventListener('click', botao);
+    console.log(botao)
+    // removeEventListener('click', botao, false);
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
       const proponente = botao.closest('[data-identify]');
@@ -19,7 +20,6 @@ const clickIncluirRenda = () => {
       div.innerHTML = `${conteudos.secao_rendas(!isEmpty(length) ? length + 1 : 1)}`;
       proponente.querySelector('[data-element="area_rendas"]').appendChild(div);
       clickRemoverRenda(div);
-      escutaEventoInput();
     })
   })
 }
@@ -37,6 +37,7 @@ const clickRemoverRenda = (elemento) => {
     removeEventListener('click', botao);
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
+      console.log(botao)
       $(botao).tooltip('dispose')
       botao.closest('[data-element="renda"]').remove();
     })
@@ -52,13 +53,11 @@ const clickIncluirProponente = () => {
     div.innerHTML = `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
     document.querySelector('.accordion').appendChild(div);
     
-    clickRemoverProponente();
-    renderTooltips();
-    renderPopover();
-    renderPendencias();
-    escutaEventoInput();
     clickIncluirRenda();
-    atualizarNumerosProponentes();
+    clickRemoverRenda();
+    clickRemoverProponente();
+    escutaEventoInput();
+    atualizar();
   })
 }
 
@@ -70,9 +69,8 @@ const clickRemoverProponente = () => {
       SwalAlert('confirmacao', 'question', 'Tem certeza que deseja remover?', 'Esta ação não poderá ser desfeita').then((retorno) => {
         if(retorno.isConfirmed){
           botao.closest('.accordion-item').remove();
-          renderPendencias();
-          escutaEventoInput();
           atualizarNumerosProponentes();
+          renderPendencias();
         }
       });
     })

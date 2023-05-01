@@ -11,7 +11,7 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     })
   }) 
   
-  document.querySelector('.accordion').innerHTML += `${conteudos.accordion_item(1)}`;
+  document.querySelector('.accordion').innerHTML += `<div class="accordion-item">${conteudos.accordion_item(1)}</div>`;
   
   funcoesBase();
 })();
