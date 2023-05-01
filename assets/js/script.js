@@ -37,7 +37,10 @@ import { SwalAlert, isEmpty } from './modulos/utilitarios.js';
   
   const clickIncluirProponente = () => {
     document.querySelector('[data-action="incluir-proponente"]').addEventListener('click', (evento) => {
-      document.querySelector('.accordion').innerHTML += `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
+      const div = document.createElement('div');
+      div.classList.value = `accordion-item`;
+      div.innerHTML = `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
+      document.querySelector('.accordion').appendChild(div);
       renderTooltips();
       renderPopover();
       clickRemoverProponente();
