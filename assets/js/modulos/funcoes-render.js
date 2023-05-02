@@ -73,7 +73,7 @@ const renderPendencias = () => {
   pendencias.forEach((pendencia, index) => {
     // console.log(pendencia);
     index !== 0? txt.value += '\n\n' : 'a';
-    console.log('atualizado');
+    // console.log('atualizado');
     txt.value += `${pendencia.proponente}\n${pendencia.pendente}`
   })
   resizeTextArea(txt);

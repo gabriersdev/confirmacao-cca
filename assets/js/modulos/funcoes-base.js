@@ -15,6 +15,7 @@ const verificarInputsRecarregamento = () => {
 
 const escutaEventoInput = () => {
   document.querySelectorAll('[data-element="input"]').forEach(elemento => {
+    tratamentoCampos(elemento);
     removeEventListener('input', elemento);
     if(elemento.dataset.input == "nome"){
       edicaoInputNome();
@@ -23,6 +24,27 @@ const escutaEventoInput = () => {
       elemento.addEventListener('input', (evento) => { renderPendencias()});
     }
   })
+}
+
+const tratamentoCampos = (input) => {
+  $(document).ready(function(){
+    switch(input.dataset.input){
+      case 'cpf':
+      $(input).mask('000.000.000-00', {reverse: true});
+      break;
+
+      case 'data_nascimento':
+      $(input).mask('00/00/0000');
+      break;
+
+      case 'telefone':
+      $(input).mask('(00) 00000-0000');
+      break;
+      
+      default:
+      break;
+    }
+  });
 }
 
 function funcoesBase(){

@@ -7,7 +7,6 @@ import { atualizarNumerosProponentes, edicaoInputNome } from './funcoes-de-conte
 const clickIncluirRenda = () => {
   const botao = document.querySelectorAll('[data-action="incluir_renda"]');
   botao.forEach(botao => {
-    console.log(botao)
     // removeEventListener('click', botao, false);
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
@@ -37,7 +36,6 @@ const clickRemoverRenda = (elemento) => {
     removeEventListener('click', botao);
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
-      console.log(botao)
       $(botao).tooltip('dispose')
       botao.closest('[data-element="renda"]').remove();
     })
