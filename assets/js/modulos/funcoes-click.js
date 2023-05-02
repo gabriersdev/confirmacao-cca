@@ -7,7 +7,7 @@ import { atualizarNumerosProponentes, edicaoInputNome } from './funcoes-de-conte
 const clickIncluirRenda = () => {
   const botao = document.querySelectorAll('[data-action="incluir_renda"]');
   botao.forEach(botao => {
-    // removeEventListener('click', botao, false);
+    removeEventListener('click', botao, false);
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
       const proponente = botao.closest('[data-identify]');
@@ -18,6 +18,7 @@ const clickIncluirRenda = () => {
       try{length = proponente.querySelector('[data-element="renda"]').length}catch(error){}
       div.innerHTML = `${conteudos.secao_rendas(!isEmpty(length) ? length + 1 : 1)}`;
       proponente.querySelector('[data-element="area_rendas"]').appendChild(div);
+      escutaEventoInput();
       clickRemoverRenda(div);
     })
   })

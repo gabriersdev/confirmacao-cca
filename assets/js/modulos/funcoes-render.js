@@ -46,6 +46,7 @@ const renderPendencias = () => {
       search(parametro){
         const retorno = new Array();
         for (const [key, value] of Object.entries(this.valores)){
+          key == 'renda' ? console.log(value) : '';
           if(value == parametro){key !== 'fgts' ? retorno.push(key) : '';}
         }
         return retorno;
@@ -55,6 +56,8 @@ const renderPendencias = () => {
     if(elementos.some('')){
       pendencias.push({proponente: `PROPONENTE ${index + 1} - ${elementos.valores.nome}`, pendente: elementos.search('').join().replaceAll('_', ' ').toUpperCase().replaceAll(',', '\n')})
     }
+    
+    console.log(pendencias[0].pendente)
     
     function get(id){
       const saida = new Array();
@@ -68,7 +71,7 @@ const renderPendencias = () => {
       return saida;
     }
   })
-
+  
   txt.value = '';
   pendencias.forEach((pendencia, index) => {
     // console.log(pendencia);

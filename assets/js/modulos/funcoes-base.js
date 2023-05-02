@@ -26,6 +26,10 @@ const escutaEventoInput = () => {
   })
 }
 
+const atualizarFeedbacks = () => {
+  //
+}
+
 const tratamentoCampos = (input) => {
   $(document).ready(function(){
     switch(input.dataset.input){
