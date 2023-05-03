@@ -1,6 +1,6 @@
 import { conteudos } from './conteudos.js';
 import { SwalAlert, isEmpty } from './utilitarios.js';
-import { renderPendencias, renderPopover, renderTooltips } from './funcoes-render.js';
+import { renderPendencias, renderPopover, renderResumo, renderTooltips } from './funcoes-render.js';
 import { atualizar, escutaEventoInput } from './funcoes-base.js';
 import { atualizarNumerosProponentes, edicaoInputNome } from './funcoes-de-conteudo.js';
 
@@ -47,6 +47,8 @@ const clickIncluirProponente = () => {
     div.innerHTML = `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
     document.querySelector('.accordion').appendChild(div);
     
+    renderResumo();
+    renderPendencias();
     clickRemoverRenda();
     clickRemoverProponente();
     escutaEventoInput();

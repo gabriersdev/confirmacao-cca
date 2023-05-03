@@ -1,6 +1,6 @@
 import { clickIncluirRenda, clickRemoverRenda, clickIncluirProponente, clickRemoverProponente } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
-import { renderTooltips, renderPopover, renderPendencias } from './funcoes-render.js';
+import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 
 const verificarInputsRecarregamento = () => {
   window.onbeforeunload = async (evento) => {
@@ -21,7 +21,7 @@ const escutaEventoInput = () => {
       edicaoInputNome();
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
-      elemento.addEventListener('input', (evento) => { renderPendencias()});
+      elemento.addEventListener('input', (evento) => { renderPendencias(); renderResumo();});
     }
   })
 }
@@ -54,6 +54,7 @@ const tratamentoCampos = (input) => {
 function funcoesBase(){
   renderTooltips();
   renderPopover();
+  renderResumo();
   clickIncluirProponente();
   clickRemoverProponente();
   clickRemoverRenda();

@@ -90,8 +90,23 @@ const renderPendencias = () => {
   // txt.textContent = `${pendencias.forEach(pendencia => {return pendencia.pendente})}`;
 }
 
+const renderResumo = () => {
+  const resumo = document.querySelector('[data-content="resumo"]');
+  const accordion_group = document.querySelector('.accordion');
+  const nomes = new Array();
+
+  accordion_group.querySelectorAll('b[data-content="nome"]').forEach(nome => {
+    nomes.push(nome.textContent)
+  })
+
+  const a = `### Processo iniciado em ${moment().format('DD/MM/YYYY')}, com ${accordion_group.querySelectorAll('.accordion-item').length} proponente(s): ${nomes.join().replaceAll(',', ', ')}. ###`;
+
+  resumo.textContent = `${a}`
+}
+
 export{
   renderTooltips,
   renderPopover,
-  renderPendencias
+  renderPendencias,
+  renderResumo
 }
