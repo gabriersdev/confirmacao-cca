@@ -1,4 +1,4 @@
-import { clickIncluirRenda, clickRemoverRenda, clickIncluirProponente, clickRemoverProponente } from './funcoes-click.js'
+import { clickIncluirRenda, clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiarResumo } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 
@@ -55,6 +55,7 @@ function funcoesBase(){
   renderTooltips();
   renderPopover();
   renderResumo();
+  clickCopiarResumo();
   clickIncluirProponente();
   clickRemoverProponente();
   clickRemoverRenda();

@@ -105,6 +105,10 @@ function resizeTextArea(elemento){
   };
 }
 
+const copiar = (valor) => {
+  navigator.clipboard.writeText(valor);
+}
+
 export{
   isEmpty,
   capitalize,
@@ -112,5 +116,6 @@ export{
   controleFechamentoModal,
   sanitizarString,
   SwalAlert,
-  resizeTextArea
+  resizeTextArea,
+  copiar
 }
