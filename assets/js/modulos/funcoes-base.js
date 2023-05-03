@@ -56,7 +56,6 @@ function funcoesBase(){
   renderPopover();
   clickIncluirProponente();
   clickRemoverProponente();
-  clickIncluirRenda();
   clickRemoverRenda();
   edicaoInputNome();
   escutaEventoInput();
