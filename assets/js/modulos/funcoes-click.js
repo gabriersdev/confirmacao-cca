@@ -79,14 +79,14 @@ const clickCopiarResumo = () => {
   }catch(error){
     feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
   }
-
+  
   function feedback({html, classe}){
     const html_botao = btn.innerHTML;
     const class_botao = btn.classList.value;
-
+    
     btn.innerHTML = html;
     btn.classList.value = classe;
-
+    
     setTimeout(() => {
       btn.innerHTML = html_botao;
       btn.classList.value = class_botao;
@@ -97,13 +97,25 @@ const clickCopiarResumo = () => {
 const clickDownload = (elemento) => {
   switch(elemento.dataset.download){
     case 'baixar-dados':
-      //Selecionar Nome, CPF e data de nascimento de todos os proponentes
-    break
+    //Selecionar Nome, CPF e data de nascimento de todos os proponentes
+    const saida = new Array();
+    const proponentes = document.querySelectorAll('.accordion-item');
+    proponentes.forEach((proponente, index) => {
+      saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${proponente.querySelector('[data-input="nome"]').value}\n` + `CPF: ${proponente.querySelector('[data-input="cpf"]').value}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value}\n\n`)
+    });
+    console.log(JSON.stringify(saida))
+    break;
+    
     case 'baixar-relatorio':
-      //Selecionar conteúdo no textarea de relatório
-    break
+    //Selecionar conteúdo no textarea de relatório
+    const relatorio = document.querySelector('[data-content="relatorio"]').value;
+    console.log(JSON.stringify(relatorio));
+    break;
+
     case 'baixar-pendencias':
-      //Selecionar conteúdo no textarea de pendências
+    //Selecionar conteúdo no textarea de pendências
+    const pendencias = document.querySelector('[data-content="pendencias"]').value;
+    console.log(JSON.stringify(pendencias));
     break;
   }
 }
