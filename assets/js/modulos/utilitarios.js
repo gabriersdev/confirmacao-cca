@@ -109,6 +109,15 @@ const copiar = (valor) => {
   navigator.clipboard.writeText(valor);
 }
 
+function sanitizarCPF(cpf){
+  return cpf.toString().replaceAll('.', '').replaceAll('-', '');
+}
+
+function primeiroNome(nome){
+  const nome_separado = nome.split(' ');
+  return nome_separado[0];
+}
+
 export{
   isEmpty,
   capitalize,
@@ -117,5 +126,7 @@ export{
   sanitizarString,
   SwalAlert,
   resizeTextArea,
-  copiar
+  copiar,
+  sanitizarCPF,
+  primeiroNome
 }

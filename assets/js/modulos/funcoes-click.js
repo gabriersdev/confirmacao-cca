@@ -1,5 +1,5 @@
 import { conteudos } from './conteudos.js';
-import { SwalAlert, isEmpty, copiar } from './utilitarios.js';
+import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome } from './utilitarios.js';
 import { renderPendencias, renderPopover, renderResumo, renderTooltips } from './funcoes-render.js';
 import { atualizar, escutaEventoInput } from './funcoes-base.js';
 import { atualizarNumerosProponentes, edicaoInputNome } from './funcoes-de-conteudo.js';
@@ -101,10 +101,13 @@ const clickDownload = (elemento) => {
     //Selecionar Nome, CPF e data de nascimento de todos os proponentes
     const saida = new Array();
     const proponentes = document.querySelectorAll('.accordion-item');
+    const primeirosNomes = new Array();
     proponentes.forEach((proponente, index) => {
-      saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${proponente.querySelector('[data-input="nome"]').value}\n` + `CPF: ${proponente.querySelector('[data-input="cpf"]').value}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value}\n\n`)
+      const nome = proponente.querySelector('[data-input="nome"]').value.trim();
+      !isEmpty(nome) ? primeirosNomes.push(primeiroNome(nome)) : '';
+      saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${nome}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n\n`)
     });
-    criarEBaixarTXT(JSON.stringify(saida.join('\n')), "DADOS");
+    criarEBaixarTXT(JSON.stringify(saida.join('\n')), `DADOS${!isEmpty(primeiroNome) ? ' - ' + primeirosNomes.join(', ') : ''}`);
     break;
     
     case 'baixar-relatorio':
