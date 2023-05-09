@@ -55,6 +55,7 @@ function funcoesBase(){
   renderTooltips();
   renderPopover();
   renderResumo();
+  renderPendencias();
   clickCopiarResumo();
   clickIncluirProponente();
   clickRemoverProponente();
