@@ -13,7 +13,7 @@ const edicaoInputNome = () => {
 const atualizarNumerosProponentes = () => {
   const accordions_headers = document.querySelectorAll('.accordion-header').forEach((elemento, index) => {
     const valorInputNome = elemento.closest('.accordion-item').querySelector('[data-input="nome"]').value;
-    elemento.querySelector('span').innerHTML = `Proponente ${index + 1} - <b data-content="nome">${!isEmpty(valorInputNome) ? valorInputNome : 'Nome do cliente'}</b>`;
+    elemento.querySelector('span').innerHTML = `Proponente ${index + 1} - <b data-content="nome">${!isEmpty(valorInputNome) ? valorInputNome.toUpperCase() : 'Nome do cliente'}</b>`;
     edicaoInputNome();
   })
 }

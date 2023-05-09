@@ -64,6 +64,7 @@ const clickRemoverProponente = () => {
       SwalAlert('confirmacao', 'question', 'Tem certeza que deseja remover?', 'Esta ação não poderá ser desfeita').then((retorno) => {
         if(retorno.isConfirmed){
           botao.closest('.accordion-item').remove();
+          renderResumo();
           atualizarNumerosProponentes();
           renderPendencias();
         }
@@ -103,23 +104,28 @@ const clickDownload = (elemento) => {
     proponentes.forEach((proponente, index) => {
       saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${proponente.querySelector('[data-input="nome"]').value}\n` + `CPF: ${proponente.querySelector('[data-input="cpf"]').value}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value}\n\n`)
     });
-    console.log(JSON.stringify(saida))
+    criarEBaixarTXT(JSON.stringify(saida.join('\n')), "DADOS");
     break;
     
     case 'baixar-relatorio':
     //Selecionar conteúdo no textarea de relatório
     const relatorio = document.querySelector('[data-content="relatorio"]').value;
-    console.log(JSON.stringify(relatorio));
+    criarEBaixarTXT(JSON.stringify(relatorio), "RELATORIO");
     break;
 
     case 'baixar-pendencias':
     //Selecionar conteúdo no textarea de pendências
     const pendencias = document.querySelector('[data-content="pendencias"]').value;
-    console.log(JSON.stringify(pendencias));
+    criarEBaixarTXT(JSON.stringify(pendencias), "PENDENCIAS");
     break;
   }
 }
 window.clickDownload = clickDownload;
+
+const criarEBaixarTXT = (conteudo, nome) => {
+  let blob = new Blob([`${JSON.parse(conteudo)}`], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, `${nome.toUpperCase()}.txt`);
+}
 
 export {
   clickIncluirRenda,
