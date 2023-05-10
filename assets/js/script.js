@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { isEmpty, resizeTextArea } from './modulos/utilitarios.js';
+import { resizeTextArea } from './modulos/utilitarios.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 
 (() => { 

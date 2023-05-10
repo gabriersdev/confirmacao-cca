@@ -1,8 +1,8 @@
 import { conteudos } from './conteudos.js';
 import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome } from './utilitarios.js';
-import { renderPendencias, renderPopover, renderResumo, renderTooltips } from './funcoes-render.js';
+import { renderPendencias, renderResumo } from './funcoes-render.js';
 import { atualizar, escutaEventoInput } from './funcoes-base.js';
-import { atualizarNumerosProponentes, edicaoInputNome } from './funcoes-de-conteudo.js';
+import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
 
 const clickIncluirRenda = (botao) => {
   const proponente = botao.closest('[data-identify]');
