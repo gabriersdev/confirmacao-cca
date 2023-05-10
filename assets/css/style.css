@@ -21,3 +21,13 @@ html{
 [data-input="nome"]{
   text-transform: uppercase;
 }
+
+[data-input]:invalid{
+  border: 1px solid #FF0000;
+}
+
+[data-input]:invalid:is(:hover, :focus){
+  box-shadow:  0px 0px 0px 3.5px rgb(255, 142, 142, 0.2) !important;
+  -webkit-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.2) !important;
+  -moz-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.2) !important;
+}
