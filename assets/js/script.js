@@ -11,11 +11,12 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     })
   }) 
   
-  document.querySelector('.accordion').innerHTML += `<div class="accordion-item">${conteudos.accordion_item(1)}</div>`;
+  if(new URL(window.location).pathname.trim().replace('/', '') == 'index.html'){
+    document.querySelector('.accordion').innerHTML += `<div class="accordion-item">${conteudos.accordion_item(1)}</div>`;
+    funcoesBase();
   
-  funcoesBase();
+    $("textarea").bind("onpaste keyup input", function(e) {
+      resizeTextArea(this);
+    });
+  }
 })();
-
-$("textarea").bind("onpaste keyup input", function(e) {
-  resizeTextArea(this);
-});

@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <meta name="keywords" content="CCA; Confirmação; Dados; Conferência">
+  <meta name="keywords" content="CCA; Consulta; Dados; Conferência">
   <meta name="author" content="Gabriel Ribeiro">
   <meta name="robots" content="follow">
-  <meta property="og:title" content="Confirmação de Dados - CCA">
+  <meta property="og:title" content="Consulta de Dados - CCA">
   <meta property="og:description" content="#">
   <meta property="og:url" content="#">
   <meta property="og:image" content="https://gabrieszin.github.io/confirmacao-cca/assets/img/banner.png">
@@ -28,11 +28,12 @@
   connect-src 'self' 'unsafe-inline';">   
   
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet/less" type="text/css" href="styles.less">
   <link rel="stylesheet" href="./assets/css/frameworks/highlights-A11Y-dark.css">
   
   <link rel="shortcut icon" href="./assets/img/favicon.svg" type="image/x-icon">
   
-  <title>Confirmação de dados - CCA</title>
+  <title>Consulta de dados - CCA</title>
   
   <script src="./assets/js/frameworks/jquery.js" defer></script>
   <script src="./assets/js/frameworks/bootstrap.js" defer></script>
@@ -64,46 +65,90 @@
   
   <div class="container mt-5">
     <div class="card">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h5>Resumo</h5>
-        <button class="btn btn-outline-primary" data-action="copiar-resumo" data-toggle="tooltip" data-placement="top" title="Copiar" data-bs-custom-class="custom-tooltip"><i class="bi bi-clipboard"></i></button>
+      <div class="card-header">
+        Consultas
       </div>
-      <div class="card-body" data-content="resumo">
-        ### Processo iniciado em 00/00/0000, com 3 proponentes: Nome Proponente 1, Nome Proponente 2 e Nome Proponente 2. ### 
+      <div class="card-body">
+        <div>
+          <div class="row">
+            <a class="col-sm">
+              <div class="content">
+                <span class="content-tag">Cadastro</span>
+                <div class="content-principal">
+                  <h5>Pesquisa Cadastral</h5>
+                  <span>SICAQ</span>
+                </div>
+              </div>
+            </a>
+            <a class="col-sm">
+              <div class="content">
+                <span class="content-tag">Cadastro</span>
+                <div class="content-principal">
+                  <h5>CNIS</h5>
+                  <span>INSS</span>
+                </div>
+              </div>
+            </a>
+            <a class="col-sm">
+              <div class="content">
+                <span class="content-tag">Cadastro</span>
+                <div class="content-principal">
+                  <h5>Busca CEP</h5>
+                  <span>Correios</span>
+                </div>
+              </div>
+            </a>
+            <a class="col-sm">
+              <div class="content">
+                <span class="content-tag">Cadastro</span>
+                <div class="content-principal">
+                  <h5>Restituição IRPF</h5>
+                  <span>Receita Federal</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
       </div>
-    </div><br>
-    
-    <div class="accordion" id="accordionPanelsStayOpenExample">
     </div>
-    <button class="btn btn-primary mt-3" data-action="incluir-proponente">Incluir proponente</button>
   </div>
-  
-  <div class="container mb-5">   
-    <div class="mt-1 mb-2">
-      <br><div class="d-flex align-items-center justify-content-between"><b>Relatório</b><button class="btn btn-outline-primary" data-download="baixar-relatorio" onclick="clickDownload(this)" data-toggle="tooltip" data-placement="top" title="Baixar" data-bs-custom-class="custom-tooltip"><i class="bi bi-file-earmark-arrow-down"></i></button></div>
-      <div class="input-group mt-2 mb-2">
-        <div class="form-floating">
-          <textarea class="form-control" placeholder="Observações sobre o processo" id="floatingTextarea-1" style="height: 100px" data-element="input" data-content="relatorio"></textarea>
-          <label for="floatingTextarea-1">Observações sobre o processo</label>
-        </div>
-      </div>
-    </div>
-    
-    <div class="mt-1 mb-2">
-      <br><div class="d-flex align-items-center justify-content-between"><b>Pendências</b><button class="btn btn-outline-primary" data-download="baixar-pendencias" onclick="clickDownload(this)" data-toggle="tooltip" data-placement="top" title="Baixar" data-bs-custom-class="custom-tooltip"><i class="bi bi-file-earmark-arrow-down"></i></button></div>
-      <div class="input-group mt-2 mb-2">
-        <div class="form-floating">
-          <textarea class="form-control" placeholder="Pendências" id="floatingTextarea-2" style="height: 100px" data-element="input" data-content="pendencias"></textarea>
-          <label for="floatingTextarea-2">Documentos e informações pendentes</label>
-        </div>
-      </div>
-      <span class="text-muted">Preenchido automaticamente. Você pode editar.</span>
-    </div>
 
-    <div class="mt-5 mb-2">
-      <a class="btn btn-outline-primary w-100" href="./consultas.html">Consultas&nbsp;<i class="bi bi-arrow-right"></i></a>
-    </div>
-  </div>
+  <style>
+    .col-sm{
+      border-radius: 5px;
+    }
+
+    .col-sm .content{
+      background-color: #F6F6F6;
+      border-radius: 5px;
+      min-height: 200px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: space-between;
+    }
+
+    .col-sm .content:is(:focus, :hover){
+      border-color: rgba(0, 0, 0, 0.1);
+      background-color: #F2F2F2;
+    }
+
+    .content .content-tag{
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .content .content-principal h5{
+      font-weight: 600;
+    }
+
+    .content .content-principal span{
+      margin-top: 0.25rem;
+      display: inline-block;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  </style>
   
 </body>
 </html>
