@@ -69,69 +69,49 @@
         Consultas
       </div>
       <div class="card-body">
-        <div>
-          <div class="row">
-            <a class="col-sm">
-              <div class="content">
-                <span class="content-tag">Cadastro</span>
-                <div class="content-principal">
-                  <h5>Pesquisa Cadastral</h5>
-                  <span>SICAQ</span>
-                </div>
-              </div>
-            </a>
-            <a class="col-sm">
-              <div class="content">
-                <span class="content-tag">Cadastro</span>
-                <div class="content-principal">
-                  <h5>CNIS</h5>
-                  <span>INSS</span>
-                </div>
-              </div>
-            </a>
-            <a class="col-sm">
-              <div class="content">
-                <span class="content-tag">Cadastro</span>
-                <div class="content-principal">
-                  <h5>Busca CEP</h5>
-                  <span>Correios</span>
-                </div>
-              </div>
-            </a>
-            <a class="col-sm">
-              <div class="content">
-                <span class="content-tag">Cadastro</span>
-                <div class="content-principal">
-                  <h5>Restituição IRPF</h5>
-                  <span>Receita Federal</span>
-                </div>
-              </div>
-            </a>
-          </div>
+        <div data-content="area-consultas">
         </div>
       </div>
     </div>
   </div>
 
   <style>
-    .col-sm{
+    .titulo-consultas:not(:first-child){
+      margin-top: 1rem;
+    }
+
+    .titulo-consultas{
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    [data-content="area-consultas"] .consultas{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-gap: 1rem 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .content{
       border-radius: 5px;
     }
 
-    .col-sm .content{
+    .content{
       background-color: #F6F6F6;
       border-radius: 5px;
-      min-height: 200px;
       border: 1px solid rgba(0, 0, 0, 0.05);
-      padding: 0.75rem;
+      padding: 1rem;
+      min-height: 200px;
       display: flex;
       flex-direction: column;
       align-content: center;
       justify-content: space-between;
     }
 
-    .col-sm .content:is(:focus, :hover){
-      border-color: rgba(0, 0, 0, 0.1);
+    .content:is(:focus, :hover){
+      border-color: rgba(0, 0, 0, 0.5);
       background-color: #F2F2F2;
     }
 
@@ -147,6 +127,12 @@
       margin-top: 0.25rem;
       display: inline-block;
       color: rgba(0, 0, 0, 0.6);
+    }
+
+    @media screen and (max-width: 767px) {
+      [data-content="area-consultas"] .consultas{
+        grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+      }
     }
   </style>
   

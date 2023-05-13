@@ -7,7 +7,20 @@ const secao_rendas = (indice) => {
   return `<div class="input-group-text"> <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" data-element="input" data-input="renda"> </div> <input type="text" list="tipos-comprovantes-renda-${indice}" class="form-control" aria-label="Text input with checkbox" placeholder="Comprovante de Renda" data-element="input" data-input="tipo_renda"> <datalist name="" id="tipos-comprovantes-renda-${indice}"> <option value="Contracheque/Hollerith"></option> <option value="IRPF"></option> <option value="Contrato de Aluguel"></option> <option value="Extratos Bancários"></option> <option value="Outro"></option> </datalist> <button class="input-group-text btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Remover" data-bs-custom-class="custom-tooltip" data-action="remover-renda"><i class="bi bi-trash"></i></button> <div class="input-group-text"> <input class="form-check-input mt-0" id="comprovante-endereco-valido-${indice}" type="checkbox" value="" aria-label="Checkbox for following text input" data-element="input"> <label for="comprovante-endereco-valido-${indice}" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-title="Comprovante válido" data-bs-content="O comprovante de renda é válido para a análise de crédito quando ele foi emitido a partir do últimos 2 meses.">&nbsp;&nbsp;Comprovante válido&nbsp;<i class="bi bi-info-circle text-secondary"></i></label> </div>`
 };
 
+const consultas = [
+  { tag: 'cadastro', titulo: 'Pesquisa Cadastral', sistema: 'SICAQ', link: 'xxxx.xx.x' }, 
+  { tag: 'cadastro', titulo: 'CNIS', sistema: 'INSS', link: 'xxxx.xa.x' }, 
+  { tag: 'cadastro', titulo: 'Busca CEP', sistema: 'Correios', link: 'xxxx.xa.x' }, 
+  { tag: 'cadastro', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
+  { tag: 'cadastro', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
+  { tag: 'cadastro', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
+  { tag: 'dossiê', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
+  { tag: 'dossiê', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
+  { tag: 'dossiê', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
+]
+
 export const conteudos = {
   accordion_item,
-  secao_rendas
+  secao_rendas,
+  consultas
 }
