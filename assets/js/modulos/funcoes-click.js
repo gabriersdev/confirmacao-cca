@@ -41,20 +41,25 @@ const clickRemoverRenda = (elemento) => {
 const clickIncluirProponente = () => {
   const botao = document.querySelector('[data-action="incluir-proponente"]');
   botao.addEventListener('click', (evento) => {
-    removeEventListener('click', botao);
-    const div = document.createElement('div');
-    div.classList.value = `accordion-item`;
-    div.innerHTML = `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
-    document.querySelector('.accordion').appendChild(div);
-    
-    renderResumo();
-    renderPendencias();
-    clickRemoverRenda();
-    clickRemoverProponente();
-    escutaEventoInput();
-    atualizar();
+    acaoClickIncluirProponente();
   })
 }
+
+const acaoClickIncluirProponente = () => {
+  const div = document.createElement('div');
+  div.classList.value = `accordion-item`;
+  div.innerHTML = `${conteudos.accordion_item(document.querySelectorAll('.accordion-item').length + 1)}`;
+  document.querySelector('.accordion').appendChild(div);
+  
+  renderResumo();
+  renderPendencias();
+  clickRemoverRenda();
+  clickRemoverProponente();
+  escutaEventoInput();
+  atualizar();
+}
+
+window.acaoClickIncluirProponente = acaoClickIncluirProponente;
 
 const clickRemoverProponente = () => {
   const botao = document.querySelectorAll('[data-action="remover-proponente"]');

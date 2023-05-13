@@ -19,6 +19,30 @@ const atualizarDatas = () => {
   })
 } 
 
+function atribuirLinks(){
+  const linkElementos = document.querySelectorAll('[data-link]');
+  
+  linkElementos.forEach(link => {
+    switch(link.dataset.link.toLowerCase().trim()){
+      case 'confirmacao':
+      link.href = './index.html';
+      break;
+      
+      case 'consultas':
+      link.href = './consultas.html';
+      break;
+      
+      case 'github-dev':
+      link.href = 'https://github.com/gabrieszin';
+      break;
+      
+      case 'github-projeto':
+      link.href = 'https://github.com/gabrieszin/timesheet';
+      break;
+    }
+  })
+}
+
 const controleFechamentoModal = () => {
   const modais = document.querySelectorAll('.modal');
   modais.forEach(modal => {
@@ -122,6 +146,7 @@ export{
   isEmpty,
   capitalize,
   atualizarDatas,
+  atribuirLinks,
   controleFechamentoModal,
   sanitizarString,
   SwalAlert,

@@ -9,6 +9,7 @@
 @import url(./elementos/no-script.css);
 @import url(./cores.css);
 @import url(./variaveis.css);
+@import url(./elementos/consultas.css);
 
 html{
   scroll-behavior: smooth;
@@ -27,7 +28,7 @@ body{
 }
 
 [data-input]:invalid{
-  border: 1px solid #FF0000;
+  border: 1px solid rgb(255, 0, 0, 0.4);
 }
 
 [data-input]:invalid:is(:hover, :focus){
