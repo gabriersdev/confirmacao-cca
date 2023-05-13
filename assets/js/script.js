@@ -13,14 +13,12 @@ import { funcoesBase } from './modulos/funcoes-base.js';
   
   const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
-
+  
   if(pagina == 'index.html'){
-    document.querySelector('.accordion').innerHTML += `<div class="accordion-item">${conteudos.accordion_item(1)}</div>`;
-    funcoesBase();
-    
-    $("textarea").bind("onpaste keyup input", function(e) {
-      resizeTextArea(this);
-    });
+    const accordion_item = document.createElement('div');
+    accordion_item.classList.value = 'accordion-item';
+    accordion_item.innerHTML = conteudos.accordion_item(1);
+    document.querySelector('.accordion').appendChild(accordion_item);
   }
   
   else if(pagina == 'consultas.html'){
@@ -60,8 +58,12 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     })
   }
   
+  $("textarea").bind("onpaste keyup input", function(e) {
+    resizeTextArea(this);
+  });
+
   body.innerHTML += conteudos.rodape;
+  funcoesBase();
   atribuirLinks();
   atualizarDatas();
-  
 })();
