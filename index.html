@@ -63,12 +63,12 @@
   </noscript>
   
   <div class="container mt-5">
-    <div class="card">
+    <div class="card" data-node="card">
       <div class="card-header d-flex justify-content-between align-items-center">
         <b>Resumo</b>
-        <button class="btn btn-outline-primary" data-action="copiar-resumo" data-toggle="tooltip" data-placement="top" title="Copiar" data-bs-custom-class="custom-tooltip"><i class="bi bi-clipboard"></i></button>
+        <button class="btn btn-outline-secondary" data-action="copiar" data-toggle="tooltip" data-placement="top" title="Copiar" data-bs-custom-class="custom-tooltip"><i class="bi bi-clipboard"></i></button>
       </div>
-      <div class="card-body" data-content="resumo">
+      <div class="card-body" data-content="resumo" data-copiar="texto">
         ### Processo iniciado em 00/00/0000, com 3 proponentes: Nome Proponente 1, Nome Proponente 2 e Nome Proponente 2. ### 
       </div>
     </div><br>
@@ -79,21 +79,35 @@
   </div>
   
   <div class="container mb-5">   
-    <div class="mt-1 mb-2">
-      <br><div class="d-flex align-items-center justify-content-between"><b>Relatório</b><button class="btn btn-outline-primary" data-download="baixar-relatorio" onclick="clickDownload(this)" data-toggle="tooltip" data-placement="top" title="Baixar" data-bs-custom-class="custom-tooltip"><i class="bi bi-file-earmark-arrow-down"></i></button></div>
+    <div class="mt-1 mb-2" data-node="card">
+      <br>
+      <div class="d-flex align-items-center justify-content-between">
+        <b>Relatório</b>
+        <div>
+          <button class="btn btn-outline-secondary" data-action="copiar" data-toggle="tooltip" data-placement="top" title="Copiar" data-bs-custom-class="custom-tooltip"><i class="bi bi-clipboard"></i></button>
+          <button class="btn btn-outline-primary" data-download="baixar-relatorio" onclick="clickDownload(this)" data-toggle="tooltip" data-placement="top" title="Baixar" data-bs-custom-class="custom-tooltip"><i class="bi bi-file-earmark-arrow-down"></i></button>
+        </div>
+      </div>
       <div class="input-group mt-2 mb-2">
         <div class="form-floating">
-          <textarea class="form-control" placeholder="Observações sobre o processo" id="floatingTextarea-1" style="height: 100px" data-element="input" data-content="relatorio"></textarea>
+          <textarea class="form-control" placeholder="Observações sobre o processo" id="floatingTextarea-1" style="height: 100px" data-element="input" data-content="relatorio" data-copiar="texto"></textarea>
           <label for="floatingTextarea-1">Observações sobre o processo</label>
         </div>
       </div>
     </div>
     
-    <div class="mt-1 mb-2">
-      <br><div class="d-flex align-items-center justify-content-between"><b>Pendências</b><button class="btn btn-outline-primary" data-download="baixar-pendencias" onclick="clickDownload(this)" data-toggle="tooltip" data-placement="top" title="Baixar" data-bs-custom-class="custom-tooltip"><i class="bi bi-file-earmark-arrow-down"></i></button></div>
+    <div class="mt-1 mb-2" data-node="card">
+      <br>
+      <div class="d-flex align-items-center justify-content-between">
+        <b>Pendências</b>
+        <div>
+          <button class="btn btn-outline-secondary" data-action="copiar" data-toggle="tooltip" data-placement="top" title="Copiar" data-bs-custom-class="custom-tooltip"><i class="bi bi-clipboard"></i></button>
+          <button class="btn btn-outline-primary" data-download="baixar-pendencias" onclick="clickDownload(this)" data-toggle="tooltip" data-placement="top" title="Baixar" data-bs-custom-class="custom-tooltip"><i class="bi bi-file-earmark-arrow-down"></i></button>
+        </div>
+      </div>
       <div class="input-group mt-2 mb-2">
         <div class="form-floating">
-          <textarea class="form-control" placeholder="Pendências" id="floatingTextarea-2" style="height: 100px" data-element="input" data-content="pendencias"></textarea>
+          <textarea class="form-control" placeholder="Pendências" id="floatingTextarea-2" style="height: 100px" data-element="input" data-content="pendencias" data-copiar="texto"></textarea>
           <label for="floatingTextarea-2">Documentos e informações pendentes</label>
         </div>
       </div>

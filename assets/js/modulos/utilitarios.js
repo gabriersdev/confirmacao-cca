@@ -37,7 +37,7 @@ function atribuirLinks(){
       break;
       
       case 'github-projeto':
-      link.href = 'https://github.com/gabrieszin/timesheet';
+      link.href = 'https://github.com/gabrieszin/confirmacao-cca';
       break;
     }
   })
@@ -129,8 +129,8 @@ function resizeTextArea(elemento){
   };
 }
 
-const copiar = (valor) => {
-  navigator.clipboard.writeText(valor);
+const copiar = async (valor) => {
+  await navigator.clipboard.writeText(valor);
 }
 
 function sanitizarCPF(cpf){
