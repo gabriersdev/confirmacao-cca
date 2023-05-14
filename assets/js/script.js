@@ -11,12 +11,12 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     })
   }) 
 
-  const pagina = new URL(window.location).pathname.trim().replaceAll('/', '');
+  const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
   
   console.log(pagina, isEmpty(pagina))
 
-  if(pagina[(pagina.length - 1)] == 'index.html' || isEmpty(pagina[(pagina.length - 1)])){
+  if(pagina == 'index.html' ||pagina == 'confirmacao-cca'  || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
     const accordion_item = document.createElement('div');
     accordion_item.classList.value = 'accordion-item';
@@ -24,7 +24,7 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     document.querySelector('.accordion').appendChild(accordion_item);
   }
   
-  else if(pagina[(pagina.length - 1)] == 'consultas.html'){
+  else if(pagina == 'consultas.html' || pagina == 'confirmacao-cca/consultas.html'){
     body.innerHTML += conteudos.conteudo_pagina_consultas;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
     
