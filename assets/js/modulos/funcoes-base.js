@@ -1,7 +1,7 @@
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar } from './funcoes-click.js'
-import { edicaoInputNome, atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
+import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo, renderFeedbacks } from './funcoes-render.js';
-import { isEmpty } from './utilitarios.js';
+import { isEmpty, verificarCPF } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = () => {
@@ -18,9 +18,18 @@ const verificarInputsRecarregamento = () => {
 const escutaEventoInput = () => {
   document.querySelectorAll('[data-element="input"]').forEach(elemento => {
     tratamentoCampos(elemento);
-    removeEventListener('input', elemento);
+    // removeEventListener('input', elemento);
     if(elemento.dataset.input == "nome"){
       edicaoInputNome();
+    }
+    else if(elemento.dataset.input == 'cpf'){
+      edicaoInputCPF(elemento)
+    }
+    else if(elemento.dataset.input == 'email'){
+      edicaoInputEmail(elemento);
+    }
+    else if(elemento.dataset.input == 'data_nascimento'){
+      edicaoInputData(elemento)
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
       elemento.addEventListener('input', (evento) => { renderPendencias(); renderResumo();});

@@ -1,4 +1,4 @@
-import { isEmpty } from "./utilitarios.js";
+import { isEmpty, verificarCPF, verificarData, verificarEmail } from "./utilitarios.js";
 
 const edicaoInputNome = () => {
   document.querySelectorAll('[data-input="nome"]').forEach(input => {
@@ -18,7 +18,28 @@ const atualizarNumerosProponentes = () => {
   })
 }
 
+const edicaoInputCPF = (input) => {
+  input.addEventListener('input', () => {
+    verificarCPF(input.value.trim()) ? input.parentElement.classList.remove('invalido') : input.parentElement.classList.add('invalido');
+  })
+}
+
+const edicaoInputEmail = (input) => {
+  input.addEventListener('input', () => {
+    verificarEmail(input.value.trim()) ? input.parentElement.classList.remove('invalido') : input.parentElement.classList.add('invalido');
+  })
+}
+
+const edicaoInputData = (input) => {
+  input.addEventListener('input', () => {
+    verificarData(input.value.trim()) ? input.parentElement.classList.remove('invalido') : input.parentElement.classList.add('invalido');
+  })
+}
+
 export {
   edicaoInputNome,
-  atualizarNumerosProponentes
+  atualizarNumerosProponentes,
+  edicaoInputCPF,
+  edicaoInputEmail,
+  edicaoInputData
 }

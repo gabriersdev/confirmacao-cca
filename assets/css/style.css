@@ -27,12 +27,23 @@ body{
   text-transform: uppercase;
 }
 
-[data-input]:invalid{
-  border: 1px solid rgb(255, 0, 0, 0.4);
+[data-input]:invalid,
+.invalido input{
+  border: 1px solid rgb(255, 0, 0, 0.4) !important;
 }
 
-[data-input]:invalid:is(:hover, :focus){
+[data-input]:invalid:is(:hover, :focus),
+.invalido input:is(:hover, :focus){
   box-shadow:  0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
   -webkit-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
   -moz-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
+}
+
+.feedback_dado{
+  display: none;
+}
+
+.invalido .feedback_dado{
+  color: rgb(255, 0, 0, 1) !important;
+  display: initial;
 }

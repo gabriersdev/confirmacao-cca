@@ -22,7 +22,6 @@ import { funcoesBase } from './modulos/funcoes-base.js';
   }
   
   else if(pagina == 'consultas.html'){
-    let contador = 0;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
     
     const tags = new Array();
