@@ -1,6 +1,6 @@
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
-import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
+import { renderTooltips, renderPopover, renderPendencias, renderResumo, renderFeedbacks } from './funcoes-render.js';
 import { isEmpty } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */

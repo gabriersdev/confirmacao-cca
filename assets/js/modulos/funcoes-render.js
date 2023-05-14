@@ -12,8 +12,82 @@ const renderPopover = () => {
   });
 }
 
+const renderFeedbacks = (proponente) => {
+  const feedbacks = 
+  [
+    proponente.querySelector('[data-content="feedback-endereco"]'), 
+    proponente.querySelector('[data-content="feedback-renda"]')
+  ];
+  
+  const elementos = 
+  [
+    proponente.querySelector('[data-input="tipo_endereco"]'),
+    proponente.querySelectorAll('[data-input="tipo_renda"]')
+  ];
+  
+  feedbacks.forEach((feedback, index) => {
+    let mensagem = '';
+    switch(feedback.dataset.content.trim().toLowerCase()){
+      case 'feedback-endereco':
+      if(isEmpty(elementos[index].value)){
+        mensagem = 'Necessário apresentar comprovante de endereço.';
+      }else{
+        switch(elementos[index].value.trim().toLowerCase()){
+          case 'fatura de serviço':
+          case 'boleto de cobrança':
+          if(!proponente.querySelector('[data-input="endereco_valido"]').checked){
+            mensagem = 'Necessário apresentar documento atualizado.'
+          }
+          break;
+
+          case 'irpf':
+          case 'contrato de aluguel':
+          mensagem = 'Documento não é aceito para os produtos CCFGTS e PMCMV.';
+          break;
+          
+          case 'outro':
+          default:
+          mensagem = 'Verifique o Manual Normativo do Produto sobre a utilização deste documento.'
+          break;
+        }
+      }
+      
+      break;
+      
+      case 'feedback-renda':
+        const tipos_rendas = new Array();
+        elementos[index].forEach(elemento => {
+          tipos_rendas.push(elemento.value.trim().toLowerCase());
+        })
+
+        //Verifica se existem valores vazios
+        if(tipos_rendas.findIndex(e => e == '') !== -1){
+          mensagem = 'Necessário informar renda.';
+        }
+        if(tipos_rendas.includes('contracheque/hollerith') || tipos_rendas.includes('irpf')){
+          proponente.querySelectorAll('[data-input="renda_valida"]').forEach(renda_valida => {
+            if(!renda_valida.checked){
+              mensagem = 'Necessário apresentar documento atualizado.';
+            }
+          })
+        }
+        if(tipos_rendas.includes('contrato de aluguel') || tipos_rendas.includes('extratos bancários')){
+          mensagem = 'Necessário formalizar a renda.'
+        }
+        if(tipos_rendas.includes('outro')){
+          mensagem = 'Verifique o Manual Normativo do Produto sobre a utilização deste documento.'
+        }
+
+      break;
+    }
+    
+    feedback.textContent = mensagem;
+  })
+}
+
 const renderPendencias = () => {
   const txt = document.querySelector('[data-content="pendencias"]');
+  txt.value = '';
   const pendencias = new Array();
   
   const proponentes = document.querySelectorAll('.accordion-item');
@@ -78,6 +152,8 @@ const renderPendencias = () => {
         })
         return saida;
       }
+      
+      renderFeedbacks(proponente);
     })
     
     txt.value = '';
@@ -113,5 +189,6 @@ export{
   renderTooltips,
   renderPopover,
   renderPendencias,
-  renderResumo
+  renderResumo,
+  renderFeedbacks
 }

@@ -9,12 +9,13 @@ const clickIncluirRenda = (botao) => {
   const div = document.createElement('div');
   div.classList.value = `input-group mt-2 mb-2`;
   div.dataset.element = "renda";
-  const length = null;
-  try{length = proponente.querySelector('[data-element="renda"]').length}catch(error){}
+  let length = null;
+  try{length = proponente.querySelectorAll('[data-element="renda"]').length}catch(error){}
   div.innerHTML = `${conteudos.secao_rendas(!isEmpty(length) ? length + 1 : 1)}`;
   proponente.querySelector('[data-element="area_rendas"]').appendChild(div);
   escutaEventoInput();
   clickRemoverRenda(div);
+  renderPendencias();
 }
 
 window.clickIncluirRenda = clickIncluirRenda
@@ -25,6 +26,7 @@ const clickRemoverRenda = (elemento) => {
   }else{
     document.querySelectorAll('[data-action="remover-renda"]').forEach(botao => {
       acao(botao);
+      renderPendencias();
     })
   }
   
