@@ -16,7 +16,7 @@ import { funcoesBase } from './modulos/funcoes-base.js';
   
   console.log(pagina, isEmpty(pagina))
 
-  if(pagina == 'index.html' ||pagina == 'confirmacao-cca'  || isEmpty(pagina)){
+  if(pagina == 'index.html' ||pagina == 'confirmacao-cca/'  || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
     const accordion_item = document.createElement('div');
     accordion_item.classList.value = 'accordion-item';
