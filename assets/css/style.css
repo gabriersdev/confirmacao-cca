@@ -5,10 +5,11 @@
 
 @import url(./normalize.css);
 @import url(./reset.css);
-
-@import url(./elementos/no-script.css);
 @import url(./cores.css);
 @import url(./variaveis.css);
+
+@import url(./elementos/loader.css);
+@import url(./elementos/no-script.css);
 @import url(./elementos/consultas.css);
 
 html{
