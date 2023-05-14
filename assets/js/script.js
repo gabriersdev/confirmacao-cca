@@ -14,7 +14,9 @@ import { funcoesBase } from './modulos/funcoes-base.js';
   const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
   
-  if(pagina == 'index.html'){
+  console.log(pagina, isEmpty(pagina))
+
+  if(pagina == 'index.html' || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
     const accordion_item = document.createElement('div');
     accordion_item.classList.value = 'accordion-item';
