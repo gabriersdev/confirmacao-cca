@@ -13,8 +13,6 @@ import { funcoesBase } from './modulos/funcoes-base.js';
 
   const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
-  
-  console.log(pagina, isEmpty(pagina))
 
   if(pagina == 'index.html' ||pagina == 'confirmacao-cca/'  || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
