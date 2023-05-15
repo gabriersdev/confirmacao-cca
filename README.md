@@ -10,6 +10,8 @@ Na página de [confirmação de dados](https://gabrieszin.github.io/confirmacao-
 
 As pendências documentais aparecem que foram identificadas pela ferramenta aparecem no campo "Pendências", que pode ser editado, copiado ou baixado (o arquivo gerado é no formato `.txt`).
 
+**Em breve:** será possível importar e exportar os dados de um processo.
+
 ## Bibliotecas e Frameworks
 
 - Bootstrap
