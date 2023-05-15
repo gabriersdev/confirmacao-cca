@@ -120,7 +120,7 @@ const clickDownload = (elemento) => {
     proponentes.forEach((proponente, index) => {
       const nome = proponente.querySelector('[data-input="nome"]').value.trim();
       !isEmpty(nome) ? primeirosNomes.push(primeiroNome(nome)) : '';
-      saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${nome.toUpperCase()}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n` + `TELEFONE: ${proponente.querySelector('[data-input="telefone"]').value.trim()}\n` + `EMAIL: ${proponente.querySelector('[data-input="email"]').value.trim()}\n\n`)
+      saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${!isEmpty(nome) ? nome.toUpperCase() : ''}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n` + `TELEFONE: ${proponente.querySelector('[data-input="telefone"]').value.trim()}\n` + `EMAIL: ${proponente.querySelector('[data-input="email"]').value.trim()}\n\n`)
     });
     criarEBaixarTXT(JSON.stringify(saida.join('\n')), `DADOS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
     break;
