@@ -24,6 +24,45 @@ body{
   font-family: 'Inter', sans-serif;
 }
 
+.hgroup{
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+[data-hgroup="confirmacao-cca"]{
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #D3D3D3;
+}
+
+.hgroup .hgroup-titulo{
+  font-weight: 600 !important;
+  margin-right: 0.5rem;
+}
+
+.hgroup .hgroup-acoes button:first-child{
+  margin-right: 0.25rem;
+}
+
+.hgroup .hgroup-acoes button{
+  border: 1px solid #808080;
+}
+
+@media screen and (max-width: 450px) {
+  .hgroup{
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  .hgroup .hgroup-acoes{
+    margin-top: 1rem;
+  }
+}
+
 [data-input="nome"]{
   text-transform: uppercase;
 }
