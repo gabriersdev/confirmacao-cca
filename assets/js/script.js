@@ -74,3 +74,6 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     atualizarDatas();
   });
 })();
+
+const datetime = moment();
+const codigo = `${datetime.get('year')}${datetime.get('month')}${datetime.get('date')}${datetime.get('hour')}${datetime.get('minutes')}${datetime.get('seconds')}`

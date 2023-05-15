@@ -145,6 +145,11 @@ const criarEBaixarTXT = (conteudo, nome) => {
   saveAs(blob, `${nome.toUpperCase()}.txt`);
 }
 
+const criarEBaixarJSON = (conteudo, nome) => {
+  let blob = new Blob([`${JSON.stringify(conteudo)}`], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, `${nome.toUpperCase()}.txt`);
+}
+
 export {
   clickIncluirRenda,
   clickRemoverRenda,
