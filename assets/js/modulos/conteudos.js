@@ -11,7 +11,7 @@ const secao_rendas = (indice) => {
 };
 
 const consultas = [
-  { tag: 'cadastro', titulo: 'Pesquisa Cadastral', sistema: 'SICAQ', link: 'xxxx.xx.x' }, 
+  { tag: 'cadastro', titulo: 'Pesquisa Cadastral', sistema: 'SICAQ', link: 'https://caixaaqui.caixa.gov.br/caixaaqui/CaixaAquiController' }, 
   { tag: 'cadastro', titulo: 'CNIS', sistema: 'INSS', link: 'https://cnisnet.inss.gov.br/' },
   { tag: 'cadastro', titulo: 'Restitução IRPF', sistema: 'Receita Federal', link: 'https://www.restituicao.receita.fazenda.gov.br/' },
   { tag: 'cadastro', titulo: 'Simulador SIOPI', sistema: 'SIOPI', link: 'https://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=enquadrarProdutos' },

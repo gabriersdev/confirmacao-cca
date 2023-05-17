@@ -53,6 +53,9 @@ import { funcoesBase } from './modulos/funcoes-base.js';
         const div_consultas = area_consultas.querySelectorAll('div.consultas');
         const a = document.createElement('a');
         a.classList.add('content');
+        a.setAttribute('href', `${elemento.link}`)
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noreferrer noopener')
         a.innerHTML = `<span class="content-tag">${capitalize(elemento.tag)}</span><div class="content-principal"><h5>${elemento.titulo}</h5><span>${elemento.sistema}</span></div>`;
         div_consultas[(div_consultas.length - 1)].appendChild(a);
       })
