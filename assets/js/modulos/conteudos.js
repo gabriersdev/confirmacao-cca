@@ -12,14 +12,19 @@ const secao_rendas = (indice) => {
 
 const consultas = [
   { tag: 'cadastro', titulo: 'Pesquisa Cadastral', sistema: 'SICAQ', link: 'xxxx.xx.x' }, 
-  { tag: 'cadastro', titulo: 'CNIS', sistema: 'INSS', link: 'xxxx.xa.x' }, 
+  { tag: 'cadastro', titulo: 'CNIS', sistema: 'INSS', link: 'https://cnisnet.inss.gov.br/' },
+  { tag: 'cadastro', titulo: 'Restitução IRPF', sistema: 'Receita Federal', link: 'https://www.restituicao.receita.fazenda.gov.br/' },
+  { tag: 'cadastro', titulo: 'Simulador SIOPI', sistema: 'SIOPI', link: 'https://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=enquadrarProdutos' },
+  { tag: 'cadastro', titulo: 'Simulador Portal', sistema: 'Portal de Empreendimentos', link: 'https://www.portaldeempreendimentos.caixa.gov.br/simulador/' },
   { tag: 'cadastro', titulo: 'Busca CEP', sistema: 'Correios', link: 'xxxx.xa.x' }, 
-  { tag: 'cadastro', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
-  { tag: 'cadastro', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
-  { tag: 'cadastro', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
-  { tag: 'dossiê', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
-  { tag: 'dossiê', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
-  { tag: 'dossiê', titulo: 'Restituição IRPF', sistema: 'Receita Federal', link: 'xxxx.xa.x' },
+  { tag: 'cadastro', titulo: 'Situação Cadastral', sistema: 'Receita Federal', link: 'https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp' },
+  { tag: 'cadastro', titulo: 'CND Pessoa Física', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pf/emitir' },
+  { tag: 'cadastro', titulo: 'CND Pessoa Jurídica', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pj/emitir' },
+  { tag: 'dossiê', titulo: 'CIWEB', sistema: 'Portal', link: '#' },
+  { tag: 'dossiê', titulo: 'CADMUT', sistema: 'SICDM', link: 'https://www.cadastromutuarios.caixa.gov.br/' },
+  { tag: 'dossiê', titulo: 'Consulta FGTS', sistema: 'SIOPI', link: 'https://habitacao.caixa.gov.br/siopiweb-web/siopientrada.do' },
+  { tag: 'dossiê', titulo: 'FGTS', sistema: 'CIWEB', link: 'https://www.ciweb.caixa.gov.br/sso/' },
+  { tag: 'dossiê', titulo: 'Conformidade', sistema: 'SICTD', link: 'https://digitalizar.caixa.gov.br/sictd-digitalizar/' },
 ]
 
 const rodape = ` <div class="container"> <footer class="pt-4 my-md-5 pt-md-5 border-top"> <div class="row"> <div class="col-12 col-md"> <small class="d-block text-muted">Desenvolvido por</small> <a href="" data-link="github-dev"><h5 class="bold">Gabriel Ribeiro</h5></a><br> <small class="d-block text-muted">&copy; <span data-ano-atual=''>2023</span></small> <small class="d-block mb-3 text-muted">Todos os direitos reservados.</small> </div> <div class="col-6 col-md"> <h5>Recursos</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="consultas">Consultas</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Navegação</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="consultas">Consultas</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Sobre</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-dev">Desenvolvedor</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-projeto">GitHub</a></li> </ul> </div> </div> </footer><br> </div>`;
