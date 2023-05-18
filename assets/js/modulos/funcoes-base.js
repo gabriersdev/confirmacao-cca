@@ -1,4 +1,4 @@
-import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar } from './funcoes-click.js'
+import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo, renderFeedbacks } from './funcoes-render.js';
 import { isEmpty, verificarCPF } from './utilitarios.js';
@@ -65,6 +65,7 @@ function funcoesBase(){
   renderResumo();
   renderPendencias();
   clickCopiar();
+  clickLimparProcesso();
   clickIncluirProponente();
   clickRemoverProponente();
   clickRemoverRenda();

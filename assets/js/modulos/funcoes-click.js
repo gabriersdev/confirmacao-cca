@@ -153,7 +153,24 @@ const criarEBaixarJSON = (conteudo, nome) => {
 function clickLimparProcesso(){
   const btn = document.querySelector('[data-action="limpar-processo"]');
   btn.addEventListener('click', (evento) => {
+    evento.preventDefault();
     
+    SwalAlert('confirmacao', 'question', 'Tem certeza que deseja limpar todo o processo?', 'Esta ação não poderá ser desfeita').then((retorno) => {
+      if(retorno.isConfirmed){
+        document.querySelectorAll('[data-input]').forEach(input => {
+          if(input.tagName.toLowerCase() == 'textarea' || input.tagName.toLowerCase() == 'input' && input.getAttribute('type') == 'text'){
+            input.value = '';
+          }else if(input.tagName.toLowerCase() == 'input' && input.getAttribute('type') == 'checkbox'){
+            input.checked = false;
+          }      
+        })
+    
+        document.querySelectorAll('.accordion-item').forEach(item => { item.remove() });
+        renderResumo();
+        atualizarNumerosProponentes();
+        renderPendencias();
+      }
+    });
   })
 }
 
@@ -162,5 +179,6 @@ export {
   clickRemoverRenda,
   clickIncluirProponente,
   clickRemoverProponente,
-  clickCopiar
+  clickCopiar,
+  clickLimparProcesso
 }
