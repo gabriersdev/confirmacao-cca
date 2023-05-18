@@ -150,6 +150,13 @@ const criarEBaixarJSON = (conteudo, nome) => {
   saveAs(blob, `${nome.toUpperCase()}.txt`);
 }
 
+function clickLimparProcesso(){
+  const btn = document.querySelector('[data-action="limpar-processo"]');
+  btn.addEventListener('click', (evento) => {
+    
+  })
+}
+
 export {
   clickIncluirRenda,
   clickRemoverRenda,
