@@ -33,11 +33,14 @@ const conteudo_pagina_confirmacao = `<div class="container mt-5"> <hgroup class=
 
 const conteudo_pagina_consultas = `<div class="container mt-5 mb-5"><hgroup class="hgroup" data-hgroup="confirmacao-cca"><h3 class="hgroup-titulo">Consultas</h3></hgroup><div class="card"><div class="card-header"><b>Consultas</b></div><div class="card-body"><div data-content="area-consultas"></div></div></div></div>`;
 
+const conteudo_pagina_arquivos = `<div class="container mt-5 mb-5"><hgroup class="hgroup" data-hgroup="confirmacao-cca"><h3 class="hgroup-titulo">Arquivos</h3></hgroup><div class="card"><div class="card-header"><b>Arquivos</b></div><div class="card-body"><div data-content="area-arquivos"></div></div></div></div>`;
+
 export const conteudos = {
   accordion_item,
   secao_rendas,
   consultas,
   rodape,
   conteudo_pagina_confirmacao,
-  conteudo_pagina_consultas
+  conteudo_pagina_consultas,
+  conteudo_pagina_arquivos
 }
