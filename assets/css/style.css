@@ -10,7 +10,7 @@
 
 @import url(./elementos/loader.css);
 @import url(./elementos/no-script.css);
-@import url(./elementos/consultas.css);
+@import url(./elementos/consultas-arquivos.css);
 
 html{
   scroll-behavior: smooth;

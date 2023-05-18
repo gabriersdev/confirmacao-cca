@@ -1,20 +1,24 @@
-.titulo-consultas:not(:first-child){
+.titulo-consultas:not(:first-child),
+.titulo-arquivos:not(:first-child){
   margin-top: 1rem;
 }
 
-.titulo-consultas{
+.titulo-consultas,
+.titulo-arquivos{
   font-size: 1.15rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
-[data-content="area-consultas"] .consultas{
+[data-content="area-consultas"] .consultas,
+[data-content="area-arquivos"] .arquivos{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 1rem 1rem;
 }
 
-.consultas:not(:last-child){
+.consultas:not(:last-child),
+.arquivos:not(:last-child){
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 1.25rem;
 }
@@ -58,7 +62,8 @@
 }
 
 @media screen and (max-width: 767px) {
-  [data-content="area-consultas"] .consultas{
+  [data-content="area-consultas"] .consultas,
+  [data-content="area-arquivos"] .arquivos{
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
   }
 }

@@ -26,40 +26,14 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     body.innerHTML += conteudos.conteudo_pagina_consultas;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
     
-    const tags = new Array();
-    const conteudos_tag = new Array();
-    
-    conteudos.consultas.forEach(consulta => {
-      if(!tags.includes(consulta.tag)){
-        tags.push(consulta.tag);
-      }
-    })
-    
-    tags.forEach(tag => {
-      conteudos_tag.push(conteudos.consultas.filter(e => e.tag == tag))
-    })
-    
-    conteudos_tag.forEach((conteudo_tag, index) => {
-      const titulo = document.createElement('h5');
-      titulo.classList.value = 'titulo-consultas text-muted';
-      titulo.appendChild(document.createTextNode(`${capitalize(tags[index])}`));
-      const div = document.createElement('div');
-      div.classList.add('consultas');
-      
-      area_consultas.appendChild(titulo)
-      area_consultas.appendChild(div);
-      
-      conteudo_tag.forEach(elemento => {
-        const div_consultas = area_consultas.querySelectorAll('div.consultas');
-        const a = document.createElement('a');
-        a.classList.add('content');
-        a.setAttribute('href', `${elemento.link}`)
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noreferrer noopener')
-        a.innerHTML = `<span class="content-tag">${capitalize(elemento.tag)}</span><div class="content-principal"><h5>${elemento.titulo}</h5><span>${elemento.sistema}</span></div>`;
-        div_consultas[(div_consultas.length - 1)].appendChild(a);
-      })
-    })
+    renderConteudosPagina(area_consultas, conteudos.consultas, 'consultas')
+  }
+
+  else if(pagina == 'arquivos.html' || pagina == 'confirmacao-cca/arquivos.html'){
+    body.innerHTML += conteudos.conteudo_pagina_arquivos;
+    const area_arquivos = document.querySelector('[data-content="area-arquivos"]');
+
+    renderConteudosPagina(area_arquivos, conteudos.arquivos, 'arquivos')
   }
   
   $("textarea").bind("onpaste keyup input", function(e) {
@@ -76,6 +50,44 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     atribuirLinks();
     atualizarDatas();
   });
+
+  function renderConteudosPagina(area_elementos, elementos, objeto){
+    const tags = new Array();
+    const conteudos_tag = new Array();
+    
+    elementos.forEach(e => {
+      if(!tags.includes(e.tag) && !isEmpty(e.tag)){
+        tags.push(e.tag);
+      }
+    })
+    
+    tags.forEach(tag => {
+      conteudos_tag.push(elementos.filter(e => e.tag == tag))
+    })
+    
+    conteudos_tag.forEach((conteudo_tag, index) => {
+      const titulo = document.createElement('h5');
+      titulo.classList.value = `titulo-${objeto} text-muted`;
+      titulo.appendChild(document.createTextNode(`${capitalize(tags[index])}`));
+      const div = document.createElement('div');
+      div.classList.add(`${objeto}`);
+      
+      area_elementos.appendChild(titulo)
+      area_elementos.appendChild(div);
+      
+      conteudo_tag.forEach(elemento => {
+        const div_elemento = area_elementos.querySelectorAll(`div.${objeto}`);
+        const a = document.createElement('a');
+        a.classList.add('content');
+        a.setAttribute('href', `${elemento.link}`)
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noreferrer noopener')
+        a.innerHTML = `<span class="content-tag">${capitalize(elemento.tag)}</span><div class="content-principal"><h5>${elemento.titulo}</h5><span>${elemento.sistema}</span></div>`;
+        div_elemento[(div_elemento.length - 1)].appendChild(a);
+      })
+    })
+  }
+
 })();
 
 const datetime = moment();
