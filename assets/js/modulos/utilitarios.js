@@ -24,6 +24,10 @@ function atribuirLinks(){
   
   linkElementos.forEach(link => {
     switch(link.dataset.link.toLowerCase().trim()){
+      case 'arquivos':
+      link.href = './arquivos.html';
+      break;
+
       case 'confirmacao':
       link.href = './index.html';
       break;
