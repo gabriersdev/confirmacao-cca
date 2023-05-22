@@ -1,7 +1,7 @@
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData } from './funcoes-de-conteudo.js';
-import { renderTooltips, renderPopover, renderPendencias, renderResumo, renderFeedbacks } from './funcoes-render.js';
-import { isEmpty, verificarCPF } from './utilitarios.js';
+import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
+import { isEmpty } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = () => {
