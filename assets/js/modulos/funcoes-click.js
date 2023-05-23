@@ -108,8 +108,10 @@ const acaoClickCopiar = (btn) => {
   }
   
   function feedback({html, classe}){
-    const html_botao = btn.innerHTML;
-    const class_botao = btn.classList.value;
+    // const html_botao = btn.innerHTML;
+    const html_botao = `<i class="bi bi-clipboard"></i>`;
+    // const class_botao = btn.classList.value;
+    const class_botao = `btn-outline-primary`;
     
     btn.innerHTML = html;
     btn.classList.value = classe;
@@ -117,7 +119,7 @@ const acaoClickCopiar = (btn) => {
     setTimeout(() => {
       btn.innerHTML = html_botao;
       btn.classList.value = class_botao;
-    }, 2500);
+    }, 1500);
   }
 }
 window.acaoClickCopiar = acaoClickCopiar;
