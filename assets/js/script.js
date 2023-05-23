@@ -35,10 +35,6 @@ import { funcoesBase } from './modulos/funcoes-base.js';
 
     renderConteudosPagina(area_arquivos, conteudos.arquivos, 'arquivos')
   }
-  
-  $("textarea").bind("onpaste keyup input", function(e) {
-    resizeTextArea(this);
-  });
 
   body.innerHTML += conteudos.rodape;
 

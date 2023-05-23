@@ -27,7 +27,7 @@ function atribuirLinks(){
       case 'arquivos':
       link.href = './arquivos.html';
       break;
-
+      
       case 'confirmacao':
       link.href = './index.html';
       break;
@@ -77,11 +77,11 @@ function sanitizarString(string){
         subst: ''
       },
     ]
-
+    
     substituir.forEach(substituicao => {
       string = string.replace(substituicao.original, substituicao.subst)
     })
-
+    
     return string.trim();
   }else{
     console.log('O tipo do parâmetro passado não é uma string.');
@@ -100,12 +100,12 @@ async function SwalAlert(tipo, icon, title, text, mensagem){
       confirmButtonText: 'Sim',
       focusCancel: true
     })
-
+    
     return new Promise((resolve, reject) => {
       resolve({isConfirmed: dialog.isConfirmed})
     })
   }
-
+  
   else if(tipo == 'aviso'){
     Swal.fire({
       icon: icon,
@@ -113,7 +113,7 @@ async function SwalAlert(tipo, icon, title, text, mensagem){
       text: text
     })
   }
-
+  
   else if(tipo == 'error'){
     Swal.fire({
       icon: icon,
@@ -124,12 +124,12 @@ async function SwalAlert(tipo, icon, title, text, mensagem){
   }
 }
 
-function resizeTextArea(elemento){
-  while( $(elemento).outerHeight() < elemento.scrollHeight +
-  parseFloat($(elemento).css("borderTopWidth")) +
-  parseFloat($(elemento).css("borderBottomWidth")) && $(elemento).height() < 500
+function resizeTextArea(textarea){
+  while( $(textarea).outerHeight() < textarea.scrollHeight +
+  parseFloat($(textarea).css("borderTopWidth")) +
+  parseFloat($(textarea).css("borderBottomWidth")) && $(textarea).height() < 500
   ) {
-    $(elemento).height($(elemento).height()+1);
+    $(textarea).height($(textarea).height()+1);
   };
 }
 

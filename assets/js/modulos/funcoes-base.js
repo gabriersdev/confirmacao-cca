@@ -1,5 +1,5 @@
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso } from './funcoes-click.js'
-import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData } from './funcoes-de-conteudo.js';
+import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { isEmpty } from './utilitarios.js';
 
@@ -30,6 +30,9 @@ const escutaEventoInput = () => {
     }
     else if(elemento.dataset.input == 'data_nascimento'){
       edicaoInputData(elemento)
+    }
+    if(elemento.dataset.content == 'relatorio'){
+      edicaoTextAreaRelatorio(elemento)
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
       elemento.addEventListener('input', (evento) => { renderPendencias(); renderResumo();});

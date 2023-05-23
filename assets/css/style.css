@@ -77,6 +77,18 @@ body{
   color: #FF0000 !important;
 }
 
+textarea{
+  scrollbar-width: none;
+  resize: none;
+  outline: none;
+  height: 40px;
+  width: 300px;
+}
+
+textarea::-webkit-scrollbar{
+  display: none;
+}
+
 @media screen and (max-width: 450px) {
   .hgroup{
     flex-direction: column;

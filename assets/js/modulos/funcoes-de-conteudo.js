@@ -36,10 +36,23 @@ const edicaoInputData = (input) => {
   })
 }
 
+const edicaoTextAreaRelatorio = (textarea) => {
+  textarea.addEventListener('input', (evento) => {
+    const initialHeight = parseInt(getComputedStyle(textarea).getPropertyValue('height'));
+    textarea.addEventListener('input', () => {
+      textarea.style.height = `${initialHeight}px`;
+      const scrollHeight = textarea.scrollHeight;
+      const newHeight = textarea.scrollHeight - initialHeight;
+      textarea.style.height = `${newHeight < scrollHeight ? scrollHeight : newHeight}px`;
+    });
+  })
+}
+
 export {
   edicaoInputNome,
   atualizarNumerosProponentes,
   edicaoInputCPF,
   edicaoInputEmail,
-  edicaoInputData
+  edicaoInputData,
+  edicaoTextAreaRelatorio
 }
