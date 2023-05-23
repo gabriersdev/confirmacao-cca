@@ -84,31 +84,43 @@ const clickCopiar = () => {
   const btns = document.querySelectorAll('[data-action="copiar"]');
   btns.forEach(btn => {
     if(!isEmpty(btn)){
-      try{
-        btn.addEventListener('click', () => {
-          const elemento = btn.closest('[data-node="card"]').querySelector('[data-copiar="texto"]');
-          copiar(elemento.textContent || elemento.value).then(retorno => {
-            feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'});});
-          })
-      }catch(error){
-        feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
-      }
-      
-      function feedback({html, classe}){
-        const html_botao = btn.innerHTML;
-        const class_botao = btn.classList.value;
-        
-        btn.innerHTML = html;
-        btn.classList.value = classe;
-        
-        setTimeout(() => {
-          btn.innerHTML = html_botao;
-          btn.classList.value = class_botao;
-        }, 2500);
-      }
+      acaoClickCopiar(btn)
     }
   })
 }
+
+const acaoClickCopiar = (btn) => {
+  try{
+    btn.addEventListener('click', () => {
+      const elemento = btn.closest('[data-node="card"]').querySelector('[data-copiar="texto"]');
+      const data_input = elemento.dataset.input;
+
+      if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'nome'){
+        elemento.textContent = elemento.textContent.toUpperCase();
+        elemento.value = elemento.value.toUpperCase();
+      }
+
+      copiar(elemento.textContent || elemento.value).then(retorno => {
+        feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'});});
+      })
+  }catch(error){
+    feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
+  }
+  
+  function feedback({html, classe}){
+    const html_botao = btn.innerHTML;
+    const class_botao = btn.classList.value;
+    
+    btn.innerHTML = html;
+    btn.classList.value = classe;
+    
+    setTimeout(() => {
+      btn.innerHTML = html_botao;
+      btn.classList.value = class_botao;
+    }, 2500);
+  }
+}
+window.acaoClickCopiar = acaoClickCopiar;
 
 const clickDownload = (elemento) => {
   switch(elemento.dataset.download){
