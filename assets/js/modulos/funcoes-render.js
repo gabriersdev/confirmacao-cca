@@ -44,7 +44,7 @@ const renderFeedbacks = (proponente) => {
           case 'contrato de aluguel':
           mensagem = 'Documento não é aceito para os produtos CCFGTS e PMCMV.';
           break;
-          
+
           case 'outro':
           default:
           mensagem = 'Verifique o Manual Normativo do Produto sobre a utilização deste documento.'
@@ -62,26 +62,29 @@ const renderFeedbacks = (proponente) => {
       
       //Verifica se existem valores vazios
       if(tipos_rendas.findIndex(e => e == '') !== -1){
-        mensagem = 'Necessário informar renda.';
+        mensagem += 'Proponente sem renda.\n';
       }
       if(tipos_rendas.includes('contracheque/hollerith') || tipos_rendas.includes('irpf')){
         proponente.querySelectorAll('[data-input="renda_valida"]').forEach(renda_valida => {
           if(!renda_valida.checked){
-            mensagem = 'Necessário apresentar documento atualizado.';
+            mensagem += 'Necessário apresentar documento atualizado.\n';
           }
         })
       }
+      if(tipos_rendas.includes('renda informal')){
+        mensagem += 'Renda informal.\n';
+      }
       if(tipos_rendas.includes('contrato de aluguel') || tipos_rendas.includes('extratos bancários')){
-        mensagem = 'Necessário formalizar a renda.'
+        mensagem += 'Necessário formalizar a renda.\n'
       }
       if(tipos_rendas.includes('outro')){
-        mensagem = 'Verifique o Manual Normativo do Produto sobre a utilização deste documento.'
+        mensagem += 'Verifique o Manual Normativo do Produto sobre a utilização deste documento.\n'
       }
       
       break;
     }
     
-    feedback.textContent = mensagem;
+    feedback.innerHTML = mensagem.replaceAll('\n', '<br>');
   })
 }
 
