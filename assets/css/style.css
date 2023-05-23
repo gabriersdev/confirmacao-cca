@@ -51,6 +51,32 @@ body{
   border: 1px solid #808080;
 }
 
+.form-floating{
+  position: relative;
+}
+
+.form-floating button{
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.form-floating button,
+.form-floating button:is(:active, :hover, :focus){
+  background: unset !important;
+  border: unset !important;
+  padding: unset !important;
+}
+
+.form-floating button.btn-outline-success{
+  color: #008000 !important; 
+}
+
+.form-floating button.btn-outline-danger{
+  color: #FF0000 !important;
+}
+
 @media screen and (max-width: 450px) {
   .hgroup{
     flex-direction: column;
