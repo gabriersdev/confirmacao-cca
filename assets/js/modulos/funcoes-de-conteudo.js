@@ -1,4 +1,4 @@
-import { isEmpty, verificarCPF, verificarData, verificarEmail } from "./utilitarios.js";
+import { isEmpty, resizeTextArea, verificarCPF, verificarData, verificarEmail } from "./utilitarios.js";
 
 const edicaoInputNome = () => {
   document.querySelectorAll('[data-input="nome"]').forEach(input => {
@@ -40,10 +40,16 @@ const edicaoTextAreaRelatorio = (textarea) => {
   textarea.addEventListener('input', (evento) => {
     const initialHeight = parseInt(getComputedStyle(textarea).getPropertyValue('height'));
     textarea.addEventListener('input', () => {
-      textarea.style.height = `${initialHeight}px`;
-      const scrollHeight = textarea.scrollHeight;
-      const newHeight = textarea.scrollHeight - initialHeight;
-      textarea.style.height = `${newHeight < scrollHeight ? scrollHeight : newHeight}px`;
+      resizeTextArea(textarea)
+    });
+  })
+}
+
+const edicaoTextAreaPendencias = (textarea) => {
+  textarea.addEventListener('input', (evento) => {
+    const initialHeight = parseInt(getComputedStyle(textarea).getPropertyValue('height'));
+    textarea.addEventListener('input', () => {
+      resizeTextArea(textarea)
     });
   })
 }
@@ -54,5 +60,6 @@ export {
   edicaoInputCPF,
   edicaoInputEmail,
   edicaoInputData,
-  edicaoTextAreaRelatorio
+  edicaoTextAreaRelatorio,
+  edicaoTextAreaPendencias
 }
