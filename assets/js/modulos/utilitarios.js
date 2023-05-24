@@ -137,7 +137,7 @@ function resizeTextArea(textarea){
   const newHeight = textarea.scrollHeight - initialHeight;
   const t = newHeight < scrollHeight ? (scrollHeight + newHeight) < initialHeight ? initialHeight : scrollHeight : newHeight;
   textarea.style.height = `${t}px`;
-  console.log(initialHeight, scrollHeight, newHeight, t)
+  // console.log(initialHeight, scrollHeight, newHeight, t)
 }
 
 const copiar = async (valor) => {
