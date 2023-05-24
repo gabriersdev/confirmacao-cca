@@ -100,6 +100,10 @@ const acaoClickCopiar = (btn) => {
         elemento.value = elemento.value.toUpperCase();
       }
 
+      else if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'cpf'){
+        elemento.value = sanitizarCPF(elemento.value);
+      }
+
       copiar(elemento.textContent || elemento.value).then(retorno => {
         feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'});});
       })
