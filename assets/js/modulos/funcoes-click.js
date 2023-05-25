@@ -183,6 +183,10 @@ function clickLimparProcesso(){
               input.checked = false;
             }      
           })
+
+          document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.value = '';
+          })
       
           document.querySelectorAll('.accordion-item').forEach(item => { item.remove() });
           renderResumo();
