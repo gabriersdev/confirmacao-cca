@@ -186,6 +186,7 @@ function clickLimparProcesso(){
 
           document.querySelectorAll('textarea').forEach(textarea => {
             textarea.value = '';
+            textarea.style.height = '100px';
           })
       
           document.querySelectorAll('.accordion-item').forEach(item => { item.remove() });

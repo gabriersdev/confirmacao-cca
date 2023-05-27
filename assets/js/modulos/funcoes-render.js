@@ -179,8 +179,9 @@ const renderResumo = () => {
   const nomes = new Array();
   
   if(!isEmpty(accordion_group)){
-    accordion_group.querySelectorAll('b[data-content="nome"]').forEach(nome => {
-      nomes.push(nome.textContent)
+    accordion_group.querySelectorAll('[data-information="nome-proponente"]').forEach((nome, index) => {
+      // !nomes.includes(nome.textContent) ? nomes.push(nome.textContent) : '';
+      nomes.push(nome.textContent);
     })
     
     const quantidade_proponentes = accordion_group.querySelectorAll('.accordion-item').length;

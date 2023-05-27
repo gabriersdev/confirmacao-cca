@@ -125,18 +125,18 @@ async function SwalAlert(tipo, icon, title, text, mensagem){
 }
 
 function resizeTextArea(textarea){
-  // while( $(textarea).outerHeight() < textarea.scrollHeight +
-  // parseFloat($(textarea).css("borderTopWidth")) +
-  // parseFloat($(textarea).css("borderBottomWidth")) && $(textarea).height() < 500
-  // ) {
-  //   $(textarea).height($(textarea).height()+1);
-  // };
-  const initialHeight = parseInt(getComputedStyle(textarea).getPropertyValue('height'));
-  textarea.style.height = `${initialHeight}px`;
-  const scrollHeight = textarea.scrollHeight;
-  const newHeight = textarea.scrollHeight - initialHeight;
-  const t = newHeight < scrollHeight ? (scrollHeight + newHeight) < initialHeight ? initialHeight : scrollHeight : newHeight;
-  textarea.style.height = `${t}px`;
+  while( $(textarea).outerHeight() < textarea.scrollHeight +
+  parseFloat($(textarea).css("borderTopWidth")) +
+  parseFloat($(textarea).css("borderBottomWidth")) && $(textarea).height() < 500
+  ) {
+    $(textarea).height($(textarea).height()+1);
+  };
+  // const initialHeight = parseInt(getComputedStyle(textarea).getPropertyValue('height'));
+  // textarea.style.height = `${initialHeight}px`;
+  // const scrollHeight = textarea.scrollHeight;
+  // const newHeight = textarea.scrollHeight - initialHeight;
+  // const t = newHeight < scrollHeight ? (scrollHeight + newHeight) < initialHeight ? initialHeight : scrollHeight : newHeight;
+  // textarea.style.height = `${t}px`;
   // console.log(initialHeight, scrollHeight, newHeight, t)
 }
 
