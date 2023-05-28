@@ -63,6 +63,14 @@ const tratamentoCampos = (input) => {
       break;
 
       case 'id-valor-imovel':
+        SimpleMaskMoney.setMask(input, {
+          prefix: 'R$ ',
+          fixed: true,
+          fractionDigits: 2,
+          decimalSeparator: ',',
+          thousandsSeparator: '.',
+          cursor: 'end'
+        });
       break;
       
       default:

@@ -33,6 +33,7 @@
   
   <title>Confirmação de dados - CCA</title>
   
+  <script src="./assets/js/frameworks/simpleMaskMoney.js" defer></script>
   <script src="./assets/js/frameworks/jquery.js" defer></script>
   <script src="./assets/js/frameworks/bootstrap.js" defer></script>
   <script src="./assets/js/frameworks/pooper.js" defer></script>
@@ -63,14 +64,14 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="modal-informacoes-adicionais-Label">Informações do Processo</h1>
+          <h1 class="modal-title fs-5" id="modal-informacoes-adicionais-Label">Adicionar informações</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form action="">
             <div class="form-group">
               <label for="id-fid" class="mb-1">FID</label>
-              <input type="text" class="form-control" id="id-fid" name="id-fid" data-input="id-fid">
+              <input type="text" class="form-control" id="id-fid" name="id-fid" data-element="input" data-input="id-fid">
             </div>
             <div class="form-group mt-3">
               <label for="id-gerente-ou-corretor" class="mb-1">Gerente ou Corretor</label>
@@ -82,7 +83,15 @@
             </div>
             <div class="form-group mt-3">
               <label for="id-valor-imovel" class="mb-1">Valor do imóvel</label>
-              <input type="text" class="form-control" id="id-valor-imovel" name="id-valor-imovel" data-input="id-valor_imovel">
+              <input type="text" class="form-control" id="id-valor-imovel" name="id-valor-imovel" data-element="input" data-input="id-valor-imovel">
+            </div>
+            <div class="form-group mt-3">
+              <input type="checkbox" class="form-check-input" name="add-data-hora" id="add-data-hora" checked>
+              <label for="add-data-hora">Adicionar data e hora</label>
+            </div>
+            <div class="form-group mt-2">
+              <input type="checkbox" class="form-check-input" name="limpar-txt-area" id="limpar-txt-area">
+              <label for="limpar-txt-area">Limpar relatório</label>
             </div>
             <button type="submit" class="btn btn-outline-primary mt-4 mb-2" style="width: 100%;">Add. dados</button>
           </form>

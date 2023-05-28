@@ -1,5 +1,5 @@
 import { conteudos } from './conteudos.js';
-import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome } from './utilitarios.js';
+import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea } from './utilitarios.js';
 import { renderPendencias, renderResumo } from './funcoes-render.js';
 import { atualizar, escutaEventoInput } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
@@ -203,7 +203,7 @@ function clickAddInformacoes(){
   const modal = document.querySelector('#modal-informacoes-adicionais');
   document.querySelector('[data-action="add-informacoes"]').addEventListener('click', (evento) => {
     evento.preventDefault();
-    $('#modal-informacoes-adicionais').modal('show');
+    $(modal).modal('show');
     setTimeout(() => {
       modal.querySelector('[data-input="id-fid"]').focus();
     }, 500)
@@ -211,13 +211,30 @@ function clickAddInformacoes(){
 
   modal.querySelector('form').addEventListener('submit', (evento) => {
     evento.preventDefault();
-    console.log(evento.target);
+    const dados = {
+      'fid': evento.target.querySelector('[data-input="id-fid"]').value,
+      'gerente': evento.target.querySelector('#id-gerente-ou-corretor').value,
+      'empreendimento': evento.target.querySelector('#id-empreendimento').value,
+      'valor': evento.target.querySelector('[data-input="id-valor-imovel"]').value,
+      'add_data_hora': evento.target.querySelector('#add-data-hora').checked,
+      'limpar_txt_area': evento.target.querySelector('#limpar-txt-area').checked,
+    };
+
+    const textarea = document.querySelector('[data-content="relatorio"]');
+
+    !isEmpty(dados.limpar_txt_area) ? dados.limpar_txt_area ? textarea.value = '' : '' : '';
+
+    textarea.value += 
+    `FID: ${dados.fid}\n` +
+    `GERENTE: ${!isEmpty(dados.gerente) ? dados.gerente.trim().toUpperCase() : ''}\n` +
+    `EMPREENDIMENTO: ${!isEmpty(dados.empreendimento) ? dados.empreendimento.trim().toLowerCase() : ''}\n` + 
+    `VALOR IMÓVEL: ${dados.valor}\n`;
+
+    !isEmpty(dados.add_data_hora) ? dados.add_data_hora ? textarea.value += `\n## ${moment().format('DD/MM/YYYY HH:mm')} - [ANALISTA] ##\n` : ''  : '';
+
+    resizeTextArea(textarea);
+    $(modal).modal('hide');
   })
-
-}
-
-function acaoAddInformacoes(){
-
 }
 
 export {
