@@ -180,7 +180,6 @@ const renderResumo = () => {
   
   if(!isEmpty(accordion_group)){
     accordion_group.querySelectorAll('[data-information="nome-proponente"]').forEach((nome, index) => {
-      // !nomes.includes(nome.textContent) ? nomes.push(nome.textContent) : '';
       nomes.push(nome.textContent);
     })
     

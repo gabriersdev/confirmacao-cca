@@ -38,7 +38,8 @@ const escutaEventoInput = () => {
       edicaoTextAreaPendencias(elemento)
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
-      elemento.addEventListener('input', (evento) => { renderPendencias(); renderResumo();});
+      elemento.addEventListener('input', (evento) => { renderPendencias(); });
+      // renderResumo();
     }
   })
 }
