@@ -93,18 +93,19 @@ const acaoClickCopiar = (btn) => {
   try{
     btn.addEventListener('click', () => {
       const elemento = btn.closest('[data-node="card"]').querySelector('[data-copiar="texto"]');
+      let e = elemento.value;
+
       const data_input = elemento.dataset.input;
 
       if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'nome'){
-        elemento.textContent = elemento.textContent.toUpperCase();
-        elemento.value = elemento.value.toUpperCase();
+        e = e.toUpperCase();
       }
 
       else if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'cpf'){
-        elemento.value = sanitizarCPF(elemento.value);
+        e = (sanitizarCPF(e));
       }
 
-      copiar(elemento.textContent || elemento.value).then(retorno => {
+      copiar(e).then(retorno => {
         feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'});});
       })
   }catch(error){
