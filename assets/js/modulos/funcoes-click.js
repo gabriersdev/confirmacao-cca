@@ -115,8 +115,8 @@ const acaoClickCopiar = (btn) => {
   function feedback({html, classe}){
     // const html_botao = btn.innerHTML;
     const html_botao = `<i class="bi bi-clipboard"></i>`;
-    // const class_botao = btn.classList.value;
-    const class_botao = `btn-outline-primary`;
+    const class_botao = !isEmpty(btn.classList.value) ? btn.classList.value == 'btn btn-outline-success' ? '' : btn.classList.value : '';
+    // const class_botao = `btn btn-outline-primary`;
     
     btn.innerHTML = html;
     btn.classList.value = classe;
