@@ -57,6 +57,13 @@ const tratamentoCampos = (input) => {
       case 'telefone':
       $(input).mask('(00) 00000-0000');
       break;
+
+      case 'id-fid':
+      $(input).mask('000000');
+      break;
+
+      case 'id-valor-imovel':
+      break;
       
       default:
       break;
