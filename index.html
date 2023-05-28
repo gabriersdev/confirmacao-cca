@@ -58,10 +58,42 @@
       </div>
     </div>
   </noscript>
-
+  
+  <div class="modal fade" id="modal-informacoes-adicionais" aria-hidden="true" aria-labelledby="modal-informacoes-adicionais-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-informacoes-adicionais-Label">Informações do Processo</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="form-group">
+              <label for="id-fid" class="mb-1">FID</label>
+              <input type="text" class="form-control" id="id-fid" name="id-fid" data-input="id-fid">
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-gerente-ou-corretor" class="mb-1">Gerente ou Corretor</label>
+              <input type="text" class="form-control" id="id-gerente-ou-corretor" name="id-gerente-ou-corretor">
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-empreendimento" class="mb-1">Empreendimento</label>
+              <input type="text" class="form-control" id="id-empreendimento" name="id-empreendimento">
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-valor-imovel" class="mb-1">Valor do imóvel</label>
+              <input type="text" class="form-control" id="id-valor-imovel" name="id-valor-imovel" data-input="id-valor_imovel">
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-4 mb-2" style="width: 100%;">Add. dados</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="overlay-2">
     <div class="lds-ring-2"><div></div><div></div><div></div><div></div></div>
   </div>
-
+  
 </body>
 </html>

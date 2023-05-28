@@ -199,11 +199,33 @@ function clickLimparProcesso(){
   }
 }
 
+function clickAddInformacoes(){
+  const modal = document.querySelector('#modal-informacoes-adicionais');
+  document.querySelector('[data-action="add-informacoes"]').addEventListener('click', (evento) => {
+    evento.preventDefault();
+    $('#modal-informacoes-adicionais').modal('show');
+    setTimeout(() => {
+      modal.querySelector('[data-input="id-fid"]').focus();
+    }, 500)
+  })
+
+  modal.querySelector('form').addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    console.log(evento.target);
+  })
+
+}
+
+function acaoAddInformacoes(){
+
+}
+
 export {
   clickIncluirRenda,
   clickRemoverRenda,
   clickIncluirProponente,
   clickRemoverProponente,
   clickCopiar,
-  clickLimparProcesso
+  clickLimparProcesso,
+  clickAddInformacoes
 }
