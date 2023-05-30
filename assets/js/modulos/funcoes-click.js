@@ -229,7 +229,7 @@ function clickAddInformacoes(){
       textarea.value += 
       `FID: ${dados.fid}\n` +
       `GERENTE: ${!isEmpty(dados.gerente) ? dados.gerente.trim().toUpperCase() : ''}\n` +
-      `EMPREENDIMENTO: ${!isEmpty(dados.empreendimento) ? dados.empreendimento.trim().toLowerCase() : ''}\n` + 
+      `EMPREENDIMENTO: ${!isEmpty(dados.empreendimento) ? dados.empreendimento.trim().toUpperCase() : ''}\n` + 
       `VALOR IMÓVEL: ${dados.valor}\n`;
   
       !isEmpty(dados.add_data_hora) ? dados.add_data_hora ? textarea.value += `\n## ${moment().format('DD/MM/YYYY HH:mm')} - [ANALISTA] ##\n` : ''  : '';
