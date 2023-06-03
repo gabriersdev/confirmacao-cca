@@ -33,7 +33,17 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     body.innerHTML += conteudos.conteudo_pagina_arquivos;
     const area_arquivos = document.querySelector('[data-content="area-arquivos"]');
 
-    renderConteudosPagina(area_arquivos, ordernarString(conteudos.arquivos), 'arquivos')
+    renderConteudosPagina(area_arquivos, ordernarString(conteudos.arquivos), 'arquivos');
+    document.querySelectorAll('a').forEach(a => {
+      a.setAttribute('confirm', a.getAttribute('href'));
+      a.removeAttribute('href');
+      a.setAttribute('onclick', 'clickConfirm()');
+    })
+
+    function clickConfirm(){
+      console.log('clicou');
+    }
+    window.clickConfirm = clickConfirm;
   }
 
   body.innerHTML += conteudos.rodape;

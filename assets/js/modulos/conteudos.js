@@ -26,13 +26,19 @@ const consultas = [
   { tag: 'dossiê', titulo: 'Consulta FGTS', sistema: 'SIOPI', link: 'https://habitacao.caixa.gov.br/siopiweb-web/siopientrada.do' },
   { tag: 'dossiê', titulo: 'FGTS', sistema: 'CIWEB', link: 'https://www.ciweb.caixa.gov.br/sso/' },
   { tag: 'dossiê', titulo: 'Conformidade', sistema: 'SICTD', link: 'https://digitalizar.caixa.gov.br/sictd-digitalizar/' },  
+  { tag: 'útil', titulo: 'Calculadora IRRF', sistema: 'iDinheiro', link: 'https://www.idinheiro.com.br/calculadoras/calculadora-imposto-de-renda/' },  
+  { tag: 'útil', titulo: 'Calculadora INSS', sistema: 'iDinheiro', link: 'https://www.idinheiro.com.br/calculadoras/calculadora-inss/' },  
+  { tag: 'útil', titulo: 'Tempo de Serviço', sistema: 'GitHub', link: 'https://gabrieszin.github.io/calculadora-tempo-de-servico/' },  
 ]
 
 const arquivos = [
-  { tag: '', titulo: '', sistema: '', link: '' },
   { tag: 'cadastro', titulo: 'Relatório', sistema: 'Word', link: '#' },
-  { tag: 'dossiê', titulo: 'Relatório', sistema: 'Word', link: '#' },
-  { tag: 'validação', titulo: 'Relatório', sistema: 'Word', link: '#' },
+  { tag: 'cadastro', titulo: 'Tabela de Apuração', sistema: 'Excel', link: '#' },
+  { tag: 'dossiê', titulo: 'Capa', sistema: 'Word', link: '#' },
+  { tag: 'dossiê', titulo: 'Ateste', sistema: 'Word', link: '#' },
+  // { tag: 'dossiê', titulo: 'Damp FGTS', sistema: 'HTML', link: '#' },
+  { tag: 'validação', titulo: 'Validação de Pesquisa', sistema: 'Word', link: '#' },
+  // { tag: 'desligamento', titulo: 'KIT Registro', sistema: 'Word', link: '#' },
 ]
 
 const rodape = ` <div class="container"> <footer class="pt-4 my-md-5 pt-md-5 border-top"> <div class="row"> <div class="col-12 col-md"> <small class="d-block text-muted">Desenvolvido por</small> <a href="" data-link="github-dev"><h5 class="bold">Gabriel Ribeiro</h5></a><br> <small class="d-block text-muted">&copy; <span data-ano-atual=''>2023</span></small> <small class="d-block mb-3 text-muted">Todos os direitos reservados.</small> </div> <div class="col-6 col-md"> <h5>Recursos</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="consultas">Consultas</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="arquivos">Arquivos</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Navegação</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="confirmacao">Confirmação</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="consultas">Consultas</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" rel="noreferrer noopener" href="#" data-link="arquivos">Arquivos</a></li> </ul> </div> <div class="col-6 col-md"> <h5>Sobre</h5><br> <ul class="list-unstyled text-small"> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-dev">Desenvolvedor</a></li> <li class="mb-1"><a class="link-secondary text-decoration-none" href="#" data-link="github-projeto">GitHub</a></li> </ul> </div> </div> </footer><br> </div>`;
