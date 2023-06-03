@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, capitalize, isEmpty, resizeTextArea, atribuirLinks } from './modulos/utilitarios.js';
+import { atualizarDatas, capitalize, isEmpty, atribuirLinks, ordernarString } from './modulos/utilitarios.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 
 (() => { 
@@ -22,18 +22,18 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     document.querySelector('.accordion').appendChild(accordion_item);
   }
   
-  else if(pagina == 'consultas.html' || pagina == 'confirmacao-cca/consultas.html'){
+  else if(pagina == 'consultas/index.html' || pagina == 'confirmacao-cca/consultas/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_consultas;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
-    
-    renderConteudosPagina(area_consultas, conteudos.consultas, 'consultas')
+
+    renderConteudosPagina(area_consultas, ordernarString(conteudos.consultas), 'consultas')
   }
 
-  else if(pagina == 'arquivos.html' || pagina == 'confirmacao-cca/arquivos.html'){
+  else if(pagina == 'arquivos/index.html' || pagina == 'confirmacao-cca/arquivos/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_arquivos;
     const area_arquivos = document.querySelector('[data-content="area-arquivos"]');
 
-    renderConteudosPagina(area_arquivos, conteudos.arquivos, 'arquivos')
+    renderConteudosPagina(area_arquivos, ordernarString(conteudos.arquivos), 'arquivos')
   }
 
   body.innerHTML += conteudos.rodape;

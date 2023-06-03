@@ -25,15 +25,15 @@ function atribuirLinks(){
   linkElementos.forEach(link => {
     switch(link.dataset.link.toLowerCase().trim()){
       case 'arquivos':
-      link.href = './arquivos.html';
+      link.href = '../arquivos/index.html';
       break;
       
       case 'confirmacao':
-      link.href = './index.html';
+      link.href = '../index.html';
       break;
       
       case 'consultas':
-      link.href = './consultas.html';
+      link.href = '../consultas/index.html';
       break;
       
       case 'github-dev':
@@ -216,6 +216,10 @@ const verificarData = (data) => {
   return false;
 }
 
+function ordernarString(array){
+  return array.slice(0).sort(function(a, b){let x = a.titulo.toLowerCase(); let y = b.titulo.toLowerCase(); return x < y ? -1 : x > y ? 1 : 0;})
+}
+
 export{
   isEmpty,
   capitalize,
@@ -230,5 +234,6 @@ export{
   primeiroNome,
   verificarCPF,
   verificarEmail,
-  verificarData
+  verificarData,
+  ordernarString
 }
