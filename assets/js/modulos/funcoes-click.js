@@ -93,7 +93,7 @@ const acaoClickCopiar = (btn) => {
   try{
     btn.addEventListener('click', () => {
       const elemento = btn.closest('[data-node="card"]').querySelector('[data-copiar="texto"]');
-      let e = elemento.value;
+      let e = elemento.value || elemento.innerText;
 
       const data_input = elemento.dataset.input;
 
