@@ -57,6 +57,8 @@ function atribuirLinks(){
       link.href = 'https://github.com/gabrieszin/confirmacao-cca';
       break;
     }
+
+    link.setAttribute('rel', 'noopener noreferrer');
   })
 }
 
