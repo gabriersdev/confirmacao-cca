@@ -13,6 +13,7 @@ import { funcoesBase } from './modulos/funcoes-base.js';
 
   const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
+  console.log(pagina);
 
   if(pagina == 'index.html' || pagina == 'confirmacao-cca/' || pagina == 'confirmacao-cca/index.html' || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
@@ -22,14 +23,14 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     document.querySelector('.accordion').appendChild(accordion_item);
   }
   
-  else if(pagina == 'consultas/index.html' || pagina == 'confirmacao-cca/consultas/index.html'){
+  else if(pagina == 'consultas/index.html' || pagina == 'confirmacao-cca/consultas/' || pagina == 'confirmacao-cca/consultas/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_consultas;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
 
     renderConteudosPagina(area_consultas, ordernarString(conteudos.consultas), 'consultas')
   }
 
-  else if(pagina == 'arquivos/index.html' || pagina == 'confirmacao-cca/arquivos/index.html'){
+  else if(pagina == 'arquivos/index.html' || pagina == 'confirmacao-cca/arquivos/' || pagina == 'confirmacao-cca/arquivos/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_arquivos;
     const area_arquivos = document.querySelector('[data-content="area-arquivos"]');
 
