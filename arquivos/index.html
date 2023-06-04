@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet/less" type="text/css" href="../styles.less">
   
-  <link rel="shortcut icon" href="../assets/img/favicon-consultas.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="../assets/img/favicon-arquivos.svg" type="image/x-icon">
   
   <title>Arquivos - CCA</title>
   
@@ -76,7 +76,10 @@
           <form action="">
             <div class="form-group">
               <label for="senha-arquivo" class="mb-1">Senha</label>
-              <input type="text" id="senha-arquivo" class="form-control" placeholder="123456789ABC." maxlength="8" minlength="6" autocomplete="off" required>
+              <div class="input-group">
+                <input type="password" id="senha-arquivo" class="form-control" placeholder="A senha vai aqui" maxlength="8" minlength="6" autocomplete="off" required>
+                <button type="button" class="btn btn-outline-secondary" data-action="btn-visibilidade-senha"><i class="bi bi-eye-fill"></i></button>
+              </div>
             </div>
             <a href="" data-element="link-referencia" rel="noreferrer noopener"></a>
             <button type="submit" class="btn btn-outline-primary mt-3" style="width: 100%;" onclick="clickEnviarConfirmacaoSenha(event, this)">Enviar</button>

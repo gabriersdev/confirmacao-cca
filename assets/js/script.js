@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, capitalize, isEmpty, atribuirLinks, ordernarString } from './modulos/utilitarios.js';
+import { atualizarDatas, capitalize, isEmpty, atribuirLinks, ordernarString, limparEFocar } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 
@@ -48,9 +48,10 @@ import { funcoesBase } from './modulos/funcoes-base.js';
 
     function clickConfirm(elemento){
       $('#modal-confirmar-senha').modal('show');
+      const modal = document.querySelector('#modal-confirmar-senha');
+      limparEFocar(modal.querySelectorAll('input')[0], 'clear');
       setTimeout(() => {
-        const modal = document.querySelector('#modal-confirmar-senha');
-        modal.querySelectorAll('input')[0].focus();
+        limparEFocar(modal.querySelectorAll('input')[0], 'focus');
         modal.querySelector('button[type="submit"]').setAttribute('onclick', `clickEnviarConfirmacaoSenha(event, this, '${elemento.getAttribute('confirm')}')`);
       }, 500);
     }

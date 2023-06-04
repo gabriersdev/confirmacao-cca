@@ -235,6 +235,25 @@ function ordernarString(array){
   return array.slice(0).sort(function(a, b){let x = a.titulo.toLowerCase(); let y = b.titulo.toLowerCase(); return x < y ? -1 : x > y ? 1 : 0;})
 }
 
+function limparEFocar(input, comando){
+  if(!isEmpty(comando)){
+    switch(comando){
+      case 'clear':
+        input.value = '';
+      break;
+      case 'focus':
+        input.focus();
+      break;
+      default:
+        // Ação não implementada
+      break;
+    }
+  }else{
+    input.focus();
+    input.value = '';
+  }
+}
+
 export{
   isEmpty,
   capitalize,
@@ -250,5 +269,6 @@ export{
   verificarCPF,
   verificarEmail,
   verificarData,
-  ordernarString
+  ordernarString,
+  limparEFocar
 }

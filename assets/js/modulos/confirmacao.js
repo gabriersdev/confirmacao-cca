@@ -1,4 +1,4 @@
-import { isEmpty } from "./utilitarios.js";
+import { isEmpty, limparEFocar } from "./utilitarios.js";
 
 export {
   verificacao
@@ -14,6 +14,7 @@ const conteudos = [
 
 function verificacao(evento, elemento, referencia){
   evento.preventDefault();
+  const input = elemento.parentElement.querySelectorAll('input')[0];
   
   let encrypted = CryptoJS.AES.encrypt(elemento.parentElement.querySelector('#senha-arquivo').value, "Secret Passphrase");
   
@@ -38,16 +39,15 @@ function verificacao(evento, elemento, referencia){
         }, 450);
       }else{
         feedback(elemento, 'btn btn-danger mt-3', 'Oops... senha incorreta!');
-        elemento.parentElement.querySelectorAll('input')[0].focus();
       }
     }else{
       feedback(elemento, 'btn btn-danger mt-3', 'Oops... senha incorreta!');
-      elemento.parentElement.querySelectorAll('input')[0].focus();
     }
   }catch(erro){
-    console.log(erro)
     feedback(elemento, 'btn btn-danger mt-3', 'Oops... ocorreu um erro!');
   }
+
+  limparEFocar(input);
 }
 
 function feedback(elemento, classe, HTML){

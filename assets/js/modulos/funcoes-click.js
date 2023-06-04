@@ -240,6 +240,17 @@ function clickAddInformacoes(){
   }
 }
 
+function clickVisibilidadeSenha(){
+  const botao = document.querySelector('[data-action="btn-visibilidade-senha"]');
+  if(!isEmpty(botao)){
+    botao.addEventListener('click', (evento) => {
+      evento.preventDefault();
+      const input = botao.parentElement.querySelectorAll('input')[0];
+      input.setAttribute('type', input.type == 'text' ? 'password' : 'text');
+    })
+  }
+}
+
 export {
   clickIncluirRenda,
   clickRemoverRenda,
@@ -247,5 +258,6 @@ export {
   clickRemoverProponente,
   clickCopiar,
   clickLimparProcesso,
-  clickAddInformacoes
+  clickAddInformacoes,
+  clickVisibilidadeSenha
 }
