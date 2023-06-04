@@ -81,7 +81,7 @@ const tratamentoCampos = (input) => {
 }
 
 function funcoesBase(){
-  // verificarInputsRecarregamento();
+  verificarInputsRecarregamento();
   renderTooltips();
   renderPopover();
   renderResumo();
