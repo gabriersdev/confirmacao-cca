@@ -129,7 +129,8 @@ const acaoClickCopiar = (btn) => {
 }
 window.acaoClickCopiar = acaoClickCopiar;
 
-const clickDownload = (elemento) => {
+const clickDownload = (elemento, evento) => {
+  evento.preventDefault();
   switch(elemento.dataset.download){
     case 'baixar-dados':
     //Selecionar Nome, CPF e data de nascimento de todos os proponentes
@@ -155,6 +156,51 @@ const clickDownload = (elemento) => {
     const pendencias = document.querySelector('[data-content="pendencias"]').value;
     criarEBaixarTXT(JSON.stringify(pendencias), "PENDENCIAS");
     break;
+
+    case 'baixar-acompanhar-fid':
+    try{
+      const link = new URL(elemento.parentElement.querySelector('input[type=url]').value);
+      const split = link.search.split('&');
+      
+      const valido = [
+      link.origin.toLowerCase() == 'https://portalsafi.direcional.com.br', 
+      link.pathname.toLowerCase() == '/fluxo', 
+      split.length == 2, 
+      split[0].search('codigo') > 0,
+      typeof(parseInt(split[0].split('=')[1])) == 'number',
+      split[0].split('=')[1].length == 6
+      ];
+      
+      const FID = split[0].split('=')[1];
+      
+      if(valido.every(e => e == true)){
+        reportar(true);
+        criarEBaixarHTMLAcompanhamento(FID, link.href, `Acompanhe o FID ${FID}`);
+      }else{
+        reportar(false, 'O link informado para o FID não é válido');
+      }
+      
+    }catch(error){
+      reportar(false, 'O link informado para o FID não é válido');
+    }
+
+    function reportar(condicao, texto){
+      const retorno = document.querySelector('[data-element="retorno-link-fid"]');
+      if(!condicao){
+        retorno.setAttribute('class', 'alert alert-danger mt-3 mb-0');
+        retorno.innerText = texto;
+      }else{
+        retorno.setAttribute('class', '');
+        retorno.innerText = '';
+      }
+
+      setTimeout(() => {
+        // retorno.setAttribute('class', '');
+        // retorno.innerText = '';
+      }, 2000);
+    }
+
+    break;
   }
 }
 window.clickDownload = clickDownload;
@@ -166,7 +212,12 @@ const criarEBaixarTXT = (conteudo, nome) => {
 
 const criarEBaixarJSON = (conteudo, nome) => {
   let blob = new Blob([`${JSON.stringify(conteudo)}`], {type: "text/plain;charset=utf-8"});
-  saveAs(blob, `${nome.toUpperCase()}.txt`);
+  saveAs(blob, `${nome.toUpperCase()}.json`);
+}
+
+const criarEBaixarHTMLAcompanhamento = (FID, link, nome) => {
+  let blob = new Blob([`${conteudos.HTMLacompanharFID(FID, link)}`], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, `${nome.trim()}.html`);
 }
 
 function clickLimparProcesso(){

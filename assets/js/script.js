@@ -49,9 +49,11 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     function clickConfirm(elemento){
       $('#modal-confirmar-senha').modal('show');
       const modal = document.querySelector('#modal-confirmar-senha');
-      limparEFocar(modal.querySelectorAll('input')[0], 'clear');
+      const input = modal.querySelectorAll('input')[0];
+      limparEFocar(input, 'clear');
       setTimeout(() => {
-        limparEFocar(modal.querySelectorAll('input')[0], 'focus');
+        limparEFocar(input, 'focus');
+        input.setAttribute('type', 'password');
         modal.querySelector('button[type="submit"]').setAttribute('onclick', `clickEnviarConfirmacaoSenha(event, this, '${elemento.getAttribute('confirm')}')`);
       }, 500);
     }
@@ -105,7 +107,6 @@ import { funcoesBase } from './modulos/funcoes-base.js';
       })
     })
   }
-
 })();
 
 const datetime = moment();
