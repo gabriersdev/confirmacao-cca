@@ -25,7 +25,11 @@ function atribuirLinks(){
   linkElementos.forEach(link => {
     switch(link.dataset.link.toLowerCase().trim()){
       case 'arquivos':
-      link.href = '../arquivos/index.html';
+        if(document.title.toLowerCase() == 'Confirmação de dados - CCA'){
+          link.href = './arquivos/index.html';
+        }else{
+          link.href = '../arquivos/index.html';
+        }
       break;
       
       case 'confirmacao':
@@ -33,7 +37,11 @@ function atribuirLinks(){
       break;
       
       case 'consultas':
-      link.href = '../consultas/index.html';
+        if(document.title.toLowerCase() == 'Confirmação de dados - CCA'){
+          link.href = './consultas/index.html';
+        }else{
+          link.href = '../consultas/index.html';
+        }
       break;
       
       case 'github-dev':
