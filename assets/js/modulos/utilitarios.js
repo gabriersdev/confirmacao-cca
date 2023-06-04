@@ -25,7 +25,7 @@ function atribuirLinks(){
   linkElementos.forEach(link => {
     switch(link.dataset.link.toLowerCase().trim()){
       case 'arquivos':
-        if(document.title.toLowerCase() == 'Confirmação de dados - CCA'){
+        if(document.title == 'Confirmação de dados - CCA'){
           link.href = './arquivos/index.html';
         }else{
           link.href = '../arquivos/index.html';
@@ -33,11 +33,16 @@ function atribuirLinks(){
       break;
       
       case 'confirmacao':
-      link.href = '../index.html';
+        if(document.title == 'Confirmação de dados - CCA'){
+          link.href = '#';
+          window.scrollTo({top: 0, behavior: 'smooth'});
+        }else{
+          link.href = '../index.html';
+        }
       break;
       
       case 'consultas':
-        if(document.title.toLowerCase() == 'Confirmação de dados - CCA'){
+        if(document.title == 'Confirmação de dados - CCA'){
           link.href = './consultas/index.html';
         }else{
           link.href = '../consultas/index.html';
