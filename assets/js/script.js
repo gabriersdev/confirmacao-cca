@@ -2,9 +2,15 @@
 
 import { conteudos } from './modulos/conteudos.js';
 import { atualizarDatas, capitalize, isEmpty, atribuirLinks, ordernarString } from './modulos/utilitarios.js';
+import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 
-(() => { 
+(() => {  
+  function clickEnviarConfirmacaoSenha(evento, elemento, referencia){
+    verificacao(evento, elemento, referencia);
+  }
+  window.clickEnviarConfirmacaoSenha = clickEnviarConfirmacaoSenha;
+
   document.querySelectorAll('[data-recarrega-pagina]').forEach(botao => {
     botao.addEventListener('click', () => {
       window.location.reload;
@@ -36,12 +42,17 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     renderConteudosPagina(area_arquivos, ordernarString(conteudos.arquivos), 'arquivos');
     document.querySelectorAll('a').forEach(a => {
       a.setAttribute('confirm', a.getAttribute('href'));
-      a.removeAttribute('href');
-      a.setAttribute('onclick', 'clickConfirm()');
+      a.removeAttribute('href'); 
+      a.setAttribute('onclick', 'clickConfirm(this)');
     })
 
-    function clickConfirm(){
-      console.log('clicou');
+    function clickConfirm(elemento){
+      $('#modal-confirmar-senha').modal('show');
+      setTimeout(() => {
+        const modal = document.querySelector('#modal-confirmar-senha');
+        modal.querySelectorAll('input')[0].focus();
+        modal.querySelector('button[type="submit"]').setAttribute('onclick', `clickEnviarConfirmacaoSenha(event, this, '${elemento.getAttribute('confirm')}')`);
+      }, 500);
     }
     window.clickConfirm = clickConfirm;
   }
