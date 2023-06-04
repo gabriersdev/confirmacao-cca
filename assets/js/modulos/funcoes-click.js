@@ -131,15 +131,19 @@ window.acaoClickCopiar = acaoClickCopiar;
 
 const clickDownload = (elemento, evento) => {
   evento.preventDefault();
+  const saida = new Array();
+  const proponentes = document.querySelectorAll('.accordion-item');
+  const primeirosNomes = new Array();
+
+  proponentes.forEach((proponente) => {
+    !isEmpty(proponente.querySelector('[data-input="nome"]').value.trim()) ? primeirosNomes.push(primeiroNome(proponente.querySelector('[data-input="nome"]').value.trim())) : '';
+  })
+
   switch(elemento.dataset.download){
     case 'baixar-dados':
     //Selecionar Nome, CPF e data de nascimento de todos os proponentes
-    const saida = new Array();
-    const proponentes = document.querySelectorAll('.accordion-item');
-    const primeirosNomes = new Array();
     proponentes.forEach((proponente, index) => {
       const nome = proponente.querySelector('[data-input="nome"]').value.trim();
-      !isEmpty(nome) ? primeirosNomes.push(primeiroNome(nome)) : '';
       saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${!isEmpty(nome) ? nome.toUpperCase() : ''}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n` + `TELEFONE: ${proponente.querySelector('[data-input="telefone"]').value.replaceAll('-', '').trim()}\n` + `EMAIL: ${proponente.querySelector('[data-input="email"]').value.trim()}\n\n`)
     });
     criarEBaixarTXT(JSON.stringify(saida.join('\n')), `DADOS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
@@ -148,13 +152,13 @@ const clickDownload = (elemento, evento) => {
     case 'baixar-relatorio':
     //Selecionar conteúdo no textarea de relatório
     const relatorio = document.querySelector('[data-content="relatorio"]').value;
-    criarEBaixarTXT(JSON.stringify(relatorio), "RELATORIO");
+    criarEBaixarTXT(JSON.stringify(relatorio), `RELATORIO${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
     break;
 
     case 'baixar-pendencias':
     //Selecionar conteúdo no textarea de pendências
     const pendencias = document.querySelector('[data-content="pendencias"]').value;
-    criarEBaixarTXT(JSON.stringify(pendencias), "PENDENCIAS");
+    criarEBaixarTXT(JSON.stringify(pendencias), `PENDENCIAS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
     break;
 
     case 'baixar-acompanhar-fid':
