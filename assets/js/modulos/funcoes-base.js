@@ -5,13 +5,15 @@ import { isEmpty } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = () => {
-  window.onbeforeunload = async (evento) => {
-    evento.preventDefault();
-    await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
-      if(!isEmpty(elemento.value)){
-        return 'Tem certeza que deseja sair?';
-      }
-    })
+  if(document.title.trim() == 'Confirmação de dados - CCA'){
+    window.onbeforeunload = async (evento) => {
+      evento.preventDefault();
+      await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
+        if(!isEmpty(elemento.value)){
+          return 'Tem certeza que deseja sair?';
+        }
+      })
+    }
   }
 }
 
