@@ -25,28 +25,42 @@ function atribuirLinks(){
   linkElementos.forEach(link => {
     switch(link.dataset.link.toLowerCase().trim()){
       case 'arquivos':
-        if(document.title == 'Confirmação de dados - CCA'){
-          link.href = './arquivos/index.html';
-        }else{
-          link.href = '../arquivos/index.html';
-        }
+      if(document.title == 'Confirmação de dados - CCA'){
+        link.href = './arquivos/index.html';
+        link.setAttribute('target', '_blank');
+      }else if(document.title == 'Arquivos - CCA'){
+        link.href = '#';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+        link.removeAttribute('target');
+      }else{
+        link.href = '../arquivos/index.html';
+        link.setAttribute('target', '_blank');
+      }
       break;
       
       case 'confirmacao':
-        if(document.title == 'Confirmação de dados - CCA'){
-          link.href = '#';
-          window.scrollTo({top: 0, behavior: 'smooth'});
-        }else{
-          link.href = '../index.html';
-        }
+      if(document.title == 'Confirmação de dados - CCA'){
+        link.href = '#';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+        link.removeAttribute('target');
+      }else{
+        link.href = '../index.html';
+        link.setAttribute('target', '_blank');
+      }
       break;
       
       case 'consultas':
-        if(document.title == 'Confirmação de dados - CCA'){
-          link.href = './consultas/index.html';
-        }else{
-          link.href = '../consultas/index.html';
-        }
+      if(document.title == 'Confirmação de dados - CCA'){
+        link.href = './consultas/index.html';
+        link.setAttribute('target', '_blank');
+      }else if(document.title == 'Consulta de dados - CCA'){
+        link.href = '#';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+        link.removeAttribute('target');
+      }else{
+        link.href = '../consultas/index.html';
+        link.setAttribute('target', '_blank');
+      }
       break;
       
       case 'github-dev':
@@ -57,7 +71,7 @@ function atribuirLinks(){
       link.href = 'https://github.com/gabrieszin/confirmacao-cca';
       break;
     }
-
+    
     link.setAttribute('rel', 'noopener noreferrer');
   })
 }
@@ -239,13 +253,13 @@ function limparEFocar(input, comando){
   if(!isEmpty(comando)){
     switch(comando){
       case 'clear':
-        input.value = '';
+      input.value = '';
       break;
       case 'focus':
-        input.focus();
+      input.focus();
       break;
       default:
-        // Ação não implementada
+      // Ação não implementada
       break;
     }
   }else{
