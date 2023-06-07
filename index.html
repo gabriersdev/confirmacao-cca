@@ -103,6 +103,76 @@
   <div class="overlay-2">
     <div class="lds-ring-2"><div></div><div></div><div></div><div></div></div>
   </div>
+
+  <div class="modal fade" id="modal-2" aria-hidden="true" aria-labelledby="modal-2-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-2-Label">Devolução do FID</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="">
+            <div class="row">
+              <div class="col form-group">
+                <label for="dev-renda" class="mb-1">Renda</label>
+                <input type="text" class="form-control" id="dev-renda" name="dev-renda" data-mask="money">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <label for="dev-parcela" class="mb-1">Parcela</label>
+                <input type="text" class="form-control" id="dev-parcela" name="dev-parcela" data-mask="money">
+              </div>
+              <div class="col form-group">
+                <input type="radio" class="form-check-input" name="dev-status-parcela" id="dev-status-parcela-aprovado">
+                <label for="dev-status-parcela-aprovado" class="form-check-label">Aprovado</label><br>
+                <input type="radio" class="form-check-input" name="dev-status-parcela" id="dev-status-parcela-condicionado">
+                <label for="dev-status-parcela-condicionado" class="form-check-label">Condicionado</label>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <label for="dev-parcela-1" class="mb-1">1ª parcela</label>
+                <input type="text" class="form-control" id="dev-parcela-1" name="dev-parcela-1" data-mask="money">
+              </div>
+              <div class="col form-group">
+                <label for="dev-seguro" class="mb-1">Seguro</label>
+                <input type="text" class="form-control" id="dev-seguro" name="dev-seguro">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <label for="dev-valor-de-financiamento" class="mb-1">Valor de financiamento</label>
+                <input type="text" class="form-control" id="dev-valor-de-financiamento" name="dev-valor-de-financiamento" data-mask="money">
+              </div>
+              <div class="col form-group">
+                <label for="dev-prazo" class="mb-1">Prazo</label>
+                <input type="number" class="form-control" id="dev-prazo" name="dev-prazo">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col form-group">
+                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-price">
+                <label for="dev-tabela-price" class="form-check-label">PRICE</label><br>
+                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-sac">
+                <label for="dev-tabela-sac" class="form-check-label">SAC</label>
+              </div>
+              <div class="col form-group">
+                <label for="dev-taxa-juros" class="mb-1">Taxa de juros</label>
+                <input type="number" class="form-control" id="dev-taxa-juros" name="dev-taxa-juros">
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="dev-pendencias" class="mb-1">Pendências</label>
+              <input type="text" class="form-control" id="dev-pendencias" name="dev-pendencias">
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-4 mb-2" style="width: 100%;">Add. informações</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   
 </body>
 </html>

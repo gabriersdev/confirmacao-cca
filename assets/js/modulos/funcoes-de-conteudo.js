@@ -1,3 +1,4 @@
+import { renderResumo } from "./funcoes-render.js";
 import { isEmpty, resizeTextArea, verificarCPF, verificarData, verificarEmail } from "./utilitarios.js";
 
 const edicaoInputNome = () => {
@@ -5,6 +6,7 @@ const edicaoInputNome = () => {
     input.addEventListener('input', () => {
       input.closest('[data-identify]').querySelectorAll('[data-content="nome"]').forEach(content => {
         content.textContent = !isEmpty(input.value) ? input.value.toUpperCase() : 'Nome do cliente';
+        renderResumo();
       }) 
     })
   })
