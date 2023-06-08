@@ -1,4 +1,4 @@
-import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha } from './funcoes-click.js'
+import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { isEmpty } from './utilitarios.js';
@@ -94,6 +94,7 @@ function funcoesBase(){
   clickRemoverRenda();
   clickAddInformacoes();
   clickVisibilidadeSenha();
+  clickAddDevolucaoFID();
   edicaoInputNome();
   escutaEventoInput();
 }

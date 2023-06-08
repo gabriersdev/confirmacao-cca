@@ -306,6 +306,20 @@ function clickVisibilidadeSenha(){
   }
 }
 
+function clickAddDevolucaoFID(){
+  const botao = document.querySelector('[data-action="add-devolucao-fid"]');
+  if(!isEmpty(botao)){
+    botao.addEventListener('click', (evento) => {
+      evento.preventDefault();
+      const modal = document.querySelector('#modal-devolucao-fid');
+      $(modal).modal('show');
+      setTimeout(() => {
+        modal.querySelectorAll('input')[0].focus();
+      }, 500);
+    })
+  }
+}
+
 export {
   clickIncluirRenda,
   clickRemoverRenda,
@@ -314,5 +328,6 @@ export {
   clickCopiar,
   clickLimparProcesso,
   clickAddInformacoes,
-  clickVisibilidadeSenha
+  clickVisibilidadeSenha,
+  clickAddDevolucaoFID
 }
