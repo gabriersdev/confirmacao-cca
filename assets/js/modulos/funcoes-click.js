@@ -312,7 +312,14 @@ function clickAddDevolucaoFID(){
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
       const modal = document.querySelector('#modal-devolucao-fid');
-      $(modal).modal('show');
+      SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
+      // $(modal).modal('show');
+      
+      modal.querySelector('form').addEventListener('submit', (evento) => {
+        evento.preventDefault();
+        SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
+      })
+
       setTimeout(() => {
         modal.querySelectorAll('input')[0].focus();
       }, 500);
