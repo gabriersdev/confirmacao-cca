@@ -5,16 +5,16 @@ import { isEmpty } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = () => {
-  // if(document.title.trim() == 'Confirmação de dados - CCA'){
-  //   window.onbeforeunload = async (evento) => {
-  //     evento.preventDefault();
-  //     await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
-  //       if(!isEmpty(elemento.value)){
-  //         return 'Tem certeza que deseja sair?';
-  //       }
-  //     })
-  //   }
-  // }
+  if(document.title.trim() == 'Confirmação de dados - CCA' && true){
+    window.onbeforeunload = async (evento) => {
+      evento.preventDefault();
+      await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
+        if(!isEmpty(elemento.value)){
+          return 'Tem certeza que deseja sair?';
+        }
+      })
+    }
+  }
 }
 
 const escutaEventoInput = () => {
@@ -65,19 +65,32 @@ const tratamentoCampos = (input) => {
       break;
 
       case 'id-valor-imovel':
-        SimpleMaskMoney.setMask(input, {
-          prefix: 'R$ ',
-          fixed: true,
-          fractionDigits: 2,
-          decimalSeparator: ',',
-          thousandsSeparator: '.',
-          cursor: 'end'
-        });
+        mascararValores(input);
       break;
       
       default:
       break;
     }
+
+    switch(input.dataset.mask){
+      case 'money':
+        mascararValores(input);
+      break;
+    }
+
+    function mascararValores(input){
+      console.log(input)
+      SimpleMaskMoney.setMask(input, {
+        prefix: 'R$ ',
+        fixed: true,
+        fractionDigits: 2,
+        decimalSeparator: ',',
+        thousandsSeparator: '.',
+        cursor: 'end'
+      });
+      input.removeAttribute('maxlength');
+    }
+
   });
 }
 

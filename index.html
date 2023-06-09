@@ -116,56 +116,56 @@
             <div class="row">
               <div class="col form-group">
                 <label for="dev-renda" class="mb-1">Renda</label>
-                <input type="text" class="form-control" id="dev-renda" name="dev-renda" data-mask="money">
+                <input type="text" class="form-control" id="dev-renda" name="dev-renda" data-element="input" data-mask="money" required>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col form-group">
                 <label for="dev-parcela" class="mb-1">Parcela</label>
-                <input type="text" class="form-control" id="dev-parcela" name="dev-parcela" data-mask="money">
+                <input type="text" class="form-control" id="dev-parcela" name="dev-parcela" data-element="input" data-mask="money" required>
               </div>
               <div class="col form-group">
-                <input type="radio" class="form-check-input" name="dev-status-parcela" id="dev-status-parcela-aprovado">
+                <input type="radio" class="form-check-input" name="dev-status-parcela" id="dev-status-parcela-aprovado" required>
                 <label for="dev-status-parcela-aprovado" class="form-check-label">Aprovado</label><br>
-                <input type="radio" class="form-check-input" name="dev-status-parcela" id="dev-status-parcela-condicionado">
+                <input type="radio" class="form-check-input" name="dev-status-parcela" id="dev-status-parcela-condicionado" required>
                 <label for="dev-status-parcela-condicionado" class="form-check-label">Condicionado</label>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col form-group">
                 <label for="dev-parcela-1" class="mb-1">1ª parcela</label>
-                <input type="text" class="form-control" id="dev-parcela-1" name="dev-parcela-1" data-mask="money">
+                <input type="text" class="form-control" id="dev-parcela-1" name="dev-parcela-1" data-element="input" data-mask="money" required>
               </div>
               <div class="col form-group">
                 <label for="dev-seguro" class="mb-1">Seguro</label>
-                <input type="text" class="form-control" id="dev-seguro" name="dev-seguro">
+                <input type="text" class="form-control" id="dev-seguro" name="dev-seguro" data-element="input" required>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col form-group">
                 <label for="dev-valor-de-financiamento" class="mb-1">Valor de financiamento</label>
-                <input type="text" class="form-control" id="dev-valor-de-financiamento" name="dev-valor-de-financiamento" data-mask="money">
+                <input type="text" class="form-control" id="dev-valor-de-financiamento" name="dev-valor-de-financiamento" data-element="input" data-mask="money" required>
               </div>
               <div class="col form-group">
                 <label for="dev-prazo" class="mb-1">Prazo</label>
-                <input type="number" class="form-control" id="dev-prazo" name="dev-prazo">
+                <input type="number" class="form-control" id="dev-prazo" name="dev-prazo" data-element="input" required>
               </div>
             </div>
             <div class="row mt-3">
               <div class="col form-group">
-                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-price">
+                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-price" required>
                 <label for="dev-tabela-price" class="form-check-label">PRICE</label><br>
-                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-sac">
+                <input type="radio" class="form-check-input" name="dev-tabela" id="dev-tabela-sac" required>
                 <label for="dev-tabela-sac" class="form-check-label">SAC</label>
               </div>
               <div class="col form-group">
                 <label for="dev-taxa-juros" class="mb-1">Taxa de juros</label>
-                <input type="number" class="form-control" id="dev-taxa-juros" name="dev-taxa-juros">
+                <input type="number" class="form-control" id="dev-taxa-juros" name="dev-taxa-juros" data-element="input" required>
               </div>
             </div>
             <div class="form-group mt-3">
               <label for="dev-pendencias" class="mb-1">Pendências</label>
-              <input type="text" class="form-control" id="dev-pendencias" name="dev-pendencias">
+              <input type="text" class="form-control" id="dev-pendencias" name="dev-pendencias" data-element="input" required>
             </div>
             <button type="submit" class="btn btn-outline-primary mt-4 mb-2" style="width: 100%;">Add. informações</button>
           </form>

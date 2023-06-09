@@ -321,11 +321,15 @@ function clickAddDevolucaoFID(){
       })
 
       setTimeout(() => {
-        modal.querySelectorAll('input')[0].focus();
+        // modal.querySelectorAll('input')[0].focus();
       }, 500);
     })
   }
 }
+
+setTimeout(() => {
+  // $(document.querySelector('#modal-devolucao-fid')).modal('show');
+}, 500);
 
 export {
   clickIncluirRenda,
