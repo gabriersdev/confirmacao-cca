@@ -79,7 +79,6 @@ const tratamentoCampos = (input) => {
     }
 
     function mascararValores(input){
-      console.log(input)
       SimpleMaskMoney.setMask(input, {
         prefix: 'R$ ',
         fixed: true,
