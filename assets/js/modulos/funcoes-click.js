@@ -244,6 +244,10 @@ function clickLimparProcesso(){
             textarea.value = '';
             textarea.style.height = '100px';
           })
+
+          document.querySelectorAll('input[type=url]').forEach(input => {
+            input.value = '';
+          })
       
           document.querySelectorAll('.accordion-item').forEach(item => { item.remove() });
           renderResumo();
