@@ -4,16 +4,21 @@ import { renderTooltips, renderPopover, renderPendencias, renderResumo } from '.
 import { isEmpty } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
-const verificarInputsRecarregamento = () => {
-  if(document.title.trim() == 'Confirmação de dados - CCA' && true){
-    window.onbeforeunload = async (evento) => {
-      evento.preventDefault();
-      await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
-        if(!isEmpty(elemento.value)){
-          return 'Tem certeza que deseja sair?';
-        }
-      })
+const verificarInputsRecarregamento = (funcao) => {
+  if(isEmpty(funcao)){
+    if(document.title.trim() == 'Confirmação de dados - CCA' && true){
+      window.onbeforeunload = async (evento) => {
+        evento.preventDefault();
+        await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
+          if(!isEmpty(elemento.value)){
+            return 'Tem certeza que deseja sair?';
+          }
+        })
+      }
     }
+  }else{
+    console.log('aqui');
+    window.onbeforeunload = '';
   }
 }
 
@@ -122,5 +127,6 @@ function atualizar(){
 export {
   escutaEventoInput,
   funcoesBase,
-  atualizar
+  atualizar,
+  verificarInputsRecarregamento
 }

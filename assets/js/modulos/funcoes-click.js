@@ -1,7 +1,7 @@
 import { conteudos } from './conteudos.js';
 import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea } from './utilitarios.js';
 import { renderPendencias, renderResumo } from './funcoes-render.js';
-import { atualizar, escutaEventoInput } from './funcoes-base.js';
+import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
 
 const clickIncluirRenda = (botao) => {
@@ -226,12 +226,18 @@ const criarEBaixarHTMLAcompanhamento = (FID, link, nome) => {
 
 function clickLimparProcesso(){
   const btn = document.querySelector('[data-action="limpar-processo"]');
+
   if(!isEmpty(btn)){
     btn.addEventListener('click', (evento) => {
       evento.preventDefault();
       
       SwalAlert('confirmacao', 'question', 'Tem certeza que deseja limpar todo o processo?', 'Esta ação não poderá ser desfeita').then((retorno) => {
         if(retorno.isConfirmed){
+          verificarInputsRecarregamento('clear');
+          localStorage.clear();
+          sessionStorage.clear();
+          window.location.reload();
+
           document.querySelectorAll('[data-input]').forEach(input => {
             if(input.tagName.toLowerCase() == 'textarea' || input.tagName.toLowerCase() == 'input' && input.getAttribute('type') == 'text'){
               input.value = '';
