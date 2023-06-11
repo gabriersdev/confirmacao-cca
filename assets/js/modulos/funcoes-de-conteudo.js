@@ -1,5 +1,6 @@
 import { renderResumo } from "./funcoes-render.js";
-import { isEmpty, resizeTextArea, verificarCPF, verificarData, verificarEmail } from "./utilitarios.js";
+import { isEmpty, resizeTextArea, verificarCPF, verificarData, verificarEmail, capitalize, ordernarString } from "./utilitarios.js";
+import { conteudos } from "./conteudos.js";
 
 const edicaoInputNome = () => {
   document.querySelectorAll('[data-input="nome"]').forEach(input => {
@@ -56,6 +57,107 @@ const edicaoTextAreaPendencias = (textarea) => {
   })
 }
 
+const adicionarOpcoesAutoComplete = () => {
+  const opcoes = document.querySelector('[data-content="area-consultas"]').querySelectorAll('.content');
+  
+  const tags = new Array();
+  const titulos = new Array();
+  const elementos = new Array();
+  const sistemas = new Array();
+  
+  opcoes.forEach((opcao, index) => {
+    // !tags.includes(opcao.querySelector('.content-tag').textContent)? tags.push(opcao.querySelector('.content-tag').textContent) : '';
+    titulos.push(opcao.querySelector('h5').textContent);
+    elementos.push(opcao);
+    // !sistemas.includes(opcao.querySelector('.content-principal').querySelector('span').textContent)? sistemas.push(opcao.querySelector('.content-principal').querySelector('span').textContent) : '';
+  })
+  
+  const form = document.querySelector('form[data-form="pesquisa"]');
+  
+  new Array().concat(tags, titulos, sistemas).forEach((elemento, index) => {
+    form.querySelector('datalist').innerHTML += `<option value="${elemento}"><option>`;
+  })
+
+  const verificarSeValorExiste = (valor) => {
+    const resultados = new Array();
+    new Array().concat(tags, titulos, sistemas).forEach((elemento, index) => {
+      if(elemento.substr(0, (valor.trim().length)).toLowerCase() == valor.toLowerCase().trim()){
+        const e = elementos[index]
+        resultados.push({ tag: e.querySelector('.content-tag').textContent.toLowerCase(), titulo: e.querySelector('h5').textContent, sistema: e.querySelector('.content-principal').querySelector('span').textContent, link: e.href });
+      }
+    })
+    return resultados;
+  }
+  
+  const pesquisaConteudo = (evento) => {
+    evento.preventDefault();
+    const input = evento.target.closest('div').querySelector('input');
+    const pesquisado = input.value.trim();
+    const area_consultas = document.querySelector('[data-content="area-consultas"]');
+    
+    if(isEmpty(pesquisado)){
+      input.focus();
+      renderConteudosPagina(area_consultas, ordernarString(conteudos.consultas), 'consultas');
+    }else{
+      const resultados = verificarSeValorExiste(pesquisado);
+      if(isEmpty(resultados)){
+        area_consultas.innerHTML = '';
+        // console.log('Sem resultados!');
+        area_consultas.innerHTML += `<h5 class="text-muted titulo-consultas">Resultados para "${pesquisado}"</h5><div class="alert alert-secondary">Nenhum resultado foi encontrado para a sua busca.</div>`
+      }else{
+        renderConteudosPagina(area_consultas, resultados, 'consultas', `Resultados para "${pesquisado}"`);
+      }
+    }
+  }
+  window.pesquisaConteudo = pesquisaConteudo;
+}
+
+function renderConteudosPagina(area_elementos, elementos, objeto, caso){
+  const tags = new Array();
+  let conteudos_tag = new Array();
+  area_elementos.innerHTML = '';
+  
+  elementos.forEach(e => {
+    if(!tags.includes(e.tag) && !isEmpty(e.tag)){
+      tags.push(e.tag);
+    }
+  })
+  
+  tags.forEach(tag => {
+    conteudos_tag.push(elementos.filter(e => e.tag == tag))
+  })
+  
+  if(!isEmpty(caso)){
+    conteudos_tag = [elementos];
+  }
+
+  conteudos_tag.forEach((conteudo_tag, index) => {
+    const titulo = document.createElement('h5');
+    titulo.classList.value = `titulo-${objeto} text-muted`;
+    if(!isEmpty(caso)){
+      titulo.appendChild(document.createTextNode(`${(caso)}`));
+    }else{
+      titulo.appendChild(document.createTextNode(`${capitalize(tags[index])}`));
+    }
+    const div = document.createElement('div');
+    div.classList.add(`${objeto}`);
+    
+    area_elementos.appendChild(titulo)
+    area_elementos.appendChild(div);
+    
+    conteudo_tag.forEach(elemento => {
+      const div_elemento = area_elementos.querySelectorAll(`div.${objeto}`);
+      const a = document.createElement('a');
+      a.classList.add('content');
+      a.setAttribute('href', `${elemento.link}`)
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noreferrer noopener')
+      a.innerHTML = `<span class="content-tag">${capitalize(elemento.tag)}</span><div class="content-principal"><h5>${elemento.titulo}</h5><span>${elemento.sistema}</span></div>`;
+      div_elemento[(div_elemento.length - 1)].appendChild(a);
+    })
+  })
+}
+
 export {
   edicaoInputNome,
   atualizarNumerosProponentes,
@@ -63,5 +165,7 @@ export {
   edicaoInputEmail,
   edicaoInputData,
   edicaoTextAreaRelatorio,
-  edicaoTextAreaPendencias
+  edicaoTextAreaPendencias,
+  adicionarOpcoesAutoComplete,
+  renderConteudosPagina
 }

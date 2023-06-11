@@ -4,6 +4,7 @@ import { conteudos } from './modulos/conteudos.js';
 import { atualizarDatas, capitalize, isEmpty, atribuirLinks, ordernarString, limparEFocar } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
+import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
 
 (() => {  
   function clickEnviarConfirmacaoSenha(evento, elemento, referencia){
@@ -31,8 +32,9 @@ import { funcoesBase } from './modulos/funcoes-base.js';
   else if(pagina == 'consultas/index.html' || pagina == 'confirmacao-cca/consultas/' || pagina == 'confirmacao-cca/consultas/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_consultas;
     const area_consultas = document.querySelector('[data-content="area-consultas"]');
-
-    renderConteudosPagina(area_consultas, ordernarString(conteudos.consultas), 'consultas')
+    
+    renderConteudosPagina(area_consultas, ordernarString(conteudos.consultas), 'consultas');
+    adicionarOpcoesAutoComplete();
   }
 
   else if(pagina == 'arquivos/index.html' || pagina == 'confirmacao-cca/arquivos/' || pagina == 'confirmacao-cca/arquivos/index.html'){
@@ -71,42 +73,6 @@ import { funcoesBase } from './modulos/funcoes-base.js';
     atualizarDatas();
   });
 
-  function renderConteudosPagina(area_elementos, elementos, objeto){
-    const tags = new Array();
-    const conteudos_tag = new Array();
-    
-    elementos.forEach(e => {
-      if(!tags.includes(e.tag) && !isEmpty(e.tag)){
-        tags.push(e.tag);
-      }
-    })
-    
-    tags.forEach(tag => {
-      conteudos_tag.push(elementos.filter(e => e.tag == tag))
-    })
-    
-    conteudos_tag.forEach((conteudo_tag, index) => {
-      const titulo = document.createElement('h5');
-      titulo.classList.value = `titulo-${objeto} text-muted`;
-      titulo.appendChild(document.createTextNode(`${capitalize(tags[index])}`));
-      const div = document.createElement('div');
-      div.classList.add(`${objeto}`);
-      
-      area_elementos.appendChild(titulo)
-      area_elementos.appendChild(div);
-      
-      conteudo_tag.forEach(elemento => {
-        const div_elemento = area_elementos.querySelectorAll(`div.${objeto}`);
-        const a = document.createElement('a');
-        a.classList.add('content');
-        a.setAttribute('href', `${elemento.link}`)
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noreferrer noopener')
-        a.innerHTML = `<span class="content-tag">${capitalize(elemento.tag)}</span><div class="content-principal"><h5>${elemento.titulo}</h5><span>${elemento.sistema}</span></div>`;
-        div_elemento[(div_elemento.length - 1)].appendChild(a);
-      })
-    })
-  }
 })();
 
 const datetime = moment();
