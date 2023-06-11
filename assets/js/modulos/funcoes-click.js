@@ -1,5 +1,5 @@
 import { conteudos } from './conteudos.js';
-import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea } from './utilitarios.js';
+import { SwalAlert, isEmpty, copiar, sanitizarCPF, primeiroNome, resizeTextArea, capitalize, cumprimentoHorario } from './utilitarios.js';
 import { renderPendencias, renderResumo } from './funcoes-render.js';
 import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
@@ -322,24 +322,28 @@ function clickAddDevolucaoFID(){
     botao.addEventListener('click', (evento) => {
       evento.preventDefault();
       const modal = document.querySelector('#modal-devolucao-fid');
-      SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
-      // $(modal).modal('show');
+      // SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
+      $(modal).modal('show');
       
       modal.querySelector('form').addEventListener('submit', (evento) => {
         evento.preventDefault();
-        SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
-      })
+        const form = evento.target;
+        const finac = form.querySelector('#dev-financ-NPMCMV').checked ? 'NPMCMV' : form.querySelector('#dev-financ-SBPE').checked ? 'SBPE' : form.querySelector('#dev-financ-PROCOTISTA').checked ? 'Pró-cotista' : '';
 
+        const devolucao = `\nRenda: ${form.querySelector('#dev-renda').value}. Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. ${form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'}. ${finac}. Prazo: ${form.querySelector('#dev-prazo').value} meses. 1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value}. Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4)}% a.a. ${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '.' : ''}`;
+        
+        const textarea = document.querySelector('[data-content="relatorio"]');
+        textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;
+
+        $(modal).modal('hide');
+      })
+      
       setTimeout(() => {
-        // modal.querySelectorAll('input')[0].focus();
+        modal.querySelectorAll('input')[0].focus();
       }, 500);
     })
   }
 }
-
-setTimeout(() => {
-  // $(document.querySelector('#modal-devolucao-fid')).modal('show');
-}, 500);
 
 export {
   clickIncluirRenda,

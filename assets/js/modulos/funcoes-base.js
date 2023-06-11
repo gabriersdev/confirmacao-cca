@@ -5,21 +5,21 @@ import { isEmpty } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(isEmpty(funcao)){
-    if(document.title.trim() == 'Confirmação de dados - CCA' && true){
-      window.onbeforeunload = async (evento) => {
-        evento.preventDefault();
-        await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
-          if(!isEmpty(elemento.value)){
-            return 'Tem certeza que deseja sair?';
-          }
-        })
-      }
-    }
-  }else{
-    console.log('aqui');
-    window.onbeforeunload = '';
-  }
+  // if(isEmpty(funcao)){
+  //   if(document.title.trim() == 'Confirmação de dados - CCA' && true){
+  //     window.onbeforeunload = async (evento) => {
+  //       evento.preventDefault();
+  //       await document.querySelectorAll('[data-element="input"]').forEach(elemento => {
+  //         if(!isEmpty(elemento.value)){
+  //           return 'Tem certeza que deseja sair?';
+  //         }
+  //       })
+  //     }
+  //   }
+  // }else{
+  //   console.log('aqui');
+  //   window.onbeforeunload = '';
+  // }
 }
 
 const escutaEventoInput = () => {

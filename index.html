@@ -93,7 +93,7 @@
               <input type="checkbox" class="form-check-input" name="limpar-txt-area" id="limpar-txt-area">
               <label for="limpar-txt-area">Limpar relatório</label>
             </div>
-            <button type="submit" class="btn btn-outline-primary mt-4 mb-2" style="width: 100%;">Add. dados</button>
+            <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Add. dados</button>
           </form>
         </div>
       </div>
@@ -114,6 +114,14 @@
         <div class="modal-body">
           <form action="">
             <div class="row">
+              <div class="col form-group">
+                <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-NPMCMV" required>
+                <label for="dev-financ-NPMCMV" class="form-check-label">NPMCMV</label><br>
+                <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-SBPE" required>
+                <label for="dev-financ-SBPE" class="form-check-label">SBPE</label><br>
+                <input type="radio" class="form-check-input" name="dev-financ" id="dev-financ-PROCOTISTA" required>
+                <label for="dev-financ-PROCOTISTA" class="form-check-label">Pró-cotista</label>
+              </div>
               <div class="col form-group">
                 <label for="dev-renda" class="mb-1">Renda</label>
                 <input type="text" class="form-control" id="dev-renda" name="dev-renda" data-element="input" data-mask="money" required>
@@ -138,7 +146,14 @@
               </div>
               <div class="col form-group">
                 <label for="dev-seguro" class="mb-1">Seguro</label>
-                <input type="text" class="form-control" id="dev-seguro" name="dev-seguro" data-element="input" required>
+                <input list="lista-seguros" class="form-control" id="dev-seguro" name="dev-seguro" data-element="input" autocomplete="off" required>
+                <datalist id="lista-seguros">
+                  <option value="Caixa Residencial Habitacional"></option>
+                  <option value="American Life"></option>
+                  <option value="Too Seguros"></option>
+                  <option value="Caixa Residencial Habitacional Residencial"></option>
+                  <option value="Tokio Marine Seguradora"></option>
+                </datalist>
               </div>
             </div>
             <div class="row mt-3">
@@ -148,7 +163,7 @@
               </div>
               <div class="col form-group">
                 <label for="dev-prazo" class="mb-1">Prazo</label>
-                <input type="number" class="form-control" id="dev-prazo" name="dev-prazo" data-element="input" required>
+                <input type="number" class="form-control" id="dev-prazo" name="dev-prazo" data-element="input" min="0" max="500" required>
               </div>
             </div>
             <div class="row mt-3">
@@ -160,14 +175,22 @@
               </div>
               <div class="col form-group">
                 <label for="dev-taxa-juros" class="mb-1">Taxa de juros</label>
-                <input type="number" class="form-control" id="dev-taxa-juros" name="dev-taxa-juros" data-element="input" required>
+                <input type="number" class="form-control" id="dev-taxa-juros" name="dev-taxa-juros" data-element="input" step="0.001" required>
               </div>
             </div>
-            <div class="form-group mt-3">
-              <label for="dev-pendencias" class="mb-1">Pendências</label>
-              <input type="text" class="form-control" id="dev-pendencias" name="dev-pendencias" data-element="input" required>
+            <div class="row">
+              <div class="col form-group mt-3">
+                <label for="dev-pendencias" class="mb-1">Pendência(s)</label>
+                <input type="text" class="form-control" id="dev-pendencias" name="dev-pendencias" data-element="input" autocomplete="off">
+              </div>
             </div>
-            <button type="submit" class="btn btn-outline-primary mt-4 mb-2" style="width: 100%;">Add. informações</button>
+            <div class="row">
+              <div class="col form-group mt-3">
+                <label for="dev-restricoes" class="mb-1">Restrição(s)</label>
+                <input type="text" class="form-control" id="dev-restricoes" name="dev-restricoes" data-element="input" autocomplete="off">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Add. informações</button>
           </form>
         </div>
       </div>

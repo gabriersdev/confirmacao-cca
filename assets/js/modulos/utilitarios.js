@@ -9,7 +9,15 @@ const isEmpty = (valor) => {
 }
 
 const capitalize = (valor) => {
-  return valor.charAt(0).toUpperCase() + valor.substr(1, valor.length);
+  if(Array.isArray(valor.split(' '))){
+    const texto = new Array();
+    valor.split(' ').forEach(palavra => {
+      texto.push(palavra.charAt(0).toUpperCase() + palavra.substr(1, palavra.length));
+    })
+    return texto.join(' ');
+  }else{
+    return valor.charAt(0).toUpperCase() + valor.substr(1, valor.length);
+  }
 }
 
 const atualizarDatas = () => {
@@ -18,6 +26,17 @@ const atualizarDatas = () => {
     area.textContent = `${dataAtual.getFullYear()}`;
   })
 } 
+
+const cumprimentoHorario = () => {
+  const hora = moment().hour();
+  if(hora >= 0 && hora < 12){
+    return 'bom dia';
+  }else if(hora >= 12 && hora < 18){
+    return 'boa tarde';
+  }else{
+    return 'boa noite';
+  }
+}
 
 function atribuirLinks(){
   const linkElementos = document.querySelectorAll('[data-link]');
@@ -284,5 +303,6 @@ export{
   verificarEmail,
   verificarData,
   ordernarString,
-  limparEFocar
+  limparEFocar,
+  cumprimentoHorario
 }
