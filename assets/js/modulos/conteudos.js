@@ -22,7 +22,7 @@ const consultas = [
   { tag: 'cadastro', titulo: 'CND Pessoa Jurídica', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pj/emitir/' },
   { tag: 'cadastro', titulo: 'CIWEB', sistema: 'Portal', link: 'https://www.portaldeempreendimentos.caixa.gov.br/sso/menu' },
   { tag: 'cadastro', titulo: 'CADMUT', sistema: 'SICDM', link: 'https://www.cadastromutuarios.caixa.gov.br/' },
-  { tag: 'cadastro', titulo: 'Consulta CNPJ', sistema: 'SICTD', link: 'https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp' },  
+  { tag: 'cadastro', titulo: 'Consulta CNPJ', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp' },  
   { tag: 'dossiê', titulo: 'Consulta FGTS', sistema: 'SIOPI', link: 'https://habitacao.caixa.gov.br/siopiweb-web/siopientrada.do' },
   { tag: 'dossiê', titulo: 'FGTS', sistema: 'CIWEB', link: 'https://www.ciweb.caixa.gov.br/sso/' },
   { tag: 'dossiê', titulo: 'Conformidade', sistema: 'SICTD', link: 'https://digitalizar.caixa.gov.br/sictd-digitalizar/' },  
