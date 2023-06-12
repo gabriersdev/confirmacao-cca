@@ -325,7 +325,13 @@ function clickAddDevolucaoFID(){
       // SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
       $(modal).modal('show');
       
-      modal.querySelector('form').addEventListener('submit', (evento) => {
+      setTimeout(() => {
+        modal.querySelectorAll('input')[0].focus();
+      }, 500);
+    })
+  }
+  
+        modal.querySelector('form').addEventListener('submit', (evento) => {
         evento.preventDefault();
         const form = evento.target;
         const finac = form.querySelector('#dev-financ-NPMCMV').checked ? 'NPMCMV' : form.querySelector('#dev-financ-SBPE').checked ? 'SBPE' : form.querySelector('#dev-financ-PROCOTISTA').checked ? 'Pró-cotista' : '';
@@ -337,12 +343,6 @@ function clickAddDevolucaoFID(){
 
         $(modal).modal('hide');
       })
-      
-      setTimeout(() => {
-        modal.querySelectorAll('input')[0].focus();
-      }, 500);
-    })
-  }
 }
 
 export {
