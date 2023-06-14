@@ -1,7 +1,7 @@
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
-import { isEmpty } from './utilitarios.js';
+import { isEmpty, resizeTextArea } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
@@ -117,6 +117,15 @@ function funcoesBase(){
   submitAddDevolucaoFID();
   edicaoInputNome();
   escutaEventoInput();
+
+  const modal = document.querySelector('#modal-devolucao-fid');
+  if(!isEmpty(modal)){
+    modal.querySelectorAll('textarea').forEach(textarea => {
+      textarea.addEventListener('input', (evento) => {
+        resizeTextArea(textarea);
+      })
+    })
+  }
 }
 
 function atualizar(){
