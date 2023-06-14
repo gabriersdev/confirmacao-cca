@@ -331,7 +331,7 @@ const acaoClickCopiar = (btn) => {
       })
     }
   }
-
+  
   function submitAddDevolucaoFID(){
     const modal = document.querySelector('#modal-devolucao-fid');
     if(!isEmpty(modal)){
@@ -340,7 +340,9 @@ const acaoClickCopiar = (btn) => {
         const form = evento.target;
         const finac = form.querySelector('#dev-financ-NPMCMV').checked ? 'NPMCMV' : form.querySelector('#dev-financ-SBPE').checked ? 'SBPE' : form.querySelector('#dev-financ-PROCOTISTA').checked ? 'Pró-cotista' : '';
         
-        const devolucao = `\nRenda: ${form.querySelector('#dev-renda').value}. Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. ${form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'}. ${finac}. Prazo: ${form.querySelector('#dev-prazo').value} meses. 1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value}. Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4)}% a.a. ${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '.' : ''}`;
+        const subsidio_valido = !isEmpty(form.querySelector('#dev-subsidio').value.trim()) && form.querySelector('#dev-subsidio').value.trim() !== 'R$ 0,00';
+        
+        const devolucao = `Renda: ${form.querySelector('#dev-renda').value}. Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. ${form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'}. ${finac}. Prazo: ${form.querySelector('#dev-prazo').value} meses. 1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. ${subsidio_valido ? ' Subsídio: ' + form.querySelector('#dev-subsidio').value.trim(): ''} Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value}. Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4)}% a.a. ${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '.' : ''}`;
         
         const textarea = document.querySelector('[data-content="relatorio"]');
         textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;
