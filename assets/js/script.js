@@ -75,5 +75,15 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
 
 })();
 
+let text_areas_edicao = false;
+
+export function text_areas_editados(condicao){
+  if(isEmpty(condicao)){
+    return text_areas_edicao;
+  }else{
+    text_areas_edicao = condicao;
+  }
+};
+
 const datetime = moment();
 const codigo = `${datetime.get('year')}${datetime.get('month')}${datetime.get('date')}${datetime.get('hour')}${datetime.get('minutes')}${datetime.get('seconds')}`

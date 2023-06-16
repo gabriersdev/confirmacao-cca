@@ -1,3 +1,4 @@
+import { text_areas_editados } from '../script.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
@@ -25,7 +26,8 @@ const verificarInputsRecarregamento = (funcao) => {
 }
 
 const escutaEventoInput = () => {
-  document.querySelectorAll('[data-element="input"]').forEach(elemento => {
+  const inputs = document.querySelectorAll('[data-element="input"]');
+  inputs.forEach(elemento => {
     tratamentoCampos(elemento);
     // removeEventListener('input', elemento);
     if(elemento.dataset.input == "nome"){
@@ -48,6 +50,10 @@ const escutaEventoInput = () => {
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
       elemento.addEventListener('input', (evento) => { renderPendencias(); });
+    }else{
+      elemento.addEventListener('keypress', (evento) => {
+        text_areas_editados(true);
+      })
     }
   })
 }
