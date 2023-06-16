@@ -47,13 +47,12 @@ const escutaEventoInput = () => {
     }
     else if(elemento.dataset.content == 'pendencias'){
       edicaoTextAreaPendencias(elemento)
-    }
-    if(elemento.tagName.toLowerCase() !== 'textarea'){
-      elemento.addEventListener('input', (evento) => { renderPendencias(); });
-    }else{
       elemento.addEventListener('keypress', (evento) => {
         text_areas_editados(true);
       })
+    }
+    if(elemento.tagName.toLowerCase() !== 'textarea'){
+      elemento.addEventListener('input', (evento) => { renderPendencias(); });
     }
   })
 }
@@ -72,25 +71,25 @@ const tratamentoCampos = (input) => {
       case 'telefone':
       $(input).mask('(00) 00000-0000');
       break;
-
+      
       case 'id-fid':
       $(input).mask('000000');
       break;
-
+      
       case 'id-valor-imovel':
-        mascararValores(input);
+      mascararValores(input);
       break;
       
       default:
       break;
     }
-
+    
     switch(input.dataset.mask){
       case 'money':
-        mascararValores(input);
+      mascararValores(input);
       break;
     }
-
+    
     function mascararValores(input){
       SimpleMaskMoney.setMask(input, {
         prefix: 'R$ ',
@@ -102,7 +101,7 @@ const tratamentoCampos = (input) => {
       });
       input.removeAttribute('maxlength');
     }
-
+    
   });
 }
 
@@ -123,7 +122,18 @@ function funcoesBase(){
   submitAddDevolucaoFID();
   edicaoInputNome();
   escutaEventoInput();
-
+  
+  const btnCarregarPendencias = document.querySelector('[data-action="carregar-pendencias"]');
+  btnCarregarPendencias.onclick = carregarPendencias;
+  
+  function carregarPendencias(evento){
+    evento.preventDefault();
+    $(evento.target).tooltip('hide');
+    
+    text_areas_editados(false);
+    renderPendencias();
+  }
+  
   const modal = document.querySelector('#modal-devolucao-fid');
   if(!isEmpty(modal)){
     modal.querySelectorAll('textarea').forEach(textarea => {
