@@ -56,7 +56,7 @@ const conteudo_pagina_consultas = `<main><div class="container mt-5 mb-5"><hgrou
   <div class="input-group">
     <input type="text" list="list-pesquisa-pagina-consultas" class="form-control" placeholder="Pesquise" required>
     <datalist id="list-pesquisa-pagina-consultas"></datalist>
-    <button type="submit" onclick="pesquisaConteudo(event)" class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
+    <button type="submit" onclick="pesquisaConteudo(event)" class="btn btn-light"><i class="bi bi-search"></i></button>
   </div>
 </form></div><div class="card-body"><div data-content="area-consultas"></div></div></div></div></main>`;
 

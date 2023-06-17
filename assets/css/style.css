@@ -130,3 +130,8 @@ textarea::-webkit-scrollbar{
   color: rgb(255, 0, 0, 1) !important;
   display: initial;
 }
+
+[data-form="pesquisa"] button{
+  border-color: #CED1DD;
+  background-color: #DEE2E6;
+}
