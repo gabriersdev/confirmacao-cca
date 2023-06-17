@@ -124,7 +124,7 @@ function funcoesBase(){
   escutaEventoInput();
   
   const btnCarregarPendencias = document.querySelector('[data-action="carregar-pendencias"]');
-  btnCarregarPendencias.onclick = carregarPendencias;
+  !isEmpty(btnCarregarPendencias) ? btnCarregarPendencias.onclick = carregarPendencias : '';
   
   function carregarPendencias(evento){
     evento.preventDefault();

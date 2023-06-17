@@ -25,6 +25,10 @@ body{
   font-family: 'Inter', sans-serif;
 }
 
+main{
+  min-height: calc(100vh - 12.5rem);
+}
+
 .hgroup{
   display: flex;
   align-content: center;
