@@ -89,6 +89,8 @@ const renderFeedbacks = (proponente) => {
   })
 }
 
+const pendencias = null;
+
 const renderPendencias = () => {
   if(text_areas_editados() !== true){
     const txt = document.querySelector('[data-content="pendencias"]');

@@ -283,6 +283,7 @@ const acaoClickCopiar = (btn) => {
           'gerente': evento.target.querySelector('#id-gerente-ou-corretor').value,
           'empreendimento': evento.target.querySelector('#id-empreendimento').value,
           'valor': evento.target.querySelector('[data-input="id-valor-imovel"]').value,
+          analista: evento.target.querySelector('[data-input="id-analista"]'),
           'add_data_hora': evento.target.querySelector('#add-data-hora').checked,
           'limpar_txt_area': evento.target.querySelector('#limpar-txt-area').checked,
         };
@@ -297,7 +298,7 @@ const acaoClickCopiar = (btn) => {
         `EMPREENDIMENTO: ${!isEmpty(dados.empreendimento) ? dados.empreendimento.trim().toUpperCase() : ''}\n` + 
         `VALOR IMÓVEL: ${dados.valor}\n`;
         
-        !isEmpty(dados.add_data_hora) ? dados.add_data_hora ? textarea.value += `\n## ${moment().format('DD/MM/YYYY HH:mm')} - [ANALISTA] ##\n` : ''  : '';
+        !isEmpty(dados.add_data_hora) ? dados.add_data_hora ? textarea.value += `\n## ${moment().format('DD/MM/YYYY HH:mm')} - ${!isEmpty(dados.analista.value) ? dados.analista.value.toUpperCase().trim() : '[ANALISTA]'} ##\n` : ''  : '';
         
         resizeTextArea(textarea);
         $(modal).modal('hide');
@@ -344,13 +345,25 @@ const acaoClickCopiar = (btn) => {
         
         const FGTS_valido = !isEmpty(form.querySelector('#dev-FGTS').value.trim()) && form.querySelector('#dev-FGTS').value.trim() !== 'R$ 0,00';
 
-        const devolucao = `Renda: ${form.querySelector('#dev-renda').value}. Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. ${form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'}. ${finac}. Prazo: ${form.querySelector('#dev-prazo').value} meses. 1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. ${subsidio_valido ? ' Subsídio: ' + form.querySelector('#dev-subsidio').value.trim(): ''} Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value}. Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4)}% a.a. ${FGTS_valido ? '## FGTS: ' + form.querySelector('#dev-FGTS').value.trim() : ''}  ${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '.' : ''}`;
+        const devolucao = `Renda: ${form.querySelector('#dev-renda').value}. Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. ${form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'}. ${finac}. Prazo: ${form.querySelector('#dev-prazo').value} meses. 1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. ${subsidio_valido ? 'Subsídio: ' + form.querySelector('#dev-subsidio').value.trim() + '.' : ''} Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value}. Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4).trim()}% a.a. ${FGTS_valido ? '## FGTS: ' + form.querySelector('#dev-FGTS').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '.' : ''}`;
         
         const textarea = document.querySelector('[data-content="relatorio"]');
         textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;
         
         $(modal).modal('hide');
         resizeTextArea(textarea)
+      })
+    }
+  }
+
+  function clickImportarPendencias(){
+    const botao = document.querySelector('[data-action="importar-pendencias"]');
+    if(!isEmpty(botao)){
+      botao.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        const textarea = botao.closest('.row').querySelector('#dev-pendencias');        
+        textarea.value = (document.querySelector('[data-content="pendencias"]').value.replace('\n', '')).replaceAll('\n', ', ');
+        resizeTextArea(textarea);
       })
     }
   }
@@ -365,6 +378,7 @@ const acaoClickCopiar = (btn) => {
     clickAddInformacoes,
     clickVisibilidadeSenha,
     clickAddDevolucaoFID,
-    submitAddDevolucaoFID
+    submitAddDevolucaoFID,
+    clickImportarPendencias
   }
   

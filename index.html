@@ -74,16 +74,20 @@
               <input type="text" class="form-control" id="id-fid" name="id-fid" data-element="input" data-input="id-fid" autocomplete="off">
             </div>
             <div class="form-group mt-3">
-              <label for="id-gerente-ou-corretor" class="mb-1">Gerente ou Corretor</label>
-              <input type="text" class="form-control" id="id-gerente-ou-corretor" name="id-gerente-ou-corretor" data-element="input" data-input="id-gerente-ou-corretor">
-            </div>
-            <div class="form-group mt-3">
               <label for="id-empreendimento" class="mb-1">Empreendimento</label>
               <input type="text" class="form-control" id="id-empreendimento" name="id-empreendimento" data-element="input" data-input="id-empreendimento">
             </div>
             <div class="form-group mt-3">
+              <label for="id-gerente-ou-corretor" class="mb-1">Gerente ou Corretor</label>
+              <input type="text" class="form-control" id="id-gerente-ou-corretor" name="id-gerente-ou-corretor" data-element="input" data-input="id-gerente-ou-corretor">
+            </div>
+            <div class="form-group mt-3">
               <label for="id-valor-imovel" class="mb-1">Valor do imóvel</label>
               <input type="text" class="form-control" id="id-valor-imovel" name="id-valor-imovel" data-element="input" data-input="id-valor-imovel">
+            </div>
+            <div class="form-group mt-3">
+              <label for="id-analista" class="mb-1">Analista</label>
+              <input type="text" class="form-control" id="id-analista" name="id-analista" data-element="input" data-input="id-analista">
             </div>
             <div class="form-group mt-3">
               <input type="checkbox" class="form-check-input" name="add-data-hora" id="add-data-hora" checked>
@@ -190,7 +194,10 @@
             </div>
             <div class="row">
               <div class="col form-group mt-3">
-                <label for="dev-pendencias" class="mb-1">Pendência(s)</label>
+                <div class="d-flex justify-content-between align-items-center">
+                  <label for="dev-pendencias" class="mb-1">Pendência(s)</label>
+                  <button class="btn btn-sm btn-light mb-2" data-toggle="tooltip" type="button" data-action="importar-pendencias" data-placement="bottom" title="Importar pendências"><i class="bi bi-arrow-up"></i></button>
+                </div>
                 <textarea type="text" class="form-control" id="dev-pendencias" name="dev-pendencias" data-element="input" autocomplete="off"></textarea>
               </div>
             </div>

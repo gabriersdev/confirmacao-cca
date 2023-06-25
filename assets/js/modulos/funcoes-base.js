@@ -1,12 +1,12 @@
 import { text_areas_editados } from '../script.js';
-import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID } from './funcoes-click.js'
+import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { isEmpty, resizeTextArea } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(true){
+  if(false){
     if(isEmpty(funcao)){
       if(document.title.trim() == 'Confirmação de dados - CCA' && true){
         window.onbeforeunload = async (evento) => {
@@ -122,6 +122,7 @@ function funcoesBase(){
   submitAddDevolucaoFID();
   edicaoInputNome();
   escutaEventoInput();
+  clickImportarPendencias();
   
   const btnCarregarPendencias = document.querySelector('[data-action="carregar-pendencias"]');
   !isEmpty(btnCarregarPendencias) ? btnCarregarPendencias.onclick = carregarPendencias : '';
