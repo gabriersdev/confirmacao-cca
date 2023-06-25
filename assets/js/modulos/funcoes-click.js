@@ -361,8 +361,10 @@ const acaoClickCopiar = (btn) => {
     if(!isEmpty(botao)){
       botao.addEventListener('click', (evento) => {
         evento.preventDefault();
-        const textarea = botao.closest('.row').querySelector('#dev-pendencias');        
-        textarea.value = (document.querySelector('[data-content="pendencias"]').value.replace('\n', '')).replaceAll('\n', ', ');
+        const textarea = botao.closest('.row').querySelector('#dev-pendencias');
+        const pendencias = document.querySelector('[data-content="pendencias"]').value;
+        const texto = (((pendencias.replace('\n', '')).replaceAll(':', ': ')).replaceAll('\n\n', '. ')).replaceAll('\n', ', ')
+        textarea.value = capitalize(texto.toLowerCase());
         resizeTextArea(textarea);
       })
     }

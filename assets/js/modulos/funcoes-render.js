@@ -146,7 +146,7 @@ const renderPendencias = () => {
           }
           
           if(elementos.some('')){
-            pendencias.push({proponente: `PROPONENTE ${index + 1} - ${!isEmpty(elementos.valores.nome[0]) ? elementos.valores.nome[0].toUpperCase() : ''}`, pendente: elementos.search('').join().replaceAll('_', ' ').toUpperCase().replaceAll(',', '\n')});
+            pendencias.push({proponente: `PROPONENTE ${index + 1} - ${!isEmpty(elementos.valores.nome[0]) ? elementos.valores.nome[0].toUpperCase() + ':' : ''}`, pendente: elementos.search('').join().replaceAll('_', ' ').toUpperCase().replaceAll(',', '\n')});
           }
           
           function get(id){

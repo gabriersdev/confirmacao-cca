@@ -12,7 +12,12 @@ const capitalize = (valor) => {
   if(Array.isArray(valor.split(' '))){
     const texto = new Array();
     valor.split(' ').forEach(palavra => {
-      texto.push(palavra.charAt(0).toUpperCase() + palavra.substr(1, palavra.length));
+      console.log(palavra)
+      if(palavra.toUpperCase() == 'CPF,'){
+        texto.push('CPF,');
+      }else{
+        texto.push(palavra.charAt(0).toUpperCase() + palavra.substr(1, palavra.length));
+      }
     })
     return texto.join(' ');
   }else{
