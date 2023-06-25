@@ -12,7 +12,6 @@ const capitalize = (valor) => {
   if(Array.isArray(valor.split(' '))){
     const texto = new Array();
     valor.split(' ').forEach(palavra => {
-      console.log(palavra)
       if(palavra.toUpperCase() == 'CPF,'){
         texto.push('CPF,');
       }else{
