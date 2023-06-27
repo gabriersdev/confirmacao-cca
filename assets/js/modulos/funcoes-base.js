@@ -50,6 +50,9 @@ const escutaEventoInput = () => {
       elemento.addEventListener('keypress', (evento) => {
         text_areas_editados(true);
       })
+      elemento.addEventListener('input', (evento) => {
+        text_areas_editados(true);
+      })
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
       elemento.addEventListener('input', (evento) => { renderPendencias(); });
