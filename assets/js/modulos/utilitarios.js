@@ -263,7 +263,16 @@ const verificarEmail = (email) => {
 const verificarData = (data) => {
   if(data.replaceAll('/', '').length == 8){
     const data_moment = moment(data, "DD/MM/YYYY");
-    return data_moment._isValid && (data_moment.get('year') <= moment().get('year') - 18);
+    const mais_18 = (moment().get('DD/MM/YYYY').diff(data_moment.get('DD/MM/YYY'), 'years') >= 18);
+    const menos_75 = (moment().get('DD/MM/YYYY').diff(data_moment.get('DD/MM/YYY'), 'years') < 75);
+
+    if(!mais_18){
+      SwalAlert('aviso', 'warning', 'Proponente menor de 18 anos!');
+    }else if(!menos_75){
+      SwalAlert('aviso', 'warning', 'Proponente com idade superior a 75 anos!');
+    }
+    
+    return data_moment._isValid && mais_18 && menos_75;
   }
   return false;
 }
