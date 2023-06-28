@@ -6,7 +6,7 @@ import { isEmpty, resizeTextArea } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(true){
+  if(false){
     if(isEmpty(funcao)){
       if(document.title.trim() == 'Confirmação de dados - CCA' && true){
         window.onbeforeunload = async (evento) => {
@@ -19,7 +19,7 @@ const verificarInputsRecarregamento = (funcao) => {
         }
       }
     }else{
-      console.log('aqui');
+      // console.log('aqui');
       window.onbeforeunload = '';
     }
   }

@@ -344,10 +344,28 @@ const acaoClickCopiar = (btn) => {
         const subsidio_valido = !isEmpty(form.querySelector('#dev-subsidio').value.trim()) && form.querySelector('#dev-subsidio').value.trim() !== 'R$ 0,00';
         
         const FGTS_valido = !isEmpty(form.querySelector('#dev-FGTS').value.trim()) && form.querySelector('#dev-FGTS').value.trim() !== 'R$ 0,00';
-
+        
         const analista = form.querySelector('#dev-analista').value.trim();
+        
+        const dev = {
+          renda: `Renda: ${form.querySelector('#dev-renda').value.trim()}. `,
+          parcela: `Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. `,
+          situacao: `${form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'}. `,
+          modalidade: `${finac}. `,
+          prazo: `${form.querySelector('#dev-prazo').value} meses. `,
+          primeira: `1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. `,
+          subsidio: `${subsidio_valido ? 'Subsídio: ' + form.querySelector('#dev-subsidio').value.trim() + '. ' : ''}`,
+          finaciamento: `Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value.trim()}. `,
+          taxa: `Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4).trim()}% a.a. `,
+          FGTS: `${FGTS_valido ? '## FGTS: ' + form.querySelector('#dev-FGTS').value.trim() + '. ' : ''}`,
+          pendencias: `${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '. ' : ''}`,
+          restricoes: `${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '. ' : ''}`,
+          analista: `${!isEmpty(analista) ? '## ' + analista.toUpperCase() : ''}`
+        }
+        
+        let devolucao = dev.renda + dev.parcela + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.finaciamento + dev.taxa + dev.FGTS + dev.pendencias + dev.restricoes + dev.analista;
 
-        const devolucao = `Renda: ${form.querySelector('#dev-renda').value}. Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. ${form.querySelector('#dev-tabela-price').checked ? 'PRICE' : 'SAC'}. ${finac}. Prazo: ${form.querySelector('#dev-prazo').value} meses. 1ª parcela: ${form.querySelector('#dev-parcela-1').value} - Seguro ${capitalize(form.querySelector('#dev-seguro').value.trim())}. ${subsidio_valido ? 'Subsídio: ' + form.querySelector('#dev-subsidio').value.trim() + '.' : ''} Valor de financiamento: ${form.querySelector('#dev-valor-de-financiamento').value}. Taxa de juros: ${form.querySelector('#dev-taxa-juros').value.substr(0, 4).trim()}% a.a. ${FGTS_valido ? '## FGTS: ' + form.querySelector('#dev-FGTS').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-pendencias').value.trim()) ? '## Pendência(s): ' + form.querySelector('#dev-pendencias').value.trim() + '.' : ''} ${!isEmpty(form.querySelector('#dev-restricoes').value.trim()) ? '## Restrição(s): ' + form.querySelector('#dev-restricoes').value.trim() + '.' : ''} ${!isEmpty(analista) ? '## ' + analista.toUpperCase() : ''}`;
+        console.log(devolucao);
         
         const textarea = document.querySelector('[data-content="relatorio"]');
         textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;
@@ -357,7 +375,7 @@ const acaoClickCopiar = (btn) => {
       })
     }
   }
-
+  
   function clickImportarPendencias(){
     const botao = document.querySelector('[data-action="importar-pendencias"]');
     if(!isEmpty(botao)){
