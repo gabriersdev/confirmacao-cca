@@ -302,6 +302,10 @@ const acaoClickCopiar = (btn) => {
         
         resizeTextArea(textarea);
         $(modal).modal('hide');
+
+        setTimeout(() => {
+          textarea.focus()
+        }, 500);
       })
     }
   }
@@ -364,14 +368,16 @@ const acaoClickCopiar = (btn) => {
         }
         
         let devolucao = dev.renda + dev.parcela + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.finaciamento + dev.taxa + dev.FGTS + dev.pendencias + dev.restricoes + dev.analista;
-
-        console.log(devolucao);
         
         const textarea = document.querySelector('[data-content="relatorio"]');
         textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;
         
         $(modal).modal('hide');
-        resizeTextArea(textarea)
+        resizeTextArea(textarea);
+        
+        setTimeout(() => {
+          textarea.focus()
+        }, 500);
       })
     }
   }
