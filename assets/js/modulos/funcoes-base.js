@@ -55,7 +55,7 @@ const escutaEventoInput = () => {
       })
     }
     if(elemento.tagName.toLowerCase() !== 'textarea'){
-      elemento.addEventListener('input', (evento) => { renderPendencias(); });
+      elemento.addEventListener('input', () => { renderPendencias(); });
     }
   })
 }
