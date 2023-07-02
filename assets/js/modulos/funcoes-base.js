@@ -1,4 +1,5 @@
 import { text_areas_editados } from '../script.js';
+import { conteudos } from './conteudos.js';
 import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
@@ -126,6 +127,23 @@ function funcoesBase(){
   edicaoInputNome();
   escutaEventoInput();
   clickImportarPendencias();
+
+  const linksFaceis = $('.links-faceis-confirmacao');
+  if(!isEmpty(linksFaceis)){
+    [conteudos.consultas[9], conteudos.consultas[10], conteudos.consultas[11]].forEach(conteudo => {
+      $('.links-faceis-confirmacao').append(`<a class="card" href="${conteudo.link}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
+    });
+
+    document.querySelectorAll('[data-item="card-link-facil"]').forEach(link => {
+      $(link).on('mousemove focus', () => {
+        link.querySelector('[data-icon="icone"]').classList.value = 'bi bi-arrow-up-right-square-fill';
+      })
+      
+      $(link).on('mouseout blur', () => {
+        link.querySelector('[data-icon="icone"]').classList.value = 'bi bi-arrow-up-right-square';
+      })
+    })
+  }
   
   const btnCarregarPendencias = document.querySelector('[data-action="carregar-pendencias"]');
   !isEmpty(btnCarregarPendencias) ? btnCarregarPendencias.onclick = carregarPendencias : '';

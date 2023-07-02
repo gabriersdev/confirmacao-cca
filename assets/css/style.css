@@ -135,3 +135,32 @@ textarea::-webkit-scrollbar{
   border-color: #CED1DD;
   background-color: #DEE2E6;
 }
+
+.links-faceis-confirmacao{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(33% - 1rem), 1fr));
+  grid-gap: 1rem;
+}
+
+.links-faceis-confirmacao .card{
+  display: inline-block;
+  background-color: transparent;
+  transition: 0.2s background ease-in-out;
+}
+
+.links-faceis-confirmacao .card:hover{
+  border: 1px solid rgb(0, 0, 0, 0.10);
+  background-color: rgb(0, 0, 0, 0.05);
+}
+
+.links-faceis-confirmacao .card .card-header{
+  background-color: transparent;
+  transition: 0.2s background ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links-faceis-confirmacao .card:hover .card-header{
+  border-bottom: 1px solid rgb(0, 0, 0, 0.10);
+}
