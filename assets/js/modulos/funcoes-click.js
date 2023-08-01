@@ -422,14 +422,6 @@ const acaoClickCopiar = (btn) => {
       }
     })
   }
-  
-  function focusInputModalAcionado(){
-    $('[data-bs-toggle="modal"]').each((index, botao) => {
-      $(botao).on('click', () => {
-        // console.log(botao)
-      })
-    })
-  }
 
   export {
     clickIncluirRenda,
