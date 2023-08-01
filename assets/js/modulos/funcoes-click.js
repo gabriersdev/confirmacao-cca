@@ -443,6 +443,63 @@ const acaoClickCopiar = (btn) => {
     })
   }
 
+  function clickLimparTudoSecao(){
+    $('[data-action="limpar-tudo-secao"]').each((index, botao) => {
+      $(botao).click((evento) => {
+        // Implementado apenas para limpar os inputs/textareas dos modais da seção de relatório
+
+        const elementos_nomes = [
+          'modal-informacoes-adicionais',
+          'modal-devolucao-fid',
+          'modal-informar-restricoes'
+        ]
+
+        try{
+          elementos_nomes.forEach(elemento => {
+            const formulario = document.querySelector(`#${elemento} form`);
+  
+            const [inputs, textareas, inputs_checks] = [formulario.querySelectorAll(`input`), formulario.querySelectorAll(`textarea`), formulario.querySelectorAll(`.form-check-input`)]
+  
+            if(!isEmpty(inputs)){
+              inputs.forEach(input => {
+                input.value = '';
+              })
+            }
+  
+            if(!isEmpty(textareas)){
+              textareas.forEach(textarea => {
+                textarea.value = '';
+              })
+            }
+  
+            if(!isEmpty(inputs_checks)){
+              inputs_checks.forEach(input => {
+                input.checked = false;
+              })
+            }
+          })
+
+          feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'}, botao)
+
+          function feedback({html, classe}, btn){
+            const html_botao = `<i class="bi bi-arrow-clockwise"></i>`;
+            const class_botao = 'btn btn-outline-info';
+            
+            btn.innerHTML = html;
+            btn.classList.value = classe;
+            
+            setTimeout(() => {
+              btn.innerHTML = html_botao;
+              btn.classList.value = class_botao;
+            }, 1500);
+          }
+        }catch(error){
+          console.log('Ocorreu um erro ao tentar limpar os elementos. Erro: %s', error);
+        }
+      })
+    })
+  }
+
   export {
     clickAcionarModal,
     clickIncluirRenda,
@@ -456,6 +513,7 @@ const acaoClickCopiar = (btn) => {
     clickAddDevolucaoFID,
     submitAddDevolucaoFID,
     clickImportarPendencias,
-    submitInformarRestricoes
+    submitInformarRestricoes,
+    clickLimparTudoSecao
   }
   
