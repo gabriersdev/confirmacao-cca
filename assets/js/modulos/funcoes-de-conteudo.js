@@ -57,6 +57,15 @@ const edicaoTextAreaPendencias = (textarea) => {
   })
 }
 
+const edicaoTextAreaRestricoes = (textarea) => {
+  textarea.addEventListener('input', (evento) => {
+    const initialHeight = parseInt(getComputedStyle(textarea).getPropertyValue('height'));
+    textarea.addEventListener('input', () => {
+      resizeTextArea(textarea)
+    });
+  })
+}
+
 const adicionarOpcoesAutoComplete = () => {
   const opcoes = document.querySelector('[data-content="area-consultas"]').querySelectorAll('.content');
   
@@ -166,6 +175,7 @@ export {
   edicaoInputData,
   edicaoTextAreaRelatorio,
   edicaoTextAreaPendencias,
+  edicaoTextAreaRestricoes,
   adicionarOpcoesAutoComplete,
   renderConteudosPagina
 }

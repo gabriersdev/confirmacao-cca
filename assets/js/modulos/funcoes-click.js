@@ -395,7 +395,42 @@ const acaoClickCopiar = (btn) => {
       })
     }
   }
+
+  function submitInformarRestricoes(){
+    $('#modal-informar-restricoes form').submit((evento) => {
+      evento.preventDefault();
+      const text_area = evento.target.querySelector('#text-restricoes');
+      const valor_text_area = evento.target.querySelector('#text-restricoes').value;
+
+      if(!isEmpty(valor_text_area) && valor_text_area.trim().length > 0){
+        const valor_split = valor_text_area.split(' ');
+
+        const saida = (valor_split.filter(e => e !== '').map(e => e.trim())).join(' ')
+        console.log(saida)
+        
+        $('#dev-restricoes').val(saida);
+        $('#modal-informar-restricoes').modal('hide');
+        $('#modal-devolucao-fid').modal('show');
+        
+        setTimeout(() => {
+          $('#dev-restricoes').focus();
+        }, 500);
+      }else{
+        // Informar que o campo está em branco
+        text_area.value = '';
+        text_area.focus();
+      }
+    })
+  }
   
+  function focusInputModalAcionado(){
+    $('[data-bs-toggle="modal"]').each((index, botao) => {
+      $(botao).on('click', () => {
+        // console.log(botao)
+      })
+    })
+  }
+
   export {
     clickIncluirRenda,
     clickRemoverRenda,
@@ -407,6 +442,7 @@ const acaoClickCopiar = (btn) => {
     clickVisibilidadeSenha,
     clickAddDevolucaoFID,
     submitAddDevolucaoFID,
-    clickImportarPendencias
+    clickImportarPendencias,
+    submitInformarRestricoes
   }
   
