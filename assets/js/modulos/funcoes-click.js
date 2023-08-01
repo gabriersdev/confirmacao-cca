@@ -4,6 +4,26 @@ import { renderPendencias, renderResumo } from './funcoes-render.js';
 import { atualizar, escutaEventoInput, verificarInputsRecarregamento } from './funcoes-base.js';
 import { atualizarNumerosProponentes } from './funcoes-de-conteudo.js';
 
+const clickAcionarModal = () => {
+  document.querySelectorAll('[data-action="acionar-modal"]').forEach(botao => {
+    botao.addEventListener('click', (evento) => {
+      const modal_nome = evento.target.getAttribute('data-bs-target') || evento.target.closest('button').getAttribute('data-bs-target');
+      if(!isEmpty(modal_nome)){
+        setTimeout(() => {
+          const inputs = document.querySelector(modal_nome).querySelectorAll('input')
+          const texts_areas = document.querySelector(modal_nome).querySelectorAll('textarea');
+
+          if(!isEmpty(inputs) && inputs.length > 0){
+            inputs[0].focus();
+          }else if(!isEmpty(texts_areas) && texts_areas.length > 0){
+            texts_areas[0].focus();
+          }
+        }, 500)
+      }
+    })
+  })
+}
+
 const clickIncluirRenda = (botao) => {
   const proponente = botao.closest('[data-identify]');
   const div = document.createElement('div');
@@ -424,6 +444,7 @@ const acaoClickCopiar = (btn) => {
   }
 
   export {
+    clickAcionarModal,
     clickIncluirRenda,
     clickRemoverRenda,
     clickIncluirProponente,

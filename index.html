@@ -205,7 +205,7 @@
               <div class="col form-group mt-3">
                 <div class="d-flex justify-content-between align-items-center">
                   <label for="dev-restricoes" class="mb-1">Restrição(s)</label>
-                  <button class="btn btn-sm btn-light mb-2" data-toggle="tooltip" type="button" data-bs-target="#modal-informar-restricoes" data-bs-toggle="modal" data-placement="bottom" title="Informar restrições"><i class="bi bi-currency-dollar"></i></button>
+                  <button class="btn btn-sm btn-light mb-2" data-toggle="tooltip" type="button" data-bs-target="#modal-informar-restricoes" data-bs-toggle="modal" data-action="acionar-modal" data-placement="bottom" title="Informar restrições"><i class="bi bi-currency-dollar"></i></button>
                 </div>
                 <textarea type="text" class="form-control" id="dev-restricoes" name="dev-restricoes" data-element="input" autocomplete="off"></textarea>
               </div>
@@ -232,7 +232,7 @@
         </div>
         <div class="modal-body">
           <form action="">
-            <button type="button" class="btn btn-secondary" data-bs-target="#modal-devolucao-fid" data-bs-toggle="modal" data-placement="bottom">Voltar</button>
+            <button type="button" class="btn btn-secondary" data-bs-target="#modal-devolucao-fid" data-action="acionar-modal" data-bs-toggle="modal" data-placement="bottom">Voltar</button>
             <div class="form-group mt-4 mb-1">
               <label for="text-restricoes" class="mb-1">Restrições</label>
               <textarea class="form-control" name="text-restricoes" id="text-restricoes" data-content="text-restricoes" data-element="input" required></textarea>
