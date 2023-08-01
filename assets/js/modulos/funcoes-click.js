@@ -426,7 +426,7 @@ const acaoClickCopiar = (btn) => {
         const valor_split = valor_text_area.split(' ');
 
         const saida = (valor_split.filter(e => e !== '').map(e => e.trim())).join(' ')
-        console.log(saida)
+        // console.log(saida)
         
         $('#dev-restricoes').val(saida);
         $('#modal-informar-restricoes').modal('hide');
