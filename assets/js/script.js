@@ -43,9 +43,15 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
 
     renderConteudosPagina(area_arquivos, ordernarString(conteudos.arquivos), 'arquivos');
     document.querySelectorAll('a').forEach(a => {
-      a.setAttribute('confirm', a.getAttribute('href'));
-      a.removeAttribute('href'); 
-      a.setAttribute('onclick', 'clickConfirm(this)');
+      
+      // Verifica se a URL no parâmetro HREF é válida ou não. Se for, o código do bloco CATCH não é executado e não será necessária confirmação de senha para ir para a página.
+      try{
+        new URL(a.getAttribute('href'));
+      }catch(error){
+        a.setAttribute('confirm', a.getAttribute('href'));
+        a.removeAttribute('href'); 
+        a.setAttribute('onclick', 'clickConfirm(this)');
+      }
     })
 
     function clickConfirm(elemento){

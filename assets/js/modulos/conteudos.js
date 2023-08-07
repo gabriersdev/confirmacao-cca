@@ -65,7 +65,7 @@ const conteudo_pagina_consultas = `<main><div class="container mt-5 mb-5"><hgrou
   </div>
 </form></div><div class="card-body"><div data-content="area-consultas"></div></div></div></div></main>`;
 
-const conteudo_pagina_arquivos = `<div class="container mt-5 mb-5"><hgroup class="hgroup" data-hgroup="confirmacao-cca"><h3 class="hgroup-titulo">Arquivos</h3></hgroup><div class="card"><div class="card-header"><b>Arquivos</b></div><div class="card-body"><div data-content="area-arquivos"></div></div></div></div>`;
+const conteudo_pagina_arquivos = `<div class="container mt-5 mb-5"><hgroup class="hgroup" data-hgroup="confirmacao-cca"><h3 class="hgroup-titulo">Arquivos</h3></hgroup><div class="card"><div class="card-header"><b>Arquivos</b></div><div class="card-body"><div data-content="area-arquivos"></div></div></div><div class="card mt-4"><div class="card-header"><b>Links</b></div><div class="card-body"><div data-content="area-arquivos"><div class="arquivos"><a class="content" target="_blank" rel="noreferrer noopener" href="https://gabrieszin.github.io/capa-de-dossies/"><span class="content-tag">Capa</span><div class="content-principal"><h5>Capa de dossiê</h5><span>GitHub</span></div></a><a class="content" target="_blank" rel="noreferrer noopener" href="https://gabrieszin.github.io/damp/"><span class="content-tag">DAMP</span><div class="content-principal"><h5>Declaração de Enquadramento</h5><span>GitHub</span></div></a></div></div></div></div></div></div>`;
 
 const HTMLacompanharFID = (FID, link) => {
   const hoje = moment();
