@@ -12,7 +12,7 @@ const clickAcionarModal = () => {
         setTimeout(() => {
           const inputs = document.querySelector(modal_nome).querySelectorAll('input')
           const texts_areas = document.querySelector(modal_nome).querySelectorAll('textarea');
-
+          
           if(!isEmpty(inputs) && inputs.length > 0){
             inputs[0].focus();
           }else if(!isEmpty(texts_areas) && texts_areas.length > 0){
@@ -322,7 +322,7 @@ const acaoClickCopiar = (btn) => {
         
         resizeTextArea(textarea);
         $(modal).modal('hide');
-
+        
         setTimeout(() => {
           textarea.focus()
         }, 500);
@@ -415,16 +415,16 @@ const acaoClickCopiar = (btn) => {
       })
     }
   }
-
+  
   function submitInformarRestricoes(){
     $('#modal-informar-restricoes form').submit((evento) => {
       evento.preventDefault();
       const text_area = evento.target.querySelector('#text-restricoes');
       const valor_text_area = evento.target.querySelector('#text-restricoes').value;
-
+      
       if(!isEmpty(valor_text_area) && valor_text_area.trim().length > 0){
         const valor_split = valor_text_area.split(' ');
-
+        
         const saida = (valor_split.filter(e => e !== '').map(e => e.trim())).join(' ')
         // console.log(saida)
         
@@ -442,45 +442,45 @@ const acaoClickCopiar = (btn) => {
       }
     })
   }
-
+  
   function clickLimparTudoSecao(){
     $('[data-action="limpar-tudo-secao"]').each((index, botao) => {
       $(botao).click((evento) => {
         // Implementado apenas para limpar os inputs/textareas dos modais da seção de relatório
-
+        
         const elementos_nomes = [
           'modal-informacoes-adicionais',
           'modal-devolucao-fid',
           'modal-informar-restricoes'
         ]
-
+        
         try{
           elementos_nomes.forEach(elemento => {
             const formulario = document.querySelector(`#${elemento} form`);
-  
+            
             const [inputs, textareas, inputs_checks] = [formulario.querySelectorAll(`input`), formulario.querySelectorAll(`textarea`), formulario.querySelectorAll(`.form-check-input`)]
-  
+            
             if(!isEmpty(inputs)){
               inputs.forEach(input => {
                 input.value = '';
               })
             }
-  
+            
             if(!isEmpty(textareas)){
               textareas.forEach(textarea => {
                 textarea.value = '';
               })
             }
-  
+            
             if(!isEmpty(inputs_checks)){
               inputs_checks.forEach(input => {
                 input.checked = false;
               })
             }
           })
-
+          
           feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'}, botao)
-
+          
           function feedback({html, classe}, btn){
             const html_botao = `<i class="bi bi-arrow-clockwise"></i>`;
             const class_botao = 'btn btn-outline-info';
@@ -499,7 +499,60 @@ const acaoClickCopiar = (btn) => {
       })
     })
   }
+  
+  const clickEnviarDados = () => {
+    const botoes = document.querySelectorAll('[data-action="enviar-dados"]');
+    botoes.forEach(botao => {
+      botao.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        
+        const nomes = [document.querySelectorAll('[data-input="nome"]')[0], document.querySelectorAll('[data-input="nome"]')[1]];
+        const CPFs = [document.querySelectorAll('[data-input="cpf"]')[0], document.querySelectorAll('[data-input="cpf"]')[1]];
+        const saida = new Array();
+        
+        if(!nomes.every(nome => nome == undefined) && !CPFs.every(CPF => CPF == undefined)){
+          if(nomes[0] !== undefined){
+            if(!isEmpty(nomes[0].value)){
+              saida.push(`nome_1=${sanitizarStringParaURL(nomes[0].value)}`);
+            }
+          }
 
+          if(CPFs[0] !== undefined){
+            if(!isEmpty(CPFs[0].value)){
+              saida.push(`CPF_1=${sanitizarStringParaURL(CPFs[0].value)}`);
+            }
+          }
+
+          if(nomes[1] !== undefined){
+            if(!isEmpty(nomes[1].value)){
+              saida.push(`nome_2=${sanitizarStringParaURL(nomes[1].value)}`);
+            }
+          }
+          
+          if(CPFs[1] !== undefined){
+            if(!isEmpty(CPFs[1].value)){
+              saida.push(`CPF_2=${sanitizarStringParaURL(CPFs[1].value)}`);
+            }
+          }
+        }
+
+        if(!isEmpty(saida)){
+          window.open(`https://gabrieszin.github.io/capa-de-dossies?${saida.join('&')}`)
+        }else{
+          SwalAlert('error', 'warning', 'Necessário preencher os dados básicos do(s) proponente(s)');
+        }
+
+        function sanitizarStringParaURL(string){
+          if(!isEmpty(string)){
+            return string.trim().toLowerCase().replaceAll(' ', '-');
+          }else{
+            return '';
+          }
+        }
+      })
+    })
+  }
+  
   export {
     clickAcionarModal,
     clickIncluirRenda,
@@ -514,6 +567,7 @@ const acaoClickCopiar = (btn) => {
     submitAddDevolucaoFID,
     clickImportarPendencias,
     submitInformarRestricoes,
-    clickLimparTudoSecao
+    clickLimparTudoSecao,
+    clickEnviarDados
   }
   

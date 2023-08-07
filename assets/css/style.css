@@ -110,6 +110,11 @@ textarea::-webkit-scrollbar{
   text-transform: uppercase;
 }
 
+button i{
+  margin-right: 0 !important;
+  padding-right: 0 !important;
+}
+
 [data-input]:invalid,
 .invalido input{
   border: 1px solid rgb(255, 0, 0, 0.4) !important;
