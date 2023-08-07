@@ -16,9 +16,9 @@ function verificacao(evento, elemento, referencia){
   evento.preventDefault();
   const input = elemento.parentElement.querySelectorAll('input')[0];
   
-  let encrypted = CryptoJS.AES.encrypt(elemento.parentElement.querySelector('#senha-arquivo').value, "Secret Passphrase");
+  let encrypted = CryptoJS.AES.encrypt(elemento.parentElement.querySelector('#senha-arquivo').value, "ZX5I8Q9HUWMQP0VD3I379CSUCC9Q9T");
   
-  let descrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+  let descrypted = CryptoJS.AES.decrypt(encrypted, "ZX5I8Q9HUWMQP0VD3I379CSUCC9Q9T");
   let visible = descrypted.toString(CryptoJS.enc.Utf8);
 
   try{
