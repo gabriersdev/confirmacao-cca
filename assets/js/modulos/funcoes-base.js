@@ -104,13 +104,30 @@ const tratamentoCampos = (input) => {
         fractionDigits: 2,
         decimalSeparator: ',',
         thousandsSeparator: '.',
-        cursor: 'end'
+        cursor: 'move'
       });
       input.removeAttribute('maxlength');
+
+      input.addEventListener('input', (evento) => {
+        const value = evento.target.value;
+        
+        const split = value.trim().split(' ').filter(e => e !== ' ');
+        const convertido = (split.map(e => parseInt(e)));
+        let valor = (convertido.find(e => !isNaN(e))).toString();
+        valor = '' + valor;
+        // console.log(valor.substring(0, valor.lenght - 2) + valor.susbtring(valor.lenght - 2, valor.lenght));
+
+        // console.log(valor);
+        
+        // console.log(SimpleMaskMoney.formatToCurrency(), { prefix: 'R$' }));
+        // evento.target.value = 
+      })
     }
     
   });
 }
+
+
 
 function funcoesBase(){
   verificarInputsRecarregamento();
