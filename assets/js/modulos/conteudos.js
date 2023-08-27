@@ -59,7 +59,7 @@ const conteudo_pagina_confirmacao = `
 const conteudo_pagina_consultas = `<main><div class="container mt-5 mb-5"><hgroup class="hgroup" data-hgroup="confirmacao-cca"><h3 class="hgroup-titulo">Consultas</h3></hgroup><div class="card"><div class="card-header d-flex align-items-center justify-content-between"><b>Consultas</b>
 <form data-form="pesquisa">
   <div class="input-group">
-    <input type="text" list="list-pesquisa-pagina-consultas" class="form-control" placeholder="Pesquise" required>
+    <input type="search" list="list-pesquisa-pagina-consultas" class="form-control" placeholder="Pesquise" required>
     <datalist id="list-pesquisa-pagina-consultas"></datalist>
     <button type="submit" onclick="pesquisaConteudo(event)" class="btn btn-light"><i class="bi bi-search"></i></button>
   </div>
