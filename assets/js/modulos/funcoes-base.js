@@ -1,6 +1,6 @@
 import { text_areas_editados } from '../script.js';
 import { conteudos } from './conteudos.js';
-import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados } from './funcoes-click.js'
+import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { isEmpty, resizeTextArea } from './utilitarios.js';
@@ -157,6 +157,36 @@ function funcoesBase(){
 
   $('[data-action=fechar-modal-dialog]').on('click', (evento) => {
     evento.target.closest('dialog').close();
+  })
+
+  let click113 = false;
+
+  document.addEventListener('keyup', (evento) => {
+    const code = evento.keyCode;
+    if(!isEmpty(code)){
+      // console.log(code)
+      if(code == 45){
+        acaoClickIncluirProponente()
+      }else if(code == 113){
+        click113 = true;
+
+        setTimeout(() => {
+          click113 = false;
+        }, 1000)
+      }else if(code == 68 && click113){
+        // Baixar arquivo de dados
+        clickDownload({dataset: {download: 'baixar-dados'}}, evento);
+      }else if(code == 70 && click113){
+        // Ir para Acompanhar FID
+        $('[data-element="input-URL-acompanhar-FID"]').focus();
+      }else if(code == 80 && click113){
+        // Baixar arquivo de pendências
+        clickDownload({dataset: {download: 'baixar-pendencias'}}, evento);
+      }else if(code == 82 && click113){
+        // Baixar arquivo de relatório
+        clickDownload({dataset: {download: 'baixar-relatorio'}}, evento);
+      }
+    }
   })
 
   const linksFaceis = $('.links-faceis-confirmacao');

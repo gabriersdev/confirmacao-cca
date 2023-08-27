@@ -161,24 +161,15 @@ const acaoClickCopiar = (btn) => {
     
     switch(elemento.dataset.download){
       case 'baixar-dados':
-      //Selecionar Nome, CPF e data de nascimento de todos os proponentes
-      proponentes.forEach((proponente, index) => {
-        const nome = proponente.querySelector('[data-input="nome"]').value.trim();
-        saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${!isEmpty(nome) ? nome.toUpperCase() : ''}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n` + `TELEFONE: ${proponente.querySelector('[data-input="telefone"]').value.replaceAll('-', '').trim()}\n` + `EMAIL: ${proponente.querySelector('[data-input="email"]').value.trim()}\n\n`)
-      });
-      criarEBaixarTXT(JSON.stringify(saida.join('\n')), `DADOS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+      baixarDados(proponentes, primeirosNomes, saida);
       break;
       
       case 'baixar-relatorio':
-      //Selecionar conteúdo no textarea de relatório
-      const relatorio = document.querySelector('[data-content="relatorio"]').value;
-      criarEBaixarTXT(JSON.stringify(relatorio), `RELATORIO${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+      baixarRelatorio(primeirosNomes);
       break;
       
       case 'baixar-pendencias':
-      //Selecionar conteúdo no textarea de pendências
-      const pendencias = document.querySelector('[data-content="pendencias"]').value;
-      criarEBaixarTXT(JSON.stringify(pendencias), `PENDENCIAS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+      baixarPendencias(primeirosNomes);
       break;
       
       case 'baixar-acompanhar-fid':
@@ -228,6 +219,27 @@ const acaoClickCopiar = (btn) => {
     }
   }
   window.clickDownload = clickDownload;
+  
+  const baixarDados = (proponentes, primeirosNomes, saida) => {
+    //Selecionar Nome, CPF e data de nascimento de todos os proponentes
+    proponentes.forEach((proponente, index) => {
+      const nome = proponente.querySelector('[data-input="nome"]').value.trim();
+      saida.push(`PROPONENTE ${index + 1}\n` +`NOME: ${!isEmpty(nome) ? nome.toUpperCase() : ''}\n` + `CPF: ${sanitizarCPF(proponente.querySelector('[data-input="cpf"]').value.trim())}\n` + `DT NASC: ${proponente.querySelector('[data-input="data_nascimento"]').value.trim()}\n` + `TELEFONE: ${proponente.querySelector('[data-input="telefone"]').value.replaceAll('-', '').trim()}\n` + `EMAIL: ${proponente.querySelector('[data-input="email"]').value.trim()}\n\n`)
+    });
+    criarEBaixarTXT(JSON.stringify(saida.join('\n')), `DADOS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+  }
+  
+  const baixarRelatorio = (primeirosNomes) => {
+    //Selecionar conteúdo no textarea de relatório
+    const relatorio = document.querySelector('[data-content="relatorio"]').value;
+    criarEBaixarTXT(JSON.stringify(relatorio), `RELATORIO${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+  }
+  
+  const baixarPendencias = (primeirosNomes) => {
+    //Selecionar conteúdo no textarea de pendências
+    const pendencias = document.querySelector('[data-content="pendencias"]').value;
+    criarEBaixarTXT(JSON.stringify(pendencias), `PENDENCIAS${!isEmpty(primeirosNomes) ? ' - ' + primeirosNomes.join(', ') : ''}`);
+  }
   
   const criarEBaixarTXT = (conteudo, nome) => {
     let blob = new Blob([`${JSON.parse(conteudo)}`], {type: "text/plain;charset=utf-8"});
@@ -516,13 +528,13 @@ const acaoClickCopiar = (btn) => {
               saida.push(`nome_1=${sanitizarStringParaURL(nomes[0].value)}`);
             }
           }
-
+          
           if(CPFs[0] !== undefined){
             if(!isEmpty(CPFs[0].value)){
               saida.push(`CPF_1=${sanitizarStringParaURL(CPFs[0].value)}`);
             }
           }
-
+          
           if(nomes[1] !== undefined){
             if(!isEmpty(nomes[1].value)){
               saida.push(`nome_2=${sanitizarStringParaURL(nomes[1].value)}`);
@@ -535,13 +547,13 @@ const acaoClickCopiar = (btn) => {
             }
           }
         }
-
+        
         if(!isEmpty(saida)){
           window.open(`https://gabrieszin.github.io/capa-de-dossies?${saida.join('&')}`)
         }else{
           SwalAlert('error', 'warning', 'Necessário preencher os dados básicos do(s) proponente(s)');
         }
-
+        
         function sanitizarStringParaURL(string){
           if(!isEmpty(string)){
             return string.trim().toLowerCase().replaceAll(' ', '-');
@@ -568,6 +580,8 @@ const acaoClickCopiar = (btn) => {
     clickImportarPendencias,
     submitInformarRestricoes,
     clickLimparTudoSecao,
-    clickEnviarDados
+    clickEnviarDados,
+    acaoClickIncluirProponente,
+    clickDownload
   }
   
