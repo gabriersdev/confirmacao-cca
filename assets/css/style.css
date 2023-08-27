@@ -11,6 +11,7 @@
 @import url(./elementos/loader.css);
 @import url(./elementos/no-script.css);
 @import url(./elementos/consultas-arquivos.css);
+@import url(./elementos/modal-informacoes-pagina.css);
 
 html{
   scroll-behavior: smooth;
