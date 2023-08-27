@@ -107,7 +107,7 @@
   <div class="overlay-2">
     <div class="lds-ring-2"><div></div><div></div><div></div><div></div></div>
   </div>
-
+  
   <div class="modal fade" id="modal-devolucao-fid" aria-hidden="true" aria-labelledby="modal-2-Label" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -222,7 +222,7 @@
       </div>
     </div>
   </div>
-
+  
   <div class="modal fade" id="modal-informar-restricoes" aria-hidden="true" aria-labelledby="modal-informar-restricoes-Label" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -244,6 +244,71 @@
       </div>
     </div>
   </div>
-
+  
+  <dialog class="modal-informacoes-pagina">
+    Use teclas de atalho para acionar as funções: <br>
+    <p class="mt-3"><kbd>Insert</kbd> para incluir um proponente novo</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>D</kbd> para baixar o arquivo de dados dos usuários</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>F</kbd> para ir para o campo de "Acompanhar o FID"</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>P</kbd> para baixar o arquivo de pendências</p>
+    <p class="mt-1"><kbd>F2</kbd> + <kbd>R</kbd> para baixar o arquivo de relatório</p>
+    <p class="mt-3 text-muted">Para fechar esse popup <kbd>ESC</kbd> <button class="link-visivel" data-action="fechar-modal-dialog">ou clique aqui</button></p>
+  </dialog>
+  
+  <style>
+    .modal-informacoes-pagina{
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      width: min(calc(100vw - 1rem), 500px);
+      z-index: 1000;
+      color: #000;
+      outline: unset;
+    }
+    
+    .modal-informacoes-pagina::backdrop{
+      background: rgba(0, 0, 0, 0.25);
+    }
+    
+    kbd{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      color: inherit;
+      font-size: 100%;
+      font-family: 'Consolas', monospace, sans-serif;
+      vertical-align: baseline;
+      background: transparent;
+      border-color: #E6E6E6 #BEBEBE #BEBEBE #e6e6e6;
+      border-style: solid;
+      border-width: 1px 3px 4px;
+      padding: 0 5px;
+      background-color: #D2D2D2;
+      background-color: rgba(210, 210, 210, 0.9);
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
+    
+    .x{
+      -moz-border-radius: 3px;
+      -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #FFF inset;
+      -webkit-border-radius: 3px;
+      -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #FFF inset;
+      background-color: #F7F7F7;
+      border: 1px solid #CCC;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #FFF inset;
+      color: #333;
+      display: inline-block;
+      font-family: monospace, sans-serif;
+      font-size: 100%;
+      line-height: 1.4;
+      margin: 0 0.1em;
+      padding: 0.1em 0.6em;
+      text-shadow: 0 1px 0 #FFF;
+    }
+  </style>
+  
 </body>
 </html>

@@ -127,8 +127,6 @@ const tratamentoCampos = (input) => {
   });
 }
 
-
-
 function funcoesBase(){
   verificarInputsRecarregamento();
   renderTooltips();
@@ -151,6 +149,15 @@ function funcoesBase(){
   clickAcionarModal();
   clickLimparTudoSecao();
   clickEnviarDados();
+
+  $('[data-action="exibir-informacoes"]').on('click', (evento) => {
+    evento.preventDefault();
+    document.querySelector('.modal-informacoes-pagina').showModal();
+  })
+
+  $('[data-action=fechar-modal-dialog]').on('click', (evento) => {
+    evento.target.closest('dialog').close();
+  })
 
   const linksFaceis = $('.links-faceis-confirmacao');
   if(!isEmpty(linksFaceis)){
