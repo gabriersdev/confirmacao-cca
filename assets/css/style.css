@@ -59,6 +59,7 @@ main{
 
 .hgroup .hgroup-acoes button{
   /* border: 1px solid #808080; */
+  position: static;
 }
 
 .form-floating{
