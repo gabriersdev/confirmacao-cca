@@ -112,27 +112,38 @@ const clickCopiar = () => {
 const acaoClickCopiar = (btn) => {
   try{
     btn.addEventListener('click', () => {
-      const elemento = btn.closest('[data-node="card"]').querySelector('[data-copiar="texto"]');
-      let e = elemento.value || elemento.innerText;
-      
-      const data_input = elemento.dataset.input;
-      
-      if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'nome'){
-        e = e.toUpperCase();
-      }
-      
-      else if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'cpf'){
-        e = (sanitizarCPF(e));
+      let e = null;
+      let html_retorno = null;
+      if(isEmpty(btn.dataset.actionTarget) && btn.dataset.actionTarget !== 'copiar-nomes'){
+        const elemento = btn.closest('[data-node="card"]').querySelector('[data-copiar="texto"]');
+        e = elemento.value || elemento.innerText;
+        
+        const data_input = elemento.dataset.input;
+        
+        if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'nome'){
+          e = e.toUpperCase();
+        }
+        
+        else if(!isEmpty(data_input) && data_input.trim().toLowerCase() == 'cpf'){
+          e = (sanitizarCPF(e));
+        }
+      }else{
+        e = new Array();
+        document.querySelectorAll('[data-input="nome"]').forEach(nome => {
+          !isEmpty(nome.value) ? e.push(nome.value.toUpperCase()) : '';
+        })
+        e = e.join(', ');
+        html_retorno = 'N_'
       }
       
       copiar(e).then(retorno => {
-        feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success'});});
+        feedback({html: '<i class="bi bi-check2"></i>', classe: 'btn btn-outline-success', html_retorno: html_retorno});});
       })
     }catch(error){
       feedback({html: '<i class="bi bi-x-lg"></i>', classe: 'btn btn-outline-danger'});
     }
     
-    function feedback({html, classe}){
+    function feedback({html, classe, html_retorno}){
       // const html_botao = btn.innerHTML;
       const html_botao = `<i class="bi bi-clipboard"></i>`;
       const class_botao = !isEmpty(btn.classList.value) ? btn.classList.value == 'btn btn-outline-success' ? '' : btn.classList.value : '';
@@ -142,7 +153,7 @@ const acaoClickCopiar = (btn) => {
       btn.classList.value = classe;
       
       setTimeout(() => {
-        btn.innerHTML = html_botao;
+        btn.innerHTML = isEmpty(html_retorno) ? html_botao : html_retorno;
         btn.classList.value = class_botao;
       }, 1500);
     }
@@ -341,7 +352,7 @@ const acaoClickCopiar = (btn) => {
   
   function acionarModalAddInformacoes(){
     const modal = document.querySelector('#modal-informacoes-adicionais');
-    console.log('aqui')
+    // console.log('aqui')
     $(modal).modal('show');
     setTimeout(() => {
       modal.querySelector('[data-input="id-fid"]').focus();
