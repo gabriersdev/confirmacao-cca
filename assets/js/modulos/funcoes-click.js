@@ -302,10 +302,7 @@ const acaoClickCopiar = (btn) => {
     if(!isEmpty(modal)){
       document.querySelector('[data-action="add-informacoes"]').addEventListener('click', (evento) => {
         evento.preventDefault();
-        $(modal).modal('show');
-        setTimeout(() => {
-          modal.querySelector('[data-input="id-fid"]').focus();
-        }, 500)
+        acionarModalAddInformacoes();
       })
       
       modal.querySelector('form').addEventListener('submit', (evento) => {
@@ -342,6 +339,15 @@ const acaoClickCopiar = (btn) => {
     }
   }
   
+  function acionarModalAddInformacoes(){
+    const modal = document.querySelector('#modal-informacoes-adicionais');
+    console.log('aqui')
+    $(modal).modal('show');
+    setTimeout(() => {
+      modal.querySelector('[data-input="id-fid"]').focus();
+    }, 500)
+  }
+
   function clickVisibilidadeSenha(){
     const botao = document.querySelector('[data-action="btn-visibilidade-senha"]');
     if(!isEmpty(botao)){
@@ -358,15 +364,19 @@ const acaoClickCopiar = (btn) => {
     if(!isEmpty(botao)){
       botao.addEventListener('click', (evento) => {
         evento.preventDefault();
-        const modal = document.querySelector('#modal-devolucao-fid');
-        // SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
-        $(modal).modal('show');
-        
-        setTimeout(() => {
-          modal.querySelectorAll('input')[0].focus();
-        }, 500);
+        acionarDevolucaoFID
       })
     }
+  }
+
+  function acionarDevolucaoFID(){
+    const modal = document.querySelector('#modal-devolucao-fid');
+    // SwalAlert('aviso', 'error', 'Desculpe. Esta função ainda não foi implementada.', '');
+    $(modal).modal('show');
+    
+    setTimeout(() => {
+      modal.querySelectorAll('input')[0].focus();
+    }, 500);
   }
   
   function submitAddDevolucaoFID(){
@@ -582,6 +592,8 @@ const acaoClickCopiar = (btn) => {
     clickLimparTudoSecao,
     clickEnviarDados,
     acaoClickIncluirProponente,
-    clickDownload
+    clickDownload,
+    acionarModalAddInformacoes,
+    acionarDevolucaoFID
   }
   

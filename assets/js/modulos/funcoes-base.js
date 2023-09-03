@@ -1,6 +1,6 @@
 import { text_areas_editados } from '../script.js';
 import { conteudos } from './conteudos.js';
-import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload } from './funcoes-click.js'
+import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clickCopiar, clickLimparProcesso, clickAddInformacoes, clickVisibilidadeSenha, clickAddDevolucaoFID, submitAddDevolucaoFID, clickImportarPendencias, submitInformarRestricoes, clickAcionarModal, clickLimparTudoSecao, clickEnviarDados, acaoClickIncluirProponente, clickDownload, acionarDevolucaoFID, acionarModalAddInformacoes } from './funcoes-click.js'
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { isEmpty, resizeTextArea } from './utilitarios.js';
@@ -185,6 +185,10 @@ function funcoesBase(){
       }else if(code == 82 && click113){
         // Baixar arquivo de relatório
         clickDownload({dataset: {download: 'baixar-relatorio'}}, evento);
+      }else if(code == 86 && click113){
+        acionarDevolucaoFID();
+      }else if(code == 73 && click113){
+        acionarModalAddInformacoes();
       }
     }
   })
