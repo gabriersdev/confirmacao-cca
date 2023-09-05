@@ -159,7 +159,7 @@ const acaoClickCopiar = (btn) => {
     }
   }
   window.acaoClickCopiar = acaoClickCopiar;
-  x
+  
   const clickDownload = (elemento, evento) => {
     evento.preventDefault();
     const saida = new Array();
@@ -375,7 +375,7 @@ const acaoClickCopiar = (btn) => {
     if(!isEmpty(botao)){
       botao.addEventListener('click', (evento) => {
         evento.preventDefault();
-        acionarDevolucaoFID
+        acionarDevolucaoFID();
       })
     }
   }
