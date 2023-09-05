@@ -159,7 +159,7 @@ const acaoClickCopiar = (btn) => {
     }
   }
   window.acaoClickCopiar = acaoClickCopiar;
-  
+  x
   const clickDownload = (elemento, evento) => {
     evento.preventDefault();
     const saida = new Array();
