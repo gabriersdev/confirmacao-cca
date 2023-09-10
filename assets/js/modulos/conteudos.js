@@ -16,7 +16,7 @@ const consultas = [
   { tag: 'cadastro', titulo: 'Restitução IRPF', sistema: 'Receita Federal', link: 'https://www.restituicao.receita.fazenda.gov.br/' },
   { tag: 'cadastro', titulo: 'Simulador SIOPI', sistema: 'SIOPI', link: 'https://www8.caixa.gov.br/siopiinternet-web/simulaOperacaoInternet.do?method=inicializarCasoUso&isVoltar=true' },
   { tag: 'cadastro', titulo: 'Simulador Portal', sistema: 'Portal de Empreendimentos', link: 'https://www.portaldeempreendimentos.caixa.gov.br/simulador/' },
-  { tag: 'cadastro', titulo: 'Busca CEP', sistema: 'Correios', link: 'xxxx.xa.x' }, 
+  { tag: 'cadastro', titulo: 'Busca CEP', sistema: 'Correios', link: 'https://buscacepinter.correios.com.br/app/endereco/index.php' }, 
   { tag: 'cadastro', titulo: 'Situação Cadastral', sistema: 'Receita Federal', link: 'https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp' },
   { tag: 'cadastro', titulo: 'CND Pessoa Física', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pf/emitir/' },
   { tag: 'cadastro', titulo: 'CND Pessoa Jurídica', sistema: 'Receita Federal', link: 'https://solucoes.receita.fazenda.gov.br/servicos/certidaointernet/pj/emitir/' },
