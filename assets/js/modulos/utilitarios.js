@@ -72,6 +72,17 @@ function atribuirLinks(){
       }
       break;
       
+      case 'desligamento':
+      if(document.title == 'Desligamento - CCA'){
+          link.href = '#';
+          window.scrollTo({top: 0, behavior: 'smooth'});
+          link.removeAttribute('target');
+      }else{
+          link.href = '../desligamento/index.html';
+          link.setAttribute('target', '_blank');
+        }
+      break;
+
       case 'consultas':
       if(document.title == 'Confirmação de dados - CCA'){
         link.href = './consultas/index.html';

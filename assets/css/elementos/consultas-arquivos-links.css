@@ -11,7 +11,8 @@
 }
 
 [data-content="area-consultas"] .consultas,
-[data-content="area-arquivos"] .arquivos{
+[data-content="area-arquivos"] .arquivos,
+[data-content="area-links"] .links{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 1rem 1rem;
