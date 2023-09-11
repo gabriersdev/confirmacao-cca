@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarCPF, sanitizarNumero, sanitizarString } from './modulos/utilitarios.js';
+import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarCPF, sanitizarNumero, sanitizarString, criarEBaixarArquivo } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
@@ -76,8 +76,6 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       $('[data-action="form-laudo"]').submit((event) => {
         event.preventDefault()
         const saida = new Array();
-        
-        console.log(event)
 
         event.target.querySelectorAll('[data-input]').forEach(elemento => {
           if(['textarea', 'input'].includes(elemento.tagName.toLowerCase())){
@@ -95,7 +93,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
           }
         })
 
-        console.log(saida)
+        criarEBaixarArquivo(JSON.stringify(saida.join('\n')), `LAUDO ${event.target.querySelector('[data-input="matricula"]').value}`, 'txt')
       })
     }, 10)
   }
