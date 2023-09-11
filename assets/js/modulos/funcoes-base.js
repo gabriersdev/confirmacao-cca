@@ -71,6 +71,10 @@ const tratamentoCampos = (input) => {
       $(input).mask('000.000.000-00', {reverse: true});
       break;
       
+      case 'cep':
+      $(input).mask('00000-000', {reverse: true});
+      break;
+      
       case 'data_nascimento':
       $(input).mask('00/00/0000');
       break;
@@ -98,30 +102,51 @@ const tratamentoCampos = (input) => {
     }
     
     function mascararValores(input){
-      SimpleMaskMoney.setMask(input, {
-        prefix: 'R$ ',
-        fixed: true,
-        fractionDigits: 2,
-        decimalSeparator: ',',
-        thousandsSeparator: '.',
-        cursor: 'move'
-      });
-      input.removeAttribute('maxlength');
+      // Créditos https://stackoverflow.com/questions/62894283/javascript-input-mask-currency
 
-      input.addEventListener('input', (evento) => {
-        const value = evento.target.value;
-        
-        const split = value.trim().split(' ').filter(e => e !== ' ');
-        const convertido = (split.map(e => parseInt(e)));
-        let valor = (convertido.find(e => !isNaN(e))).toString();
-        valor = '' + valor;
-        // console.log(valor.substring(0, valor.lenght - 2) + valor.susbtring(valor.lenght - 2, valor.lenght));
+      if(isEmpty(input.value)){
+        input.value = 'R$ 0,00';
+      }
 
-        // console.log(valor);
+      input.addEventListener('input', () => {
+        const value = input.value.replace('.', '').replace(',', '').replace(/\D/g, '')
+      
+        const options = { minimumFractionDigits: 2 }
+        const result = new Intl.NumberFormat('pt-BR', options).format(
+          parseFloat(value) / 100
+        )
         
-        // console.log(SimpleMaskMoney.formatToCurrency(), { prefix: 'R$' }));
-        // evento.target.value = 
+        if(isNaN(result) && result == 'NaN'){
+          input.value = 'R$ 0,00';
+        }else{
+          input.value = 'R$ ' + result;
+        }
       })
+
+      // SimpleMaskMoney.setMask(input, {
+      //   prefix: 'R$ ',
+      //   fixed: true,
+      //   fractionDigits: 2,
+      //   decimalSeparator: ',',
+      //   thousandsSeparator: '.',
+      //   cursor: 'move'
+      // });
+      input.removeAttribute('maxlength');
+      
+      // input.addEventListener('input', (evento) => {
+      //   const value = evento.target.value;
+      
+      //   const split = value.trim().split(' ').filter(e => e !== ' ');
+      //   const convertido = (split.map(e => parseInt(e)));
+      //   let valor = (convertido.find(e => !isNaN(e))).toString();
+      //   valor = '' + valor;
+      //   // console.log(valor.substring(0, valor.lenght - 2) + valor.susbtring(valor.lenght - 2, valor.lenght));
+      
+      //   // console.log(valor);
+      
+      //   // console.log(SimpleMaskMoney.formatToCurrency(), { prefix: 'R$' }));
+      //   // evento.target.value = 
+      // })
     }
     
   });
@@ -149,18 +174,18 @@ function funcoesBase(){
   clickAcionarModal();
   clickLimparTudoSecao();
   clickEnviarDados();
-
+  
   $('[data-action="exibir-informacoes"]').on('click', (evento) => {
     evento.preventDefault();
     document.querySelector('.modal-informacoes-pagina').showModal();
   })
-
+  
   $('[data-action=fechar-modal-dialog]').on('click', (evento) => {
     evento.target.closest('dialog').close();
   })
-
+  
   let click113 = false;
-
+  
   document.addEventListener('keyup', (evento) => {
     const code = evento.keyCode;
     if(!isEmpty(code)){
@@ -169,7 +194,7 @@ function funcoesBase(){
         acaoClickIncluirProponente()
       }else if(code == 113){
         click113 = true;
-
+        
         setTimeout(() => {
           click113 = false;
         }, 1000)
@@ -192,13 +217,13 @@ function funcoesBase(){
       }
     }
   })
-
+  
   const linksFaceis = $('.links-faceis-confirmacao');
   if(!isEmpty(linksFaceis)){
     [conteudos.consultas[9], conteudos.consultas[10], conteudos.consultas[11]].forEach(conteudo => {
       $('.links-faceis-confirmacao').append(`<a class="card" href="${conteudo.link}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
     });
-
+    
     document.querySelectorAll('[data-item="card-link-facil"]').forEach(link => {
       $(link).on('mousemove focus', () => {
         link.querySelector('[data-icon="icone"]').classList.value = 'bi bi-arrow-up-right-square-fill';

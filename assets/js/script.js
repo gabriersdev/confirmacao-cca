@@ -68,6 +68,10 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     window.clickConfirm = clickConfirm;
   }
 
+  else if(pagina == 'desligamento/index.html' || pagina == 'confirmacao-cca/desligamento/' || pagina == 'confirmacao-cca/desligamento/index.html'){
+    $(body).append(``)
+  }
+
   body.innerHTML += conteudos.rodape;
 
   window.addEventListener("load", function () {
