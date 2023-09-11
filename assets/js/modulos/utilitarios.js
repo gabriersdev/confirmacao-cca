@@ -120,30 +120,34 @@ const controleFechamentoModal = () => {
   })
 }
 
-function sanitizarString(string){
+function sanitizarString(string, substr){
   if(typeof string == 'string'){
-    const substituir = [
-      {
-        original: '-',
-        subst: ''
-      },
-      {
-        original: '(',
-        subst: ''
-      },
-      {
-        original: ')',
-        subst: ''
-      },
-      {
-        original: ' ',
-        subst: ''
-      },
-    ]
-    
-    substituir.forEach(substituicao => {
-      string = string.replace(substituicao.original, substituicao.subst)
-    })
+    if(!isEmpty(substr) && Array.isArray(substr) && substr.length == 2){
+      string = string.replaceAll(substr[0], substr[1]);
+    }else{
+      const substituir = [
+        {
+          original: '-',
+          subst: ''
+        },
+        {
+          original: '(',
+          subst: ''
+        },
+        {
+          original: ')',
+          subst: ''
+        },
+        {
+          original: ' ',
+          subst: ''
+        },
+      ]
+
+      substituir.forEach(substituicao => {
+        string = string.replace(substituicao.original, substituicao.subst)
+      })
+    }
     
     return string.trim();
   }else{
@@ -208,7 +212,7 @@ const copiar = async (valor) => {
 }
 
 function sanitizarCPF(cpf){
-  return cpf.toString().replaceAll('.', '').replaceAll('-', '');
+  return sanitizarNumero(cpf);
 }
 
 function primeiroNome(nome){
@@ -311,6 +315,10 @@ function limparEFocar(input, comando){
   }
 }
 
+const sanitizarNumero = (valor) => {
+  return !isEmpty(valor) ? valor.replace(/\D/g, '') : valor;
+}
+
 export{
   isEmpty,
   capitalize,
@@ -328,5 +336,6 @@ export{
   verificarData,
   ordernarString,
   limparEFocar,
-  cumprimentoHorario
+  cumprimentoHorario,
+  sanitizarNumero
 }

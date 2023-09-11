@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar } from './modulos/utilitarios.js';
+import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarCPF, sanitizarNumero, sanitizarString } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
@@ -11,16 +11,16 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     verificacao(evento, elemento, referencia);
   }
   window.clickEnviarConfirmacaoSenha = clickEnviarConfirmacaoSenha;
-
+  
   document.querySelectorAll('[data-recarrega-pagina]').forEach(botao => {
     botao.addEventListener('click', () => {
       window.location.reload;
     })
   }) 
-
+  
   const pagina = new URL(window.location).pathname.trim().replace('/', '');
   const body = document.querySelector('body');
-
+  
   if(pagina == 'index.html' || pagina == 'confirmacao-cca/' || pagina == 'confirmacao-cca/index.html' || isEmpty(pagina)){
     body.innerHTML += conteudos.conteudo_pagina_confirmacao;
     const accordion_item = document.createElement('div');
@@ -36,11 +36,11 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     renderConteudosPagina(area_consultas, ordernarString(conteudos.consultas), 'consultas');
     adicionarOpcoesAutoComplete();
   }
-
+  
   else if(pagina == 'arquivos/index.html' || pagina == 'confirmacao-cca/arquivos/' || pagina == 'confirmacao-cca/arquivos/index.html'){
     body.innerHTML += conteudos.conteudo_pagina_arquivos;
     const area_arquivos = document.querySelector('[data-content="area-arquivos"]');
-
+    
     renderConteudosPagina(area_arquivos, ordernarString(conteudos.arquivos), 'arquivos');
     document.querySelectorAll('a').forEach(a => {
       
@@ -53,7 +53,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
         a.setAttribute('onclick', 'clickConfirm(this)');
       }
     })
-
+    
     function clickConfirm(elemento){
       $('#modal-confirmar-senha').modal('show');
       const modal = document.querySelector('#modal-confirmar-senha');
@@ -67,22 +67,50 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     }
     window.clickConfirm = clickConfirm;
   }
-
+  
   else if(pagina == 'desligamento/index.html' || pagina == 'confirmacao-cca/desligamento/' || pagina == 'confirmacao-cca/desligamento/index.html'){
     $(body).append(``)
+    
+    // Página ignora preventDefault() se não houver tiver o setTimeout()
+    setTimeout(() => {
+      $('[data-action="form-laudo"]').submit((event) => {
+        event.preventDefault()
+        const saida = new Array();
+        
+        console.log(event)
+
+        event.target.querySelectorAll('[data-input]').forEach(elemento => {
+          if(['textarea', 'input'].includes(elemento.tagName.toLowerCase())){
+            switch(elemento.dataset.input){
+              case 'CPF':
+              case 'CEP':
+              case 'telefone':
+              saida.push(`${sanitizarString(elemento.dataset.input.toUpperCase(), ['-', ' '])}: ${sanitizarNumero(elemento.value)}`);
+              break;
+              
+              default:
+              saida.push(`${sanitizarString(elemento.dataset.input.toUpperCase(), ['-', ' '])}: ${elemento.value}`);
+              break;
+            }
+          }
+        })
+
+        console.log(saida)
+      })
+    }, 10)
   }
-
+  
   body.innerHTML += conteudos.rodape;
-
+  
   window.addEventListener("load", function () {
     const overlay2 = document.querySelector(".overlay-2");
     overlay2.style.display = "none";
-
+    
     funcoesBase();
     atribuirLinks();
     atualizarDatas();
   });
-
+  
 })();
 
 let text_areas_edicao = false;

@@ -86,53 +86,55 @@
         <div class="card-header">
           <b>Laudo</b>
         </div>
-        <form class="card-body" data-content="form-laudo" action="#" method="GET">
-          <div class="form-group">
-            <label for="matricula" class="form-label">Matrícula e Cartório</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="matricula" name="matricula" placeholder="000000" data-input="matricula" data-element="input" required>
-              <input type="text" list="lista-cartorios" class="form-control" id="cartorio" name="cartorio" placeholder="Cartório" aria-label="Cartório" data-input="cartorio" data-element="input" required>
-            </div>
-            <datalist id="lista-cartorios">
-            </datalist>
-          </div>
-          <div class="form-group">
-            <label for="CEP" class="form-label">CEP</label>
-            <input type="text" class="form-control" id="CEP" name="CEP" placeholder="00000-000" data-input="cep" data-element="input" required>
-          </div>
-          <div class="form-group">
-            <label for="numero-ou-complemento" class="form-label">N.º ou Complemento</label>
-            <input type="text" class="form-control" id="numero-ou-complemento" name="numero-ou-complemento" data-input="numero-ou-complemento" data-element="input" required>
-          </div>
-          <div class="form-group">
-            <label for="contato" class="form-label">Contato e Telefone</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="contato" name="contato" placeholder="" data-input="contato" data-element="input">
-              <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(31) 00000-0000" aria-label="Telefone da pessoa de contato" data-input="telefone" data-element="input">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="descricao" class="form-label">Descrição</label>
-            <a href="https://www.ocr2edit.com/pt/converter-para-txt" rel="noopener noreferrer" target="_blank" class="btn btn-light d-block mb-3">Converter imagem em texto <span class="seta">-></span></a>
-            <textarea name="descricao" id="descricao" cols="30" rows="10" class="form-control" style="height: 100px;" data-element="input" required></textarea>
-          </div>
-          <div class="forms-groups">
+        <div class="card-body">
+          <form data-content="form-laudo" action="#" method="GET" data-action="form-laudo">
             <div class="form-group">
-              <label for="valor-compra-e-venda" class="form-label">Valor de compra e venda</label>
-              <input type="text" id="valor-compra-e-venda" name="valor-compra-e-venda" class="form-control" placeholder="R$ 0.000,00" data-mask="money" data-element="input" required>
-              <span class="text-secondary mt-2 d-block">O valor solicitado corresponderá a 80% do valor de compra e venda</span>
-            </div>
-            <div class="form-group mt-3">
-              <label for="cliente" class="form-label">Cliente e CPF</label>
+              <label for="matricula" class="form-label">Matrícula e Cartório</label>
               <div class="input-group">
-                <input type="text" id="cliente" name="cliente" class="form-control" placeholder="" data-input="cliente" data-element="input">
-                <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00" aria-label="CPF" data-input="cpf" data-element="input">
+                <input type="text" class="form-control" id="matricula" name="matricula" placeholder="000000" data-input="matricula" data-element="input" required>
+                <input type="text" list="lista-cartorios" class="form-control" id="cartorio" name="cartorio" placeholder="Cartório" aria-label="Cartório" data-input="cartorio" data-element="input" required>
+              </div>
+              <datalist id="lista-cartorios">
+              </datalist>
+            </div>
+            <div class="form-group">
+              <label for="CEP" class="form-label">CEP</label>
+              <input type="text" class="form-control" id="CEP" name="CEP" placeholder="00000-000" data-input="cep" data-element="input" required>
+            </div>
+            <div class="form-group">
+              <label for="numero-ou-complemento" class="form-label">N.º ou Complemento</label>
+              <input type="text" class="form-control" id="numero-ou-complemento" name="numero-ou-complemento" data-input="numero-ou-complemento" data-element="input" required>
+            </div>
+            <div class="form-group">
+              <label for="contato" class="form-label">Contato e Telefone</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="contato" name="contato" placeholder="" data-input="contato" data-element="input">
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(31) 00000-0000" aria-label="Telefone da pessoa de contato" data-input="telefone" data-element="input">
               </div>
             </div>
-          </div>
-          <button type="reset" class="btn btn-outline-secondary">Limpar</button>
-          <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+            <div class="form-group">
+              <label for="descricao" class="form-label">Descrição</label>
+              <a href="https://www.ocr2edit.com/pt/converter-para-txt" rel="noopener noreferrer" target="_blank" class="btn btn-light d-block mb-3">Converter imagem em texto <span class="seta">-></span></a>
+              <textarea name="descricao" id="descricao" cols="30" rows="10" class="form-control" style="height: 100px;" data-input="descricao" data-element="input" required></textarea>
+            </div>
+            <div class="forms-groups">
+              <div class="form-group">
+                <label for="valor-compra-e-venda" class="form-label">Valor de compra e venda</label>
+                <input type="text" id="valor-compra-e-venda" name="valor-compra-e-venda" class="form-control" placeholder="R$ 0.000,00" data-mask="money" data-input="valor-compra-e-venda" data-element="input" required>
+                <span class="text-secondary mt-2 d-block">O valor solicitado corresponderá a 80% do valor de compra e venda</span>
+              </div>
+              <div class="form-group mt-3">
+                <label for="cliente" class="form-label">Cliente e CPF</label>
+                <div class="input-group">
+                  <input type="text" id="cliente" name="cliente" class="form-control" placeholder="" data-input="cliente" data-element="input">
+                  <input type="text" id="CPF" name="CPF" class="form-control" placeholder="000.000.000-00" aria-label="CPF" data-input="cpf" data-element="input">
+                </div>
+              </div>
+            </div>
+            <button type="reset" class="btn btn-outline-secondary">Limpar</button>
+            <button type="submit" id="botao-submit-form" name="botao-submit-form" class="btn btn-primary">Baixar arquivo</button>
+          </form>
+        </div>
       </div>
       <div class="card mb-4 banner">
         <div>
