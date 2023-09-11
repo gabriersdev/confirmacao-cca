@@ -73,16 +73,19 @@ function atribuirLinks(){
       break;
       
       case 'desligamento':
-      if(document.title == 'Desligamento - CCA'){
-          link.href = '#';
-          window.scrollTo({top: 0, behavior: 'smooth'});
-          link.removeAttribute('target');
+      if(document.title == 'Confirmação de dados - CCA'){
+        link.href = './desligamento/index.html';
+        link.setAttribute('target', '_blank');
+      }else if(document.title == 'Desligamento - CCA'){
+        link.href = '#';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+        link.removeAttribute('target');
       }else{
-          link.href = '../desligamento/index.html';
-          link.setAttribute('target', '_blank');
-        }
+        link.href = '../desligamento/index.html';
+        link.setAttribute('target', '_blank');
+      }
       break;
-
+      
       case 'consultas':
       if(document.title == 'Confirmação de dados - CCA'){
         link.href = './consultas/index.html';
@@ -143,7 +146,7 @@ function sanitizarString(string, substr){
           subst: ''
         },
       ]
-
+      
       substituir.forEach(substituicao => {
         string = string.replace(substituicao.original, substituicao.subst)
       })
@@ -280,7 +283,7 @@ const verificarData = (data) => {
     const data_moment = moment(data, "DD/MM/YYYY");
     const mais_18 = (moment().get('DD/MM/YYYY').diff(data_moment.get('DD/MM/YYY'), 'years') >= 18);
     const menos_75 = (moment().get('DD/MM/YYYY').diff(data_moment.get('DD/MM/YYY'), 'years') < 75);
-
+    
     if(!mais_18){
       SwalAlert('aviso', 'warning', 'Proponente menor de 18 anos!');
     }else if(!menos_75){
