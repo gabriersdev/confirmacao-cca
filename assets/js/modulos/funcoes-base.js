@@ -7,7 +7,7 @@ import { isEmpty, resizeTextArea } from './utilitarios.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(true){
+  if(false){
     if(isEmpty(funcao)){
       if(document.title.trim() == 'Confirmação de dados - CCA' && true){
         window.onbeforeunload = async (evento) => {
@@ -192,6 +192,7 @@ const tratamentoCampos = (input) => {
     
     document.addEventListener('keyup', (evento) => {
       const code = evento.keyCode;
+      evento.preventDefault();
       if(!isEmpty(code)){
         // console.log(code)
         if(code == 45){
