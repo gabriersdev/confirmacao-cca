@@ -70,6 +70,11 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   
   else if(pagina == 'desligamento/index.html' || pagina == 'confirmacao-cca/desligamento/' || pagina == 'confirmacao-cca/desligamento/index.html'){
     $(body).append(``)
+
+    setTimeout(() => {
+      $('[data-input="contato"]').mask('SSSSSSSSSSSSSSS')
+      $('[data-input="cliente"]').mask('SSSSSSSSSSSSSSS')
+    }, 0)
     
     // Página ignora preventDefault() se não houver tiver o setTimeout()
     setTimeout(() => {
