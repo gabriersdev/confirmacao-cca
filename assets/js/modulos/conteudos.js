@@ -57,7 +57,7 @@ const conteudo_pagina_confirmacao = `
 </div>
 <div class="card-body none">
 <div class="alert alert-secondary">
-Rascunho para enviar processo para internalizar
+Rascunho para enviar processo para internalização
 </div>
 <form action="" method="GET" data-form="analise-internalizada" class="form-btn-copy-float">
 <button type="button" class="btn-copy-float"><i class="bi bi-clipboard2"></i></button><div id="conteudo-texto" name="conteudo-texto" contenteditable="true" class="form-control">Prezados, bom dia! <br><br>Gentileza realizar análise de crédito internalizada, [dado(s) do(s) cliente(s)]:<br><br>[Sobre o processo]<br><br>Empreendimento: <br>Valor de compra e venda: <br>Modalidade: <br>Tabela de amortização: <br>Cota: <br>Prazo de amortização: <br>Renda: <br><br>[Dados dos proponentes] <br><br>[Renda dos proponentes] <br></div></form></div></div><div class="mt-5 links-faceis-confirmacao"></div>
