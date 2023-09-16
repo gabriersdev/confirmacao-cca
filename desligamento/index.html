@@ -82,7 +82,7 @@
           </div>
         </div>
       </div>
-      <div class="card mb-4">
+      <div class="card mb-4" style="display: none;">
         <div class="card-header">
           <b>Laudo</b>
         </div>
@@ -136,6 +136,63 @@
           </form>
         </div>
       </div>
+      
+      <div class="card mb-4">
+        <div class="card-header">
+          <b>Análise Internalizada</b>
+        </div>
+        <div class="card-body">
+          <form action="" method="GET" data-form="analise-internalizada" class="form-btn-copy-float">
+            <div id="" name="" contenteditable="true" class="form-control">
+              Prezados, bom dia! 
+              <br><br>
+              Gentileza realizar análise de crédito internalizada, [dado(s) do(s) cliente(s)]:
+              <br><br>
+              [Sobre o processo]
+              <br><br>
+              Empreendimento: <br>
+              Valor de compra e venda: <br>
+              Modalidade: <br>
+              Tabela de amortização: <br>
+              Cota: <br>
+              Prazo de amortização: <br>
+              Renda: <br>
+              <br>
+              [Dados dos proponentes] 
+              <br><br>
+              [Renda dos proponentes] <br>
+            </div>
+            <button type="button" class="btn-copy-float"><i class="bi bi-clipboard2"></i></button>
+            <!-- <i class="bi bi-clipboard2-check"></i> -->
+          </form>
+        </div>
+      </div>
+
+      <style>
+        .form-btn-copy-float{
+          position: relative;
+
+          &:hover{
+            .btn-copy-float{
+              display: block;
+            }
+          }
+
+          .btn-copy-float{
+            transition: ease-in-out 0.3s all;
+            display: none;
+            position: absolute;
+            top: 0;
+            margin: 0.75rem;
+            right: 0;
+            padding: 0.5rem;
+            background-color: #D3D3D3;
+            border-color: #808080;
+            border-radius: 0.25rem;
+          }
+        }
+      </style>
+      
       <div class="card mb-4 banner">
         <div>
           <h5 class="title">O que achou dessa página?</h5>

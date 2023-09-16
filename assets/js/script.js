@@ -1,7 +1,7 @@
 "use strict";
 
 import { conteudos } from './modulos/conteudos.js';
-import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarCPF, sanitizarNumero, sanitizarString, criarEBaixarArquivo } from './modulos/utilitarios.js';
+import { atualizarDatas, isEmpty, atribuirLinks, ordernarString, limparEFocar, sanitizarCPF, sanitizarNumero, sanitizarString, criarEBaixarArquivo, resizeTextArea } from './modulos/utilitarios.js';
 import { verificacao } from './modulos/confirmacao.js';
 import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
@@ -99,6 +99,14 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
         })
 
         criarEBaixarArquivo(JSON.stringify(saida.join('\n')), `LAUDO ${event.target.querySelector('[data-input="matricula"]').value}`, 'txt')
+      })
+
+      $('textarea').each((index, elemento) => {
+        resizeTextArea(elemento);
+      })
+
+      $('textarea').on('input', (evento) => {
+        resizeTextArea(evento.target);
       })
     }, 10)
   }
