@@ -192,7 +192,7 @@ const tratamentoCampos = (input) => {
     
     document.addEventListener('keyup', (evento) => {
       const code = evento.keyCode;
-      evento.preventDefault();
+      // evento.preventDefault();
       if(!isEmpty(code)){
         // console.log(code)
         if(code == 45){
