@@ -143,7 +143,6 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
         resizeTextArea(evento.target);
       })
       
-      
     }, 10)
   }
   
