@@ -125,7 +125,7 @@
             segundo_td.setAttribute('contenteditable', 'true')
             try{
               segundo_td.addEventListener('input', () => {
-                document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].textContent = segundo_td.textContent
+                document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText = segundo_td.innerText
               })
             }catch(error){
               alert('Ocorreu um erro ao tentar replicar o texto preenchido. Gentileza verificar o console.')
