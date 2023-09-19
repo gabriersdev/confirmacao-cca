@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR+">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acompanhamento do Processo</title>
+</head>
+<body>
+  
+  <style>
+    html{
+      font-family: sans-serif;
+    }
+    
+    table{
+      font-size: 14.5px;
+      width: 100%;
+      text-transform: uppercase;
+      line-height: 1.75;
+      border-collapse: collapse;
+    }
+    
+    thead th{
+      text-align: left;
+    }
+    
+    th, td{
+      border: 1px solid #000;
+    }
+    
+    tr td:not(td[colspan]):first-child{
+      width: calc(12.5 * 16px);
+      font-weight: normal;
+    }
+    
+    tr td:not(td[colspan]){
+      padding: 0.075rem 0.5rem;
+    }
+
+    hr{
+      border: 1px dashed #000;
+      margin: 1.5rem 0;
+    }
+  </style>
+  
+  <table>
+    <thead>
+      <tr>
+        <th colspan="2">
+          Acompanhamento do Processo
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Empreendimento</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>FID</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Cliente</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>CEHOP</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Avaliação válida até</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Com FGTS</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Possui 36 meses</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Modalidade</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>APP FGTS</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Possui IRPF</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Restrição</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Tipo de renda <br> e Profissão</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Dossiê entregue em</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Observações</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  
+  <script>
+    try{
+      document.querySelector('body').outerHTML += document.querySelector('table').outerHTML
+      const table = document.querySelectorAll('table')[0];
+      
+      try{
+        table.querySelector('tbody').querySelectorAll('tr').forEach((tr, index) => {
+          const segundo_td = tr.querySelectorAll('td')[1];
+          
+          if(segundo_td !== null){
+            segundo_td.setAttribute('contenteditable', 'true')
+            try{
+              segundo_td.addEventListener('input', () => {
+                document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].textContent = segundo_td.textContent
+              })
+            }catch(error){
+              alert('Ocorreu um erro ao tentar replicar o texto preenchido. Gentileza verificar o console.')
+              console.log(error)
+            }
+          }
+        })
+      }catch(error){
+        alert('Ocorreu um erro ao implementar edição dos campos. Gentileza verificar o console.')
+        console.log(error)
+      }
+    }catch(error){
+      alert('Ocorreu um erro ao implementar a replicação da tabela. Gentileza verificar o console.')
+      console.log(error)
+    }
+  </script>
+  
+</body>
+</html>
