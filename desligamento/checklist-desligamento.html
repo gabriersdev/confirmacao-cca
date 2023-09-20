@@ -38,7 +38,7 @@
     }
 
     hr{
-      border: 1px dashed #000;
+      border: 0.75px dashed #000;
       margin: 1.5rem 0;
     }
   </style>
@@ -126,6 +126,12 @@
             try{
               segundo_td.addEventListener('input', () => {
                 document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText = segundo_td.innerText
+              })
+
+              segundo_td.addEventListener('blur', () => {
+                const innerText = document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText;
+                segundo_td.innerHTML = ''
+                segundo_td.innerText = innerText;
               })
             }catch(error){
               alert('Ocorreu um erro ao tentar replicar o texto preenchido. Gentileza verificar o console.')
