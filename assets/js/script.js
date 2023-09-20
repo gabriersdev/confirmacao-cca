@@ -106,8 +106,8 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     $(body).append(``)
     
     setTimeout(() => {
-      $('[data-input="contato"]').mask('SSSSSSSSSSSSSSS')
-      $('[data-input="cliente"]').mask('SSSSSSSSSSSSSSS')
+      // $('[data-input="contato"]').mask('SSSSSSSSSSSSSSS ')
+      // $('[data-input="cliente"]').mask('SSSSSSSSSSSSSSS')
     }, 0)
     
     // Página ignora preventDefault() se não houver tiver o setTimeout()
@@ -118,9 +118,12 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
         
         event.target.querySelectorAll('[data-input]').forEach(elemento => {
           if(['textarea', 'input'].includes(elemento.tagName.toLowerCase())){
+            console.log(elemento.dataset.input)
             switch(elemento.dataset.input){
               case 'CPF':
+              case 'cpf':
               case 'CEP':
+              case 'cep':
               case 'telefone':
               saida.push(`${sanitizarString(elemento.dataset.input.toUpperCase(), ['-', ' '])}: ${sanitizarNumero(elemento.value)}`);
               break;
