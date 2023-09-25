@@ -204,7 +204,7 @@ button i{
   display: none;
 }
 
-[data-content="conteudo-analise-internalizada"]{
+[data-content="secao-controlada"]{
   .card-header{
     cursor: pointer;
     border-bottom: unset;

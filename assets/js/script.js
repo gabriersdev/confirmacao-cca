@@ -27,40 +27,6 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     accordion_item.classList.value = 'accordion-item';
     accordion_item.innerHTML = conteudos.accordion_item(1);
     document.querySelector('.accordion').appendChild(accordion_item);
-
-    setTimeout(() => {
-      $('[data-content="conteudo-analise-internalizada"] .card-header').on('click', (evento) => {
-        $('[data-content="conteudo-analise-internalizada"] .card-body').toggleClass('none');
-        if($('[data-content="conteudo-analise-internalizada"] .card-body').css('display') !== 'none'){
-          $('[data-content="conteudo-analise-internalizada"] .card-header span').text('Clique para fechar');
-        }else{
-          $('[data-content="conteudo-analise-internalizada"] .card-header span').text('Clique para abrir');
-        }
-      })
-
-      $('.btn-copy-float').on('click', (evento) => {
-        evento.preventDefault();
-        const btn = document.querySelector('.btn-copy-float')
-        const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', '#D3D3D3', 'none'];
-        try{
-          navigator.clipboard.writeText($('#conteudo-texto').text().trim()).then(() => {
-          })
-          btn.style.backgroundColor = '#99CC99';
-          btn.innerHTML = '<i class="bi bi-clipboard2-check"></i>';
-        }catch{
-          btn.style.backgroundColor = '#F0928B';
-          btn.innerHTML = '<i class="bi bi-clipboard2-x"></i>';
-        }finally{
-          btn.style.display = 'block';
-        }
-        
-        setTimeout(() => {
-          btn.style.backgroundColor = cor_inicial;
-          btn.innerHTML = html_inicial;
-          btn.style.display = display_inicial;
-        }, 1000)
-      })
-    }, 0)
   }
   
   else if(pagina == 'consultas/index.html' || pagina == 'confirmacao-cca/consultas/' || pagina == 'confirmacao-cca/consultas/index.html'){
@@ -158,6 +124,41 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     funcoesBase();
     atribuirLinks();
     atualizarDatas();
+    
+    setTimeout(() => {
+      $('[data-content="secao-controlada"] .card-header').on('click', (evento) => {
+        $('[data-content="secao-controlada"] .card-body').toggleClass('none');
+        if($('[data-content="secao-controlada"] .card-body').css('display') !== 'none'){
+          // $('[data-content="secao-controlada"] .card-header span').text('Clique para fechar');
+          $('[data-content="secao-controlada"] .card-header span').text('');
+        }else{
+          $('[data-content="secao-controlada"] .card-header span').text('Clique para abrir');
+        }
+      })
+      
+      $('.btn-copy-float').on('click', (evento) => {
+        evento.preventDefault();
+        const btn = document.querySelector('.btn-copy-float')
+        const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', '#D3D3D3', 'none'];
+        try{
+          navigator.clipboard.writeText(document.querySelector('[data-form="conteudo-texto"]').innerText.trim()).then(() => {
+          })
+          btn.style.backgroundColor = '#99CC99';
+          btn.innerHTML = '<i class="bi bi-clipboard2-check"></i>';
+        }catch{
+          btn.style.backgroundColor = '#F0928B';
+          btn.innerHTML = '<i class="bi bi-clipboard2-x"></i>';
+        }finally{
+          btn.style.display = 'block';
+        }
+        
+        setTimeout(() => {
+          btn.style.backgroundColor = cor_inicial;
+          btn.innerHTML = html_inicial;
+          btn.style.display = display_inicial;
+        }, 1000)
+      })
+    }, 0)
   });
   
 })();

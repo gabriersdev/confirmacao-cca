@@ -129,7 +129,7 @@
               })
 
               segundo_td.addEventListener('blur', () => {
-                const innerText = document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText;
+                const innerText = document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText.trim();
                 segundo_td.innerHTML = ''
                 segundo_td.innerText = innerText;
               })
