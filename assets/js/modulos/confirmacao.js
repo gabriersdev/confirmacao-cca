@@ -5,11 +5,12 @@ export {
 }
 
 const conteudos = [
-  {conteudo: 'Relatório', attr: '1LWYfPTFp_SWztUaKc4Dkuveg5l3Bn3x2'},
-  {conteudo: 'Tabela de Apuração', attr: '1TyHuRRsv4IwEr04MNhWGDkx8JH_boK08'},
-  {conteudo: 'Capa', attr: '1AvwrylQwYmu1ufh176X4HHSGjq1GqMdZ'},
-  {conteudo: 'Ateste', attr: '11NfAmCbZUrgNuY05-SkuiNUxkYwMA8eq'},
-  {conteudo: 'Validação de Pesquisa', attr: '1OAATqKl1MT9lOYM4RlL4lqef5F4-PC_A'},
+  {conteudo: 'Relatório', attr: '1Kag8jI9LcxlPqQ0kfZWst2vdJZxqKGbE'},
+  {conteudo: 'Tabela de Apuração', attr: '1KgxJDvJ8kQTj4pbFsm-QU07jiK1y3pqC'},
+  {conteudo: 'Capa', attr: '1KhLItphiOYq_7tifvPkHIY9BWLwO0zht'},
+  {conteudo: 'Ateste', attr: '1Khdf60TPOtAcqVOdXv4wd7z5lID7T-wO'},
+  {conteudo: 'Validação de Pesquisa', attr: '1KXflnhCgrQ3BRFqC6mtyP94IbX51bMA-'},
+  {conteudo: 'Checklist', attr: '1KcCOWhqkAiZQpAk60K02cpjS2RgSBOGS'},
 ]
 
 function verificacao(evento, elemento, referencia){
