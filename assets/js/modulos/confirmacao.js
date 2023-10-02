@@ -13,6 +13,8 @@ const conteudos = [
   {conteudo: 'Checklist', attr: '1KcCOWhqkAiZQpAk60K02cpjS2RgSBOGS'},
 ]
 
+export const id_arquivos = {conteudos}
+
 function verificacao(evento, elemento, referencia){
   evento.preventDefault();
   const input = elemento.parentElement.querySelectorAll('input')[0];

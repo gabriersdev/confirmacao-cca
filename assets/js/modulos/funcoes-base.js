@@ -4,6 +4,7 @@ import { clickRemoverRenda, clickIncluirProponente, clickRemoverProponente, clic
 import { edicaoInputNome, atualizarNumerosProponentes, edicaoInputCPF, edicaoInputEmail, edicaoInputData, edicaoTextAreaRelatorio, edicaoTextAreaPendencias, edicaoTextAreaRestricoes } from './funcoes-de-conteudo.js';
 import { renderTooltips, renderPopover, renderPendencias, renderResumo } from './funcoes-render.js';
 import { isEmpty, resizeTextArea } from './utilitarios.js';
+import { id_arquivos } from './confirmacao.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
@@ -225,8 +226,20 @@ const tratamentoCampos = (input) => {
     
     const linksFaceis = $('.links-faceis-confirmacao');
     if(!isEmpty(linksFaceis)){
-      [conteudos.consultas[9], conteudos.consultas[10], conteudos.consultas[11]].forEach(conteudo => {
-        $('.links-faceis-confirmacao').append(`<a class="card" href="${conteudo.link}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
+      [
+        conteudos.consultas.find(e => e.titulo == 'CIWEB'), 
+        conteudos.consultas.find(e => e.titulo == 'CADMUT'), 
+        conteudos.consultas.find(e => e.titulo == 'Consulta CNPJ'), 
+        conteudos.consultas.find(e => e.titulo == 'Situação Cadastral'), 
+        conteudos.arquivos.find(e => e.titulo == 'Tabela de Apuração'),
+        conteudos.consultas.find(e => e.titulo == 'Tempo de Serviço'), 
+      ].forEach(conteudo => {
+        const link = conteudo.link
+        try{
+          $('.links-faceis-confirmacao').append(`<a class="card" href="${link.includes('https') ? link : `https://drive.google.com/uc?export=download&id=${(id_arquivos.conteudos.find(e => e.conteudo == link)).attr}`}" target="_blank" data-item="card-link-facil" rel="noreferrer noopener" data-toggle="tooltip" data-placement="top" title="Clique para abrir ->"><div class="card-header">${conteudo.sistema}<i class="bi bi-arrow-up-right-square" data-icon="icone"></i></div><div class="card-body"><b>${conteudo.titulo}</b></div></a>`);
+        }catch(error){
+          '#'
+        }
       });
       
       document.querySelectorAll('[data-item="card-link-facil"]').forEach(link => {

@@ -24,6 +24,11 @@ body{
 
 *, body{
   font-family: 'Inter', sans-serif;
+  font-size: 16px;
+}
+
+.swal2-html-container{
+  font-size: 1rem !important;
 }
 
 main{
