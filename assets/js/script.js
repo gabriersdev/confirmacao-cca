@@ -115,7 +115,8 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
     }, 10)
   }
   
-  body.innerHTML += conteudos.rodape;
+  $(body).prepend(conteudos.nav)
+  $(body).append(conteudos.rodape)
   
   window.addEventListener("load", function () {
     const overlay2 = document.querySelector(".overlay-2");

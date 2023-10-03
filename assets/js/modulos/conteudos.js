@@ -80,6 +80,41 @@ const HTMLacompanharFID = (FID, link) => {
   return `<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Acompanhe o FID ${FID}</title> <meta name="author" content="Gabriel Ribeiro"> <meta property="og:title" content="Acompanhe o FID ${FID}"> <meta property="og:description" content="Arquivo para acompanhamento do FID ${FID}. Basta abrir em um navegador que você será direcionado para o link informado para o FID."> </head> <body> <style> @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); html{ background-color: #F6F6F6; } body{ font-family: 'Inter', sans-serif; font-size: 16px; padding: 0; margin: 0; } main.main-container{ display: flex; align-items: center; justify-content: center; min-height: 100vh; } main.main-container .card-header{ display: flex; align-items: center; justify-content: space-between; } main.main-container .card-header .spinner-border{ border-width: 2.5px; width: 15px; height: 15px; } main.main-container .card-body{ padding: 1rem; } main .card{ background-color: #FFF; border-radius: 5px; border: 1px solid #A7ACB1; } main .card-header{ background-color: #F6F6F6; padding: 0.65rem; border-bottom: 1px solid #A7ACB1; } /* Loader */ .spinner-border{ width: 100%; height: 100%; background-color: var(--cor-background-loader); display: flex; align-items: center; justify-content: center; } /* Loader - credits: https://loading.io/css/ */ .lds-ring{ margin-right: 1.75rem; height: 1.15rem; } .lds-ring div{ box-sizing: border-box; display: block; position: absolute; width: 20px; height: 20px; border: 3.5px solid #A7ACB1; border-radius: 50%; animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite; border-color: #A7ACB1 transparent transparent transparent; } .lds-ring div:nth-child(1){ animation-delay: -0.45s; } .lds-ring div:nth-child(2){ animation-delay: -0.3s; } .lds-ring div:nth-child(3){ animation-delay: -0.15s; } @keyframes lds-ring { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } .visually-hidden{ visibility: hidden; } .text-right{ text-align: right; } h5{ font-size: 1.25rem; font-weight: normal; } address{ font-style: normal; } a{ text-decoration: none; outline: none; color: #000; } a:is(:hover, :focus, :active), address a b{ text-decoration: underline; } footer{ padding: 2rem 1rem; border-top: 1px solid #A7ACB1; display: flex; align-items: center; justify-content: space-between; } footer div span:first-child{ display: block; margin-bottom: 0.25rem; } footer div span:last-child{ color: #808080; } .text-gray{ color: #808080; font-weight: 600; } .text-arial{ font-family: 'Arial', sans-serif; font-style: normal; } </style> <main class="container main-container"> <section class="card"> <div class="card-header"> <span>Aguarde!</span> <div class="spinner-border"> <div class="lds-ring"><div></div><div></div><div></div><div></div></div> </div> </div> <div class="card-body"> <h5>Redirecionando para o <b>FID ${FID}</b></h5> </div> </section> </main> <footer> <address> &nbsp;<a href="https://github.com/gabrieszin/">Desenvolvido por <b>Gabriel Ribeiro</b></a> </address> <div class="text-right"> <span class="text-gray">Arquivo renderizado em</span> <span>${hoje.format('DD')}<i class="text-arial">/</i>${hoje.format('MM')}<i class="text-arial">/</i>${hoje.format('YYYY')} às ${hoje.format('HH:mm:ss')}</span> </div> </footer> <script> const link = new URL('${link}'); const split = link.search.split('&'); try{ const valido = [ link.origin.toLowerCase() == 'https://portalsafi.direcional.com.br', link.pathname.toLowerCase() == '/fluxo', split.length == 2, split[0].search('codigo') > 0, typeof(parseInt(split[0].split('=')[1])) == 'number', split[0].split('=')[1].length == 6 ]; const FID = split[0].split('=')[1]; if(valido.every(e => e == true)){ document.querySelector('.card .card-body').innerHTML = '<h5>Redirecionando para o <b>FID ' + FID + '</b></h5>'; setTimeout(() => { try{ window.location.replace(link.href); }catch(error){ alert('Oops... Ocorreu um erro ao redirecionar para o link do FID.'); } }, 2000); }else{ reportar(false) } }catch(error){ reportar(false) } function reportar(condicao){ if(!condicao){ alert('Oops... O link informado não atende aos requisitos necessários.'); document.querySelector('.card .card-header span').innerHTML = 'Oops!'; document.querySelector('.card .card-header .spinner-border').innerHTML = '&#10005;'; document.querySelector('.card .card-body').innerHTML = '<h5>Oops... O link informado <b>não é válido</b></h5>' } } </script> </body> </html>`;
 }
 
+const nav = `
+<nav class="navbar mt-5">
+<div class="container container-fluid d-flex justify-content-between" 
+style="
+  background-color: rgba(0, 0, 0, 0.01);
+  padding: 0.5rem 1rem;
+  padding-right: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  "
+>
+  <div style="display: flex; align-items: center;">
+    <span style="background-color: #0D6EFD; width: 1rem; height: 1rem; display: inline-block; margin-right: 0.5rem; border-radius: 0.25rem;"></span>
+  <b class="navbar-brand"
+  style="
+    color: #0D6EFD;
+    font-size: 1.5rem;
+    font-weight: 900;
+  "
+  ></b>
+  </div>
+  <div class="btn-group dropstart" role="group">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Ir para
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#" data-link="confirmacao"><i class="bi bi-file-earmark-break"></i> Confirmação CCA</a></li>
+      <li><a class="dropdown-item" href="#" data-link="consultas"><i class="bi bi-file-earmark-check"></i> Consultas</a></li>
+      <li><a class="dropdown-item" href="#" data-link="arquivos"><i class="bi bi-file-earmark-medical"></i> Arquivos</a></li>
+      <li><a class="dropdown-item" href="#" data-link="desligamento"><i class="bi bi-file-earmark-text"></i> Desligamento</a></li>
+    </ul>
+  </div>
+</div>
+</nav>`
+
 export const conteudos = {
   accordion_item,
   secao_rendas,
@@ -89,5 +124,6 @@ export const conteudos = {
   conteudo_pagina_confirmacao,
   conteudo_pagina_consultas,
   conteudo_pagina_arquivos,
-  HTMLacompanharFID
+  HTMLacompanharFID,
+  nav
 }
