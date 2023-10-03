@@ -109,6 +109,10 @@ function atribuirLinks(){
       break;
     }
     
+    if(link.classList.contains('dropdown-item')){
+      link.removeAttribute('target')
+    }
+
     link.setAttribute('rel', 'noopener noreferrer');
   })
 }
