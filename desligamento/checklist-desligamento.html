@@ -125,7 +125,7 @@
             segundo_td.setAttribute('contenteditable', 'true')
             try{
               segundo_td.addEventListener('input', () => {
-                document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText = segundo_td.innerText
+                document.querySelectorAll(`table:last-child tbody tr td:last-child`)[index].innerText = segundo_td.innerText.trim()
               })
 
               segundo_td.addEventListener('blur', () => {
