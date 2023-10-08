@@ -100,7 +100,7 @@ const tratamentoCampos = (input) => {
       break;
     }
     
-    switch(input.dataset.mask){
+    switch(input.dataset.maskc){
       case 'money':
       mascararValores(input);
       break;
@@ -108,14 +108,16 @@ const tratamentoCampos = (input) => {
     
     function mascararValores(input){
       // Créditos https://stackoverflow.com/questions/62894283/javascript-input-mask-currency
-      
+      console.log(input)
+      console.log(input.value)
+
       if(isEmpty(input.value)){
         input.value = 'R$ 0,00';
       }
       
       input.addEventListener('input', () => {
         const value = input.value.replace('.', '').replace(',', '').replace(/\D/g, '')
-        
+
         const options = { minimumFractionDigits: 2 }
         const result = new Intl.NumberFormat('pt-BR', options).format(
           parseFloat(value) / 100
@@ -128,14 +130,6 @@ const tratamentoCampos = (input) => {
           }
         })
         
-        // SimpleMaskMoney.setMask(input, {
-        //   prefix: 'R$ ',
-        //   fixed: true,
-        //   fractionDigits: 2,
-        //   decimalSeparator: ',',
-        //   thousandsSeparator: '.',
-        //   cursor: 'move'
-        // });
         input.removeAttribute('maxlength');
         
         // input.addEventListener('input', (evento) => {
