@@ -453,9 +453,10 @@ const acaoClickCopiar = (btn) => {
     $('#modal-informar-restricoes form').submit((evento) => {
       evento.preventDefault();
       const text_area = evento.target.querySelector('#text-restricoes');
-      const valor_text_area = evento.target.querySelector('#text-restricoes').value;
+      let valor_text_area = evento.target.querySelector('#text-restricoes').value;
       
       if(!isEmpty(valor_text_area) && valor_text_area.trim().length > 0){
+        valor_text_area = valor_text_area.replaceAll('\n', '')
         const valor_split = valor_text_area.split(' ');
         
         const saida = (valor_split.filter(e => e !== '').map(e => e.trim())).join(' ')
