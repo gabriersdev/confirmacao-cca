@@ -108,8 +108,8 @@ const tratamentoCampos = (input) => {
     
     function mascararValores(input){
       // Créditos https://stackoverflow.com/questions/62894283/javascript-input-mask-currency
-      console.log(input)
-      console.log(input.value)
+      // console.log(input)
+      // console.log(input.value)
 
       if(isEmpty(input.value)){
         input.value = 'R$ 0,00';
