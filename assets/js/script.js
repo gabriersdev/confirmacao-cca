@@ -69,7 +69,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   }
   
   else if(pagina == 'desligamento/index.html' || pagina == 'confirmacao-cca/desligamento/' || pagina == 'confirmacao-cca/desligamento/index.html'){
-    $(body).append(``)
+    $(body).append(conteudos.conteudo_pagina_desligamento)
     
     setTimeout(() => {
       // $('[data-input="contato"]').mask('SSSSSSSSSSSSSSS ')
@@ -114,7 +114,11 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
       
     }, 10)
     
-    document.querySelector('[data-form="desligamento-internalizado"] [data-form="conteudo-texto"]').value = `Prezados, bom dia! \n\nGentileza gerar formulários e dar andamento ao processo que está em desligamento.\n\nModalidade: \nEmpreendimento: \nUnidade: \nValor de contrato: \nValor de financiamento: \nValor de FGTS: \n\n[Observações]`;
+    try{
+      document.querySelector('[data-form="desligamento-internalizado"] [data-form="conteudo-texto"]').value = `Prezados, bom dia! \n\nGentileza gerar formulários e dar andamento ao processo que está em desligamento.\n\nModalidade: \nEmpreendimento: \nUnidade: \nValor de contrato: \nValor de financiamento: \nValor de FGTS: \n\n[Observações]`;
+    }catch(error){
+
+    }
     
     async function getCartorios(){
       const response = await fetch('https://apicartorioshmlg.registrocivil.org.br/api/cartorios/geolocalizacao?estado=MG&apikey=SECRET')
