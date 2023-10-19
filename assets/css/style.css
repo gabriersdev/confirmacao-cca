@@ -227,3 +227,45 @@ button i{
     }
   }
 }
+
+/* Página INDEX de desligamento */
+
+[data-content="form-laudo"]{
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(2, minmax(calc(50% - 0.5rem), 1fr));
+  
+  .forms-groups{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+a{
+  .seta{
+    transition: margin ease-in-out 0.3s;
+  }
+  
+  &:hover{
+    .seta{
+      margin-left: 0.25rem;
+    }
+  }
+}
+
+.banner{
+  background: url(../img/banner-post.webp) center / cover no-repeat;
+  padding: 2.5rem 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (prefers-color-scheme: dark) {
+  body{
+    position: static;
+  }
+}
