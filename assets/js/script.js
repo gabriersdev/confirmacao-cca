@@ -142,7 +142,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
         const btn = document.querySelector('.btn-copy-float')
         const [html_inicial, cor_inicial, display_inicial] = ['<i class="bi bi-clipboard2"></i>', '#D3D3D3', 'none'];
         try{
-          navigator.clipboard.writeText(document.querySelector('[data-form="conteudo-texto"]').innerText.trim()).then(() => {
+          navigator.clipboard.writeText(document.querySelector('[data-form="conteudo-texto"]').innerText.trim() || document.querySelector('[data-form="conteudo-texto"]').value.trim()).then(() => {
           })
           btn.style.backgroundColor = '#99CC99';
           btn.innerHTML = '<i class="bi bi-clipboard2-check"></i>';

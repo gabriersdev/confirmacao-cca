@@ -61,7 +61,7 @@ const conteudo_pagina_confirmacao = `
 Rascunho para enviar processo para internalização
 </div>
 <form action="" method="GET" data-form="analise-internalizada" class="form-btn-copy-float">
-<button type="button" class="btn-copy-float"><i class="bi bi-clipboard2"></i></button><div data-form="conteudo-texto" id="conteudo-texto" name="conteudo-texto" contenteditable="true" class="form-control">Prezados, bom dia! <br><br>Gentileza realizar análise de crédito internalizada, [dado(s) do(s) cliente(s)]:<br><br>[Sobre o processo]<br><br>Empreendimento: <br>Valor de compra e venda: <br>Modalidade: <br>Tabela de amortização: <br>Cota: <br>Prazo de amortização: <br>Renda: <br><br>[Dados dos proponentes] <br><br>[Renda dos proponentes] <br></div></form></div></section><div class="mt-5 links-faceis-confirmacao"></div>
+<button type="button" class="btn-copy-float"><i class="bi bi-clipboard2"></i></button><textarea data-form="conteudo-texto" style="height: calc(30 * 1rem)" id="conteudo-texto" name="conteudo-texto" contenteditable="true" class="form-control">Prezados, bom dia! \n\nGentileza realizar análise de crédito internalizada, [dado(s) do(s) cliente(s)]:\n\n[Sobre o processo]\n\nEmpreendimento: \nValor de compra e venda: \nModalidade: \nTabela de amortização: \nzCota: \nPrazo de amortização: \nRenda: \n\n[Dados dos proponentes] \n\n[Renda dos proponentes] \n</textarea></form></div></section><div class="mt-5 links-faceis-confirmacao"></div>
 </div>`;
 
 const conteudo_pagina_consultas = `<main><div class="container mt-5 mb-5"><hgroup class="hgroup" data-hgroup="confirmacao-cca"><h3 class="hgroup-titulo">Consultas</h3></hgroup><div class="card"><div class="card-header d-flex align-items-center justify-content-between"><b>Consultas</b>
