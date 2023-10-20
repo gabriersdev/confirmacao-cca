@@ -178,9 +178,8 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   $(body).prepend(conteudos.nav)
   $(body).append(conteudos.rodape)
   
-  window.addEventListener("load", function () {
-    const overlay2 = document.querySelector(".overlay-2");
-    overlay2.style.display = "none";
+  window.addEvenxtListener("load", function () {
+    $('.overlay').hide();
     
     funcoesBase();
     atribuirLinks();
