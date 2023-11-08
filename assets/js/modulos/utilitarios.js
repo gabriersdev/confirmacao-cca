@@ -223,7 +223,7 @@ function sanitizarCPF(cpf){
 }
 
 function primeiroNome(nome){
-  const nome_separado = nome.split(' ');
+  const nome_separado = nome.trim().split(' ');
   return nome_separado[0];
 }
 
