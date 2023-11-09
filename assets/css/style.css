@@ -210,7 +210,7 @@ button i{
 }
 
 [data-content="secao-controlada"]{
-  .card-header{
+  >.card-header{
     cursor: pointer;
     border-bottom: unset;
 

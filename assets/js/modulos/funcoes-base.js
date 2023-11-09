@@ -8,7 +8,7 @@ import { id_arquivos } from './confirmacao.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(false){
+  if(true){
     if(isEmpty(funcao)){
       if(document.title.trim() == 'Confirmação de dados - CCA' && true){
         window.onbeforeunload = async (evento) => {
@@ -266,6 +266,19 @@ const tratamentoCampos = (input) => {
         })
       })
     }
+
+    $('[data-form="checklist-analise-internalizada"] input[type=checkbox]').on('input', (event) => {
+      try{
+        const label = event.target.closest('div.form-group').querySelector('label');
+        if(event.target.checked){
+          label.innerHTML = `<s>${label.textContent}</s>`
+        }else{
+          label.innerHTML = `${label.textContent}`
+        }
+      }catch(error){
+
+      }
+    })
   }
   
   function atualizar(){
