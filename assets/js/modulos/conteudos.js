@@ -57,7 +57,7 @@ const conteudo_pagina_confirmacao = `
 <span class="text-muted span">Clique para abrir</span>
 </div>
 <div class="card-body none">
-<div class="alert alert-secondary">
+<div class="info alert alert-secondary">
 Rascunho para enviar processo para internalização
 </div>
 <form action="" method="GET" data-form="analise-internalizada" class="form-btn-copy-float">

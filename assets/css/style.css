@@ -264,6 +264,18 @@ a{
   justify-content: space-between;
 }
 
+.alert.info{
+  &::before{
+    content: "\F430";
+    font-family: 'bootstrap-icons';
+    margin-right: 0.25rem;
+  }
+
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-left-color: rgb(0, 0, 0, 0.25);
+}
+
 @media (prefers-color-scheme: dark) {
   body{
     position: static;

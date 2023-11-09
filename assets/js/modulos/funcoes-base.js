@@ -266,7 +266,7 @@ const tratamentoCampos = (input) => {
         })
       })
     }
-
+    
     $('[data-form="checklist-analise-internalizada"] input[type=checkbox]').on('input', (event) => {
       try{
         const label = event.target.closest('div.form-group').querySelector('label');
