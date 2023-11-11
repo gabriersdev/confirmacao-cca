@@ -8,7 +8,7 @@ import { id_arquivos } from './confirmacao.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(true){
+  if(false){
     if(isEmpty(funcao)){
       if(document.title.trim() == 'Confirmação de dados - CCA' && true){
         window.onbeforeunload = async (evento) => {
@@ -110,14 +110,14 @@ const tratamentoCampos = (input) => {
       // Créditos https://stackoverflow.com/questions/62894283/javascript-input-mask-currency
       // console.log(input)
       // console.log(input.value)
-
+      
       if(isEmpty(input.value)){
         input.value = 'R$ 0,00';
       }
       
       input.addEventListener('input', () => {
         const value = input.value.replace('.', '').replace(',', '').replace(/\D/g, '')
-
+        
         const options = { minimumFractionDigits: 2 }
         const result = new Intl.NumberFormat('pt-BR', options).format(
           parseFloat(value) / 100
@@ -276,8 +276,91 @@ const tratamentoCampos = (input) => {
           label.innerHTML = `${label.textContent}`
         }
       }catch(error){
-
+        
       }
+    })
+
+    $('[data-action="calcular-percentual"]').on('click', (evento) => {
+      evento.preventDefault();
+
+      const percentuais = {
+        parcela: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-parcela"]').classList.contains('active'),
+        financiamento: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-financiamento"]').classList.contains('active'),
+      }
+
+      setTimeout(() => {
+        document.querySelector(`#modal-calcular-percentual [data-tab=${percentuais.parcela ? "percent-parcela" : "percent-financiamento"}]`).querySelectorAll('input')[0].focus();
+      }, 500)
+    });
+    
+    $('#modal-calcular-percentual form').on('submit', (evento) => {
+      evento.preventDefault(); 
+      let saida = new Object;
+      
+      const percentuais = {
+        parcela: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-parcela"]').classList.contains('active'),
+        financiamento: document.querySelector('[data-bs-toggle="tab"][data-bs-target="#nav-percent-financiamento"]').classList.contains('active'),
+      }
+      
+      function BRLToFLoat(value) {
+        return parseFloat(value.replace("R$ ", "").replace(".", "").replace(",", "."));
+      }
+
+      if(percentuais.parcela){
+        const renda = evento.target.querySelector('input[name=renda-bruta-total]').value;
+        const parcela = evento.target.querySelector('input[name=parcela-liberada]').value;
+        
+        const percentual = (BRLToFLoat(parcela) / BRLToFLoat(renda)).toFixed(15);
+        const inteiro = (percentual * 100);
+        
+        if(inteiro > 30 && isFinite(percentual)){
+          saida.message = `Comprometimento de ${(percentual * 100).toFixed(2) + "%"}. Verifique os valores informados.`;
+          saida.type = 'warning';
+        }else if(!isFinite(percentual)){
+          saida.message = "Renda bruta total informada é igual a zero. Verifique os valores informados.";
+          saida.type = 'warning';
+        }else if(inteiro <= 0){
+          saida.message = "Parcela informada é igual a zero. Verifique os valores informados.";
+          saida.type = 'warning';
+        }else{
+          if(!isNaN(percentual)){
+            saida.message = `Percentual: ~ ${(percentual * 100).toFixed(2) + "%"}<br>Fração liberada: ${percentual}`;
+            saida.type = 'primary';
+          }else{
+            saida.message = "Verifique os valores informados.";
+            saida.type = 'danger';
+          }
+        }
+      }else{
+        const valorImovel = evento.target.querySelector('input[name=valor-de-compra-e-venda]').value;
+        const valorFinanciado = evento.target.querySelector('input[name=valor-financiado]').value;
+
+        const percentual = (BRLToFLoat(valorFinanciado) / BRLToFLoat(valorImovel)).toFixed(15);
+        const inteiro = (percentual * 100);
+
+        if(inteiro > 90 && isFinite(percentual)){
+          saida.message = `Cota de ${(percentual * 100).toFixed(2) + "%"}. Verifique os valores informados.`;
+          saida.type = 'warning';
+        }else if(!isFinite(percentual)){
+          saida.message = "Valor de compra e venda informado é igual a zero. Verifique os valores informados.";
+          saida.type = 'warning';
+        }else if(inteiro <= 0){
+          saida.message = "Valor financiado informado é igual a zero. Verifique os valores informados.";
+          saida.type = 'warning';
+        }else{
+          if(!isNaN(percentual)){
+            saida.message = `Cota: ~ ${(percentual * 100).toFixed(2) + "%"}<br>Fração liberada: ${percentual}`;
+            saida.type = 'primary';
+          }else{
+            saida.message = "Verifique os valores informados.";
+            saida.type = 'danger';
+          }
+        }
+      }
+      
+      $(`#modal-calcular-percentual [data-tab=${percentuais.parcela ? "percent-parcela" : "percent-financiamento"}] div.percent-retorno`).html(`<div class="alert mt-2 mb-0 alert-${saida.type} none">${saida.message.toString()}</div>`);
+
+      $(`#modal-calcular-percentual [data-tab=${percentuais.parcela ? "percent-parcela" : "percent-financiamento"}] div.percent-retorno div.alert`).fadeIn(500);
     })
   }
   

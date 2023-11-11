@@ -281,3 +281,8 @@ a{
     position: static;
   }
 }
+
+.nav-tabs .nav-link,
+.nav-link.active{
+  border-bottom: unset;
+}

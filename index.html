@@ -102,7 +102,70 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="modal-calcular-percentual" aria-hidden="true" aria-labelledby="modal-calcular-percentual-Label" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modal-calcular-percentual-Label">Calcular percentual</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" data-bs-toggle="tab" data-bs-target="#nav-percent-parcela" role="tab">Percent. parcela</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" data-bs-toggle="tab" data-bs-target="#nav-percent-financiamento" role="tab">Percent. financiamento</a>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="nav-tabContent">
+            <div data-tab="percent-parcela" class="tab-pane fade active show" id="nav-percent-parcela" role="tabpanel">
+              <form action="">
+                <div class="form-group">
+                  <label for="id-fid" class="mb-1">Renda bruta total</label>
+                  <input type="text" class="form-control" id="renda-bruta-total" name="renda-bruta-total" data-element="input" data-input="renda-bruta-total" data-maskc="money" autocomplete="off" required>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="id-empreendimento" class="mb-1">Parcela liberada</label>
+                  <input type="text" class="form-control" id="parcela-liberada" name="parcela-liberada" data-element="input" data-input="parcela-liberada" data-maskc="money" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Calcular</button>
+              </form>
+              <div class="percent-retorno">
+              </div>
+            </div>
   
+            <div data-tab="percent-financiamento" class="tab-pane fade" id="nav-percent-financiamento" role="tabpanel">
+              <form action="">
+                <div class="form-group">
+                  <label for="id-fid" class="mb-1">Valor de compra e venda</label>
+                  <input type="text" class="form-control" id="valor-de-compra-e-venda" name="valor-de-compra-e-venda" data-element="input" data-input="valor-de-compra-e-venda" data-maskc="money" autocomplete="off" required>
+                </div>
+                <div class="form-group mt-3">
+                  <label for="id-empreendimento" class="mb-1">Valor financiado</label>
+                  <input type="text" class="form-control" id="valor-financiado" name="valor-financiado" data-element="input" data-input="valor-financiado" data-maskc="money" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4 mb-2" style="width: 100%;">Calcular</button>
+              </form>
+              <div class="percent-retorno">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #modal-calcular-percentual{
+      [data-tab]{
+        margin-top: 1rem;
+      }
+    }
+  </style>
+
   <div class="overlay">
     <div class="spinner-first-load"></div>
   </div>
