@@ -404,6 +404,14 @@ const acaoClickCopiar = (btn) => {
         
         const analista = form.querySelector('#dev-analista').value.trim();
         
+        const complemento = { tela_endividamento: '', FGTS_solicitado: '', verificacao_FGTS: '', autorizacao_FGTS: '', aviso_IRPF: '' }
+
+        evento.target.querySelectorAll('.selecao-multiplas-opcoes input[type=checkbox]').forEach(input => {
+          // console.log(input, input.dataset.valueFormComp, input.checked)
+          complemento[input.getAttribute('id').replaceAll('-', '_')] = input.checked ? input.dataset.valueFormComp.toString() : '';
+          // console.log(complemento[input.getAttribute('id').replaceAll('-', '_')])
+        })
+
         const dev = {
           renda: `Renda: ${form.querySelector('#dev-renda').value.trim()}. `,
           parcela: `Parcela ${form.querySelector('#dev-status-parcela-aprovado').checked ? 'aprovada' : 'possível'}: ${form.querySelector('#dev-parcela').value}. `,
@@ -420,7 +428,7 @@ const acaoClickCopiar = (btn) => {
           analista: `${!isEmpty(analista) ? '## ' + analista.toUpperCase() : ''}`
         }
         
-        let devolucao = dev.renda + dev.parcela + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.finaciamento + dev.taxa + dev.FGTS + dev.pendencias + dev.restricoes + dev.analista;
+        let devolucao = dev.renda + dev.parcela + complemento.tela_endividamento + dev.situacao + dev.modalidade + dev.prazo + dev.primeira + dev.subsidio + dev.finaciamento + dev.taxa + complemento.FGTS_solicitado + complemento.verificacao_FGTS + complemento.autorizacao_FGTS + dev.FGTS + dev.pendencias + complemento.aviso_IRPF + dev.restricoes + dev.analista;
         
         const textarea = document.querySelector('[data-content="relatorio"]');
         textarea.value += `Prezados, ${cumprimentoHorario()}! ${devolucao}`;

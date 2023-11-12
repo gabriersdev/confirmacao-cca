@@ -362,6 +362,76 @@ const tratamentoCampos = (input) => {
 
       $(`#modal-calcular-percentual [data-tab=${percentuais.parcela ? "percent-parcela" : "percent-financiamento"}] div.percent-retorno div.alert`).fadeIn(500);
     })
+
+    // Funcionalidade de seleção de elementos de opção de fácil acesso
+    const selecoes = [
+      {
+        name: 'Tela solicitada',
+        id: 'tela-endividamento',
+        value: 'Tela de comprometimento solicitada. '
+      },
+      {
+        name: 'FGTS solicitado',
+        id: 'FGTS-solicitado',
+        value: 'Saldo FGTS e se tem bloqueio solicitado. '
+      },
+      {
+        name: 'Verificação FGTS',
+        id: 'verificacao-FGTS',
+        value: 'Verificação do saldo FGTS, possibilidade de uso e se tem bloqueio solicitado. '
+      },
+      {
+        name: 'Autorização FGTS',
+        id: 'autorizacao-FGTS',
+        value: 'Gentileza solicitar autorização para consulta à Caixa no APP do FGTS, para verificar o tempo de serviço. '
+      },
+      {
+        name: 'Aviso IRPF',
+        id: 'aviso-IRPF',
+        value: 'Importante fazer a declaração tendo em vista que ela só é aceita se os rendimentos forem superiores ao mínimo obrigatório para se declarar. '
+      }
+    ]
+
+    selecoes.forEach((selecao) => {
+      const formGroup = document.createElement('div');
+      formGroup.classList.add('form-group');
+
+      const input = document.createElement('input');
+      input.dataset.valueFormComp = selecao.value;
+      input.classList.value = 'btn-check';
+      input.setAttribute('type', 'checkbox');
+      input.setAttribute('id', selecao.id);
+      input.setAttribute('name', selecao.id);
+      formGroup.appendChild(input);
+
+      const btn = document.createElement('label');
+      btn.classList.value = 'btn btn-outline-primary';
+      btn.setAttribute('for', selecao.id);
+      btn.textContent = selecao.name;
+      formGroup.appendChild(btn);
+      
+      document.querySelector('.selecao-multiplas-opcoes').appendChild(formGroup);
+    })
+
+    $('.selecao-multiplas-opcoes label.btn').on('click', (event) => {
+      event.target.closest('div.form-group').querySelector('input').checked = event.target.classList.contains('checked');
+    })
+
+    document.querySelectorAll('.selecao-multiplas-opcoes input').forEach((input) => {
+      input.addEventListener('input', atualizarBtn);
+      // input.addEventListener('change', atualizarBtn);
+
+      function atualizarBtn(){
+        // console.log(input.checked)
+        const btn = input.closest('div.form-group').querySelector('label.btn');
+        if(input.checked){
+          btn.classList.add('checked');
+        }else{
+          btn.classList.remove('checked');
+        }
+      }
+    });
+
   }
   
   function atualizar(){

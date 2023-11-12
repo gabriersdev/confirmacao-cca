@@ -286,3 +286,47 @@ a{
 .nav-link.active{
   border-bottom: unset;
 }
+
+#modal-calcular-percentual{
+  [data-tab]{
+    margin-top: 1rem;
+  }
+}
+
+.selecao-multiplas-opcoes{
+  display: flex;
+  flex-wrap: wrap;
+  place-content: flex-start;
+  place-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  
+  .btn{
+    padding: 0.3rem 0.45rem;
+    border-radius: 3px;
+    font-size: 13px;
+    box-shadow: unset !important;
+    outline: none;
+
+    &:hover, &:focus, &:active, &.checked{
+      background-color: #007BFF;
+      color: #fff;
+      box-shadow: unset !important;
+      outline: none;
+    }
+
+    &:hover:not(.checked), &:focus:not(.checked){
+      background-color: rgba(0, 123, 255, 0.05) !important;
+      color: #007BFF;
+    }
+
+    &::before{
+      content: "+";
+      margin-right: 0.25rem;
+    }
+
+    &.checked::before{
+      content: "-";
+    }
+  }
+}
