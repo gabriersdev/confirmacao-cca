@@ -303,7 +303,7 @@ const tratamentoCampos = (input) => {
       }
       
       function BRLToFLoat(value) {
-        return parseFloat(value.replace("R$ ", "").replace(".", "").replace(",", "."));
+        return parseFloat(value.replace("R$ ", "").replaceAll(".", "").replace(",", "."));
       }
 
       if(percentuais.parcela){
