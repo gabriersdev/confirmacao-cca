@@ -199,12 +199,16 @@ async function SwalAlert(tipo, icon, title, text, mensagem){
 }
 
 function resizeTextArea(textarea){
-  while( $(textarea).outerHeight() < textarea.scrollHeight +
-  parseFloat($(textarea).css("borderTopWidth")) +
-  parseFloat($(textarea).css("borderBottomWidth")) && $(textarea).height() < 500
-  ) {
-    $(textarea).height($(textarea).height()+1);
-  };
+  if(window.screen.height > 875 && window.screen.width > 1366){
+    while( 
+      $(textarea).outerHeight() < textarea.scrollHeight +
+      parseFloat($(textarea).css("borderTopWidth")) +
+      parseFloat($(textarea).css("borderBottomWidth")) && $(textarea).height() < 500
+    )
+    {
+      $(textarea).height($(textarea).height() + 1);
+    };
+  }
   // const initialHeight = parseInt(getComputedStyle(textarea).getPropertyValue('height'));
   // textarea.style.height = `${initialHeight}px`;
   // const scrollHeight = textarea.scrollHeight;
