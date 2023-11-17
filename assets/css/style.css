@@ -159,6 +159,18 @@ button i{
   grid-gap: 1rem;
 }
 
+@media screen and (width <= 768px) {
+  .links-faceis-confirmacao{
+    grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 3fr));
+  }
+}
+
+@media screen and (width <= 450px) {
+  .links-faceis-confirmacao{
+    grid-template-columns: repeat(auto-fill, 100%);
+  }
+}
+
 .links-faceis-confirmacao .card{
   display: inline-block;
   background-color: transparent;

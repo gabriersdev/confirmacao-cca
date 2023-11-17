@@ -8,7 +8,7 @@ import { id_arquivos } from './confirmacao.js';
 
 /* Verificar funcionamento desta função */
 const verificarInputsRecarregamento = (funcao) => {
-  if(false){
+  if(true){
     if(isEmpty(funcao)){
       if(document.title.trim() == 'Confirmação de dados - CCA' && true){
         window.onbeforeunload = async (evento) => {
@@ -417,45 +417,47 @@ const tratamentoCampos = (input) => {
       }
     ]
 
-    selecoes.sort((a, b) => a.name.localeCompare(b.name)).filter((e) => !isEmpty(e.name)).forEach((selecao) => {
-      const formGroup = document.createElement('div');
-      formGroup.classList.add('form-group');
-
-      const input = document.createElement('input');
-      input.dataset.valueFormComp = selecao.value;
-      input.classList.value = 'btn-check';
-      input.setAttribute('type', 'checkbox');
-      input.setAttribute('id', selecao.id);
-      input.setAttribute('name', selecao.id);
-      formGroup.appendChild(input);
-
-      const btn = document.createElement('label');
-      btn.classList.value = 'btn btn-outline-primary';
-      btn.setAttribute('for', selecao.id);
-      btn.textContent = selecao.name;
-      formGroup.appendChild(btn);
-      
-      document.querySelector('.selecao-multiplas-opcoes').appendChild(formGroup);
-    })
-
-    $('.selecao-multiplas-opcoes label.btn').on('click', (event) => {
-      event.target.closest('div.form-group').querySelector('input').checked = event.target.classList.contains('checked');
-    })
-
-    document.querySelectorAll('.selecao-multiplas-opcoes input').forEach((input) => {
-      input.addEventListener('input', atualizarBtn);
-      // input.addEventListener('change', atualizarBtn);
-
-      function atualizarBtn(){
-        // console.log(input.checked)
-        const btn = input.closest('div.form-group').querySelector('label.btn');
-        if(input.checked){
-          btn.classList.add('checked');
-        }else{
-          btn.classList.remove('checked');
+    if(!isEmpty(document.querySelector('.selecao-multiplas-opcoes'))){
+      selecoes.sort((a, b) => a.name.localeCompare(b.name)).filter((e) => !isEmpty(e.name)).forEach((selecao) => {
+        const formGroup = document.createElement('div');
+        formGroup.classList.add('form-group');
+  
+        const input = document.createElement('input');
+        input.dataset.valueFormComp = selecao.value;
+        input.classList.value = 'btn-check';
+        input.setAttribute('type', 'checkbox');
+        input.setAttribute('id', selecao.id);
+        input.setAttribute('name', selecao.id);
+        formGroup.appendChild(input);
+  
+        const btn = document.createElement('label');
+        btn.classList.value = 'btn btn-outline-primary';
+        btn.setAttribute('for', selecao.id);
+        btn.textContent = selecao.name;
+        formGroup.appendChild(btn);
+        
+        document.querySelector('.selecao-multiplas-opcoes').appendChild(formGroup);
+      })
+  
+      $('.selecao-multiplas-opcoes label.btn').on('click', (event) => {
+        event.target.closest('div.form-group').querySelector('input').checked = event.target.classList.contains('checked');
+      })
+  
+      document.querySelectorAll('.selecao-multiplas-opcoes input').forEach((input) => {
+        input.addEventListener('input', atualizarBtn);
+        // input.addEventListener('change', atualizarBtn);
+  
+        function atualizarBtn(){
+          // console.log(input.checked)
+          const btn = input.closest('div.form-group').querySelector('label.btn');
+          if(input.checked){
+            btn.classList.add('checked');
+          }else{
+            btn.classList.remove('checked');
+          }
         }
-      }
-    });
+      });
+    }
 
   }
   
