@@ -389,10 +389,35 @@ const tratamentoCampos = (input) => {
         name: 'Aviso IRPF',
         id: 'aviso-IRPF',
         value: 'Importante fazer a declaração tendo em vista que ela só é aceita se os rendimentos forem superiores ao mínimo obrigatório para se declarar. '
+      },
+      {
+        name: 'Restrição Externa',
+        id: 'restricao-externa',
+        value: 'Proponente/grupo familiar possui restrição externa. Necessária regularização para nova avaliação da proposta. '
+      },
+      {
+        name: 'Prejuízo no SCR',
+        id: 'prejuizo-scr',
+        value: 'Proponente/Grupo Familiar possui dívidas baixadas como Prejuízo no SCR. '
+      },
+      {
+        name: 'Dívidas vencidas',
+        id: 'dividas-vencidas',
+        value: 'Proponente/Grupo Familiar possui dívidas vencidas no SCR. '
+      },
+      {
+        name: 'Pendência CEF',
+        id: 'pendencia-cef',
+        value: 'Proponente/grupo familiar possui pendência. Procurar Agência de vinculação para detalhes. '
+      },
+      {
+        name: '',
+        id: '',
+        value: ''
       }
     ]
 
-    selecoes.forEach((selecao) => {
+    selecoes.sort((a, b) => a.name.localeCompare(b.name)).filter((e) => !isEmpty(e.name)).forEach((selecao) => {
       const formGroup = document.createElement('div');
       formGroup.classList.add('form-group');
 
