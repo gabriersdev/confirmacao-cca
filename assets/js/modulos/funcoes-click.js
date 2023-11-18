@@ -194,7 +194,6 @@ const acaoClickCopiar = (btn) => {
           split.length == 2, 
           split[0].search('codigo') > 0,
           typeof(parseInt(split[0].split('=')[1])) == 'number',
-          split[0].split('=')[1].length == 6
         ];
         
         const FID = split[0].split('=')[1];
