@@ -63,8 +63,17 @@
 }
 
 @media screen and (max-width: 767px) {
+  [data-content="area-links"] .links,
   [data-content="area-consultas"] .consultas,
   [data-content="area-arquivos"] .arquivos{
-    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media screen and (max-width: 285px) {
+  [data-content="area-links"] .links,
+  [data-content="area-consultas"] .consultas,
+  [data-content="area-arquivos"] .arquivos{
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
 }

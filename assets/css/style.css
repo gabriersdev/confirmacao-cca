@@ -267,6 +267,7 @@ a{
 }
 
 .banner{
+  border-radius: 0;
   background: url(../img/banner-post.webp) center / cover no-repeat;
   padding: 2.5rem 1rem;
   display: flex;
@@ -342,3 +343,83 @@ a{
     }
   }
 }
+
+@media screen and (width <= 767px) {
+  footer{
+    .col-6{
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media screen and (width <= 575px) {
+  [data-content="form-laudo"]{
+    grid-template-columns: repeat(1, minmax(calc(100% - 0.5rem), 1fr));
+  }
+
+  .container.container-fluid{
+    margin: 0 0.5rem;
+  }
+}
+
+@media screen and (width <= 450px) {
+  .accordion-button{
+    [data-information="nome-proponente"]{
+      display: initial;
+    }
+  }
+
+  [data-identify]{
+    .d-flex.justify-content-between.align-items-center{
+      flex-direction: column;
+      place-content: flex-start;
+      place-items: flex-start;
+      align-items: flex-start !important;
+    }
+
+    .card-body-header [data-content="nome"]{
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    [data-action="remover-proponente"]::after{
+      content: "";
+    }
+
+    .feedback_dado{
+      display: none;
+    }
+
+    .row{
+      flex-direction: column;
+      
+      .col:not(:first-child){
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+@media screen and (width <= 345px) {
+  footer{
+    .row{
+      flex-direction: column;
+    }
+  }
+
+  .input-group-text{
+    flex-direction: column;
+    width: calc(100%);
+    border-radius: 0;
+    margin: 0;
+
+    .bi:not(.bi-trash){
+      display: none;
+    }
+
+    [data-action="remover-renda"] .bi{
+      display: flex;
+    }
+  }
+}
+
