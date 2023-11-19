@@ -12,6 +12,12 @@
 @import url(./elementos/no-script.css);
 @import url(./elementos/consultas-arquivos-links.css);
 @import url(./elementos/modal-informacoes-pagina.css);
+@import url(./elementos/footer.css);
+@import url(./elementos/form.css);
+@import url(./elementos/links-faceis-confirmacao.css);
+@import url(./elementos/secao-controlada.css);
+
+@import url(./paginas/desligamento.css);
 
 html{
   scroll-behavior: smooth;
@@ -67,32 +73,6 @@ main{
   position: static;
 }
 
-.form-floating{
-  position: relative;
-}
-
-.form-floating button{
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translate(0, -50%);
-}
-
-.form-floating button,
-.form-floating button:is(:active, :hover, :focus){
-  background: unset !important;
-  border: unset !important;
-  padding: unset !important;
-}
-
-.form-floating button.btn-outline-success{
-  color: #008000 !important; 
-}
-
-.form-floating button.btn-outline-danger{
-  color: #FF0000 !important;
-}
-
 textarea{
   scrollbar-width: none;
   resize: none;
@@ -111,98 +91,21 @@ textarea::-webkit-scrollbar{
     align-items: flex-start;
     align-content: flex-start;
   }
-
+  
   .hgroup .hgroup-acoes{
     margin-top: 1rem;
   }
 }
 
-[data-input="nome"]{
-  text-transform: uppercase;
-}
-
-button i{
-  margin-right: 0 !important;
-  padding-right: 0 !important;
-}
-
-[data-input]:invalid,
-.invalido input{
-  position: static;
-  border: 1px solid rgb(255, 0, 0, 0.15) !important;
-}
-
-[data-input]:invalid:is(:hover, :focus),
-.invalido input:is(:hover, :focus){
-  box-shadow:  0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
-  -webkit-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
-  -moz-box-shadow: 0px 0px 0px 3.5px rgb(255, 142, 142, 0.4) !important;
-}
-
-.feedback_dado{
-  display: none;
-}
-
-.invalido .feedback_dado{
-  color: rgb(255, 0, 0, 1) !important;
-  display: initial;
-}
-
-[data-form="pesquisa"] button{
-  border-color: #CED1DD;
-  background-color: #DEE2E6;
-}
-
-.links-faceis-confirmacao{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(33% - 1rem), 1fr));
-  grid-gap: 1rem;
-}
-
-@media screen and (width <= 768px) {
-  .links-faceis-confirmacao{
-    grid-template-columns: repeat(auto-fill, minmax(calc(50% - 1rem), 3fr));
-  }
-}
-
-@media screen and (width <= 450px) {
-  .links-faceis-confirmacao{
-    grid-template-columns: repeat(auto-fill, 100%);
-  }
-}
-
-.links-faceis-confirmacao .card{
-  display: inline-block;
-  background-color: transparent;
-  transition: 0.2s background ease-in-out;
-}
-
-.links-faceis-confirmacao .card:hover{
-  border: 1px solid rgb(0, 0, 0, 0.10);
-  background-color: rgb(0, 0, 0, 0.05);
-}
-
-.links-faceis-confirmacao .card .card-header{
-  background-color: transparent;
-  transition: 0.2s background ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.links-faceis-confirmacao .card:hover .card-header{
-  border-bottom: 1px solid rgb(0, 0, 0, 0.10);
-}
-
 .form-btn-copy-float{
   position: relative;
-
+  
   &:hover{
     .btn-copy-float{
       display: block !important;
     }
   }
-
+  
   .btn-copy-float{
     transition: ease-in-out 0.3s all;
     display: none;
@@ -221,78 +124,16 @@ button i{
   display: none;
 }
 
-[data-content="secao-controlada"]{
-  >.card-header{
-    cursor: pointer;
-    border-bottom: unset;
-
-    .span{
-      display: none;
-    }
-
-    &:hover{
-      background-color: rgb(0, 0, 0, 0.05);
-
-      .span{
-        display: block;
-      }
-    }
-  }
-}
-
-/* Página INDEX de desligamento */
-
-[data-content="form-laudo"]{
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(2, minmax(calc(50% - 0.5rem), 1fr));
-  
-  .forms-groups{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-}
-
-a{
-  .seta{
-    transition: margin ease-in-out 0.3s;
-  }
-  
-  &:hover{
-    .seta{
-      margin-left: 0.25rem;
-    }
-  }
-}
-
-.banner{
-  border-radius: 0;
-  background: url(../img/banner-post.webp) center / cover no-repeat;
-  padding: 2.5rem 1rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .alert.info{
   &::before{
     content: "\F430";
     font-family: 'bootstrap-icons';
     margin-right: 0.25rem;
   }
-
+  
   border-left-width: 5px;
   border-left-style: solid;
   border-left-color: rgb(0, 0, 0, 0.25);
-}
-
-@media (prefers-color-scheme: dark) {
-  body{
-    position: static;
-  }
 }
 
 .nav-tabs .nav-link,
@@ -306,57 +147,36 @@ a{
   }
 }
 
-.selecao-multiplas-opcoes{
-  display: flex;
-  flex-wrap: wrap;
-  place-content: flex-start;
-  place-items: center;
-  gap: 0.25rem;
-  width: 100%;
-  
-  .btn{
-    padding: 0.3rem 0.45rem;
-    border-radius: 3px;
-    font-size: 13px;
-    box-shadow: unset !important;
-    outline: none;
+.container.container-fluid{
+  background-color: rgba(0, 0, 0, 0.01);
+  padding: 0.5rem 1rem;
+  padding-right: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 
-    &:hover, &:focus, &:active, &.checked{
-      background-color: #007BFF;
-      color: #fff;
-      box-shadow: unset !important;
-      outline: none;
-    }
+  .navbar-icon{
+    background-color: #0D6EFD; 
+    width: 1rem; 
+    height: 1rem; 
+    display: inline-block; 
+    margin-right: 0.5rem; 
+    border-radius: 0.25rem;
+  }
 
-    &:hover:not(.checked), &:focus:not(.checked){
-      background-color: rgba(0, 123, 255, 0.05) !important;
-      color: #007BFF;
-    }
-
-    &::before{
-      content: "+";
-      margin-right: 0.25rem;
-    }
-
-    &.checked::before{
-      content: "-";
-    }
+  .navbar-brand{
+    color: #0D6EFD;
+    font-size: 1.5rem;
+    font-weight: 900;
   }
 }
 
-@media screen and (width <= 767px) {
-  footer{
-    .col-6{
-      margin-top: 2rem;
-    }
+@media (prefers-color-scheme: dark) {
+  body{
+    position: static;
   }
 }
 
 @media screen and (width <= 575px) {
-  [data-content="form-laudo"]{
-    grid-template-columns: repeat(1, minmax(calc(100% - 0.5rem), 1fr));
-  }
-
   .container.container-fluid{
     margin: 0 0.5rem;
   }
@@ -368,7 +188,7 @@ a{
       display: initial;
     }
   }
-
+  
   [data-identify]{
     .d-flex.justify-content-between.align-items-center{
       flex-direction: column;
@@ -376,20 +196,20 @@ a{
       place-items: flex-start;
       align-items: flex-start !important;
     }
-
+    
     .card-body-header [data-content="nome"]{
       margin-bottom: 1rem;
       display: block;
     }
-
+    
     [data-action="remover-proponente"]::after{
       content: "";
     }
-
+    
     .feedback_dado{
       display: none;
     }
-
+    
     .row{
       flex-direction: column;
       
@@ -399,27 +219,3 @@ a{
     }
   }
 }
-
-@media screen and (width <= 345px) {
-  footer{
-    .row{
-      flex-direction: column;
-    }
-  }
-
-  .input-group-text{
-    flex-direction: column;
-    width: calc(100%);
-    border-radius: 0;
-    margin: 0;
-
-    .bi:not(.bi-trash){
-      display: none;
-    }
-
-    [data-action="remover-renda"] .bi{
-      display: flex;
-    }
-  }
-}
-

@@ -1,0 +1,15 @@
+@media screen and (width <= 767px) {
+  footer{
+    .col-6{
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media screen and (width <= 345px) {
+  footer{
+    .row{
+      flex-direction: column;
+    }
+  }
+}
