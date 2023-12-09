@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mudamos</title>
+  <meta name="keywords" content="CCA; Confirmação; Dados; Conferência">
+  <meta name="author" content="Gabriel Ribeiro">
+  <meta name="robots" content="follow">
+  <meta property="og:title" content="Mudamos de endereço">
+  <meta property="og:description" content="O projeto cresceu e a proposta inicial mudou. O nome do subdomínio já não fazia mais sentido para as funções que esse projeto passou a ter. Nosso novo endereço é https://gabrieszin.github.io/cca/">
+  <meta property="og:url" content="https://gabrieszin.github.io/confirmacao-cca/mudamos.html">
+  <meta property="og:image" content="https://gabrieszin.github.io/confirmacao-cca/assets/img/banner-mudamos.png">
+  <meta property="og:image:secure_url" content="https://gabrieszin.github.io/confirmacao-cca/assets/img/banner-mudamos.png"> 
+  <meta property="og:image:type" content="image/png"> 
+  <meta property="og:image:width" content="400"> 
+  <meta property="og:image:height" content="300"> 
+  
+  <meta http-equiv="Content-Security-Policy" 
+  content="default-src 'self' 'unsafe-inline'; 
+  style-src 'self' 'unsafe-inline'; 
+  style-src-elem 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  img-src 'self' 'unsafe-inline' data:; 
+  font-src 'self' 'unsafe-inline' https://fonts.gstatic.com; 
+  script-src 'self' 'unsafe-inline'; 
+  frame-src 'self' 'unsafe-inline';
+  connect-src 'self' 'unsafe-inline';">   
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="shortcut icon" href="./mudamos-arquivos-pagina/favicon.svg" type="image/x-icon">
+</head>
+<body>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,500;1,600;1,700&display=swap');
+
+    body{
+      background: linear-gradient(#0B1945, #060F2A);
+      color: #F6F6F6;
+      font-size: 16px;
+    }
+    
+    body, body *{
+      font-family: 'Inter Tight', 'Inter', sans-serif !important;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    .main{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    
+    .main-section{
+      width: min(calc(100% - 1rem), 800px);
+      
+      .main-section-title-principal{
+        font-family: 'Inter Tight', 'Inter', sans-serif;
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 500;
+      }
+      
+      .main-section-paragraph{
+        line-height: 1.5 !important;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: clamp(1.25rem, 3vw, 1.85rem);
+        line-height: 1.5;
+        margin-top: 1rem;
+        font-weight: 300;
+        
+        .bold{
+          font-size: inherit;
+          font-weight: 500;
+          color: #6C91FF99;
+        }
+        
+        .link{
+          font-size: inherit;
+          color: #6C91FF99;
+          text-decoration: underline;
+          font-weight: 500;
+          word-break: keep-all;
+        }
+      }
+    }
+    
+    @media screen and (width >= 470px) {
+      .link[href="https://gabrieszin.github.io/cca/"]::after{
+        content: "gabrieszin.github.io/cca/";
+      }
+    }
+    
+    @media screen and (width < 470px) {
+      .link[href="https://gabrieszin.github.io/cca/"]::after{
+        content: "um novo endereço";
+      }
+    }
+  </style>
+  
+  <main class="main">
+    <section class="main-section">
+      <h1 class="main-section-title-principal">Nós mudamos de endereço</h1>
+      <p class="main-section-paragraph">
+        O projeto cresceu e a <b class="bold">proposta inicial mudou.</b> O nome do subdomínio já <b class="bold">não fazia mais sentido para as funções que esse projeto passou a ter.</b> 
+      </p>
+      <p class="main-section-paragraph">
+        Por isso, mudamos para <a class="link" rel="noreferrer noopener" href="https://gabrieszin.github.io/cca/"></a>
+      </p>
+    </section>
+  </main>
+  
+</body>
+</html>
