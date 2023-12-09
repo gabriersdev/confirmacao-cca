@@ -10,7 +10,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   // Redirecionamento para a página de mudanças
   try{
     document.querySelector('html').setAttribute('style', 'display: none !important'); 
-    window.location.href('https://gabrieszin.github.io/confirmacao-cca/mudamos.html');
+    window.location.replace('https://gabrieszin.github.io/confirmacao-cca/mudamos.html');
   }catch(error){}
   
   function clickEnviarConfirmacaoSenha(evento, elemento, referencia){
@@ -187,7 +187,7 @@ import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/fu
   window.addEventListener("load", function () {
     $('.overlay').hide();
     
-    funcoesBase();
+    // funcoesBase();
     atribuirLinks();
     atualizarDatas();
     
