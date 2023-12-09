@@ -7,6 +7,8 @@ import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
 
 (() => {  
+  try{document.querySelector('html').setAttribute('style', 'display: none !important')}catch(error){}
+  
   function clickEnviarConfirmacaoSenha(evento, elemento, referencia){
     verificacao(evento, elemento, referencia);
   }
