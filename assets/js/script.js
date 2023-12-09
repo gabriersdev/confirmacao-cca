@@ -7,7 +7,11 @@ import { funcoesBase } from './modulos/funcoes-base.js';
 import { adicionarOpcoesAutoComplete, renderConteudosPagina } from './modulos/funcoes-de-conteudo.js';
 
 (() => {  
-  try{document.querySelector('html').setAttribute('style', 'display: none !important')}catch(error){}
+  // Redirecionamento para a página de mudanças
+  try{
+    document.querySelector('html').setAttribute('style', 'display: none !important'); 
+    window.location.href('https://gabrieszin.github.io/confirmacao-cca/mudamos.html');
+  }catch(error){}
   
   function clickEnviarConfirmacaoSenha(evento, elemento, referencia){
     verificacao(evento, elemento, referencia);
